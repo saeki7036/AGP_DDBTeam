@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static MapData.Preset;
 public enum Map_State
@@ -19,6 +20,8 @@ public class MapData : ScriptableObject
     [System.Serializable]
     public class Preset
     {
+        public int destValue;
+
         public Area[] area;
         public Height[] height;
 
@@ -40,5 +43,10 @@ public class MapData : ScriptableObject
     public MapData Clone()
     {
         return Instantiate(this);
+    }
+
+    public Map_State GetState(int index, int y, int x)
+    {
+        return preset[index].height[y].width[x];
     }
 }

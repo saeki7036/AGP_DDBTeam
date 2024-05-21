@@ -9,7 +9,7 @@
                     "name": "Lstick",
                     "type": "Value",
                     "id": "18ae83a9-6b8b-4bac-a077-4e04c63f4270",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -18,7 +18,7 @@
                     "name": "Rstick",
                     "type": "Value",
                     "id": "44ac84da-7bde-4a85-86c9-3385e2356967",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
