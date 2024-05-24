@@ -81,31 +81,29 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         isAttack();
-        if (lStick != Vector2.zero)
-            isMove();
+        //if (lStick != Vector2.zero)
+        isMove();
        
     }
 
     void isMove()
     {
+        //Debug.Log(lStick);
         Vector3 vector3 = Vector3.zero;
-        if (lStick.x < -0.4f)
+        if (lStick.x == 0)
+            vector3.x = 0f;
+        else if (lStick.x < -0.4f)
             vector3.x = -Speed;
-        
         else if(lStick.x > 0.4f)
             vector3.x = Speed;
-        
-        else
-            vector3.x = 0f;
 
-        if (lStick.y < -0.4f)
+        if (lStick.y == 0)
+            vector3.z = 0f;
+        else if(lStick.y < -0.4f)
             vector3.z = -Speed;
-        
         else if (lStick.y > 0.4f)
             vector3.z = Speed;
-        
-        else
-            vector3.z = 0f;
+             
         rb.velocity = vector3;
     }
     void isAttack()
@@ -121,7 +119,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Wall") && Attack)
         {
