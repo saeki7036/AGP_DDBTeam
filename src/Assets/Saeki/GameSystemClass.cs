@@ -78,7 +78,7 @@ public class GameSystemClass : MonoBehaviour
             visit[i] = false;
 
         Vector2Int[] posLIst = new Vector2Int[BOARD_MAX * BOARD_MAX];
-        Queue<Vector2Int> q = new Queue<Vector2Int>();
+        //Queue<Vector2Int> q = new Queue<Vector2Int>();
         //q.Enqueue(new Vector2Int(X,Y));
         posLIst[0] = new Vector2Int(X, Y);
         int listCount = 1;
@@ -121,6 +121,8 @@ public class GameSystemClass : MonoBehaviour
         }
         if(wallCount / 2 < listCount)
         {
+            wallCount -= wallCount - listCount;
+
             for (int y = 0; y < BOARD_MAX; y++)
                 for (int x = 0; x < BOARD_MAX; x++)
                     visit[y * BOARD_MAX + x] = false;
@@ -138,7 +140,8 @@ public class GameSystemClass : MonoBehaviour
         }
         else
         {
-            for(int i = 0; i < listCount; i++)
+            wallCount -= listCount;
+            for (int i = 0; i < listCount; i++)
             {
                 info.ypos[posLIst[i].y].xpos[posLIst[i].x].wallobj.SetActive(false);
                 info.ypos[posLIst[i].y].xpos[posLIst[i].x].state = Map_State.None;

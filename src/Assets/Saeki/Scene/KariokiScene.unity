@@ -416,9 +416,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Input: {fileID: 1699127382}
   system: {fileID: 727534032}
-  NomalSpeed: 4
-  AttackSpeed: 3
-  NoAttackSpeed: 1.5
+  NomalSpeed: 15
+  AttackSpeed: 10
+  NoAttackSpeed: 5
 --- !u!54 &1699127388
 Rigidbody:
   m_ObjectHideFlags: 0
