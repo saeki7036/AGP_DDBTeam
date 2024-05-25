@@ -64,6 +64,9 @@ public class MapDataEditer : EditorWindow
                 sliderPreset = (int)EditorGUILayout.Slider("preset_ID", sliderPreset, 0, this.baseData.preset.Length - 1, GUILayout.MaxWidth(300f));
                 EditorGUILayout.LabelField("||Map:", GUILayout.MaxWidth(40f));
 
+                EditorGUILayout.LabelField("壁の数",baseData.preset[sliderPreset].destValue.ToString());
+                
+
                 GUILayout.FlexibleSpace();
                 EditorGUILayout.LabelField("|:", GUILayout.MaxWidth(40f));
                 if (GUILayout.Button("プリセットを追加", GUILayout.MaxWidth(120f), GUILayout.MaxHeight(20f)))
@@ -122,6 +125,7 @@ public class MapDataEditer : EditorWindow
 
                 using (var scrollMap = new EditorGUILayout.ScrollViewScope(mapScroll, GUILayout.MinWidth(1000f),GUILayout.MaxHeight(1000f)))
                 {
+                    int destvalue = 0;
                     mapScroll = scrollMap.scrollPosition;
                     for (int Y = BOARD_MAX - 1; Y >= 0; Y--)                       
                     {
@@ -153,13 +157,15 @@ public class MapDataEditer : EditorWindow
                                     }
 
                                     Map_State map_State = baseData.preset[sliderPreset].height[Y].width[X];
+                                    if(map_State != Map_State.None)
+                                        destvalue++;
 
                                     ColorGUI(map_State);
 
                                     baseData.preset[sliderPreset].height[Y].width[X] =
                                     (Map_State)EditorGUILayout.EnumPopup(baseData.preset[sliderPreset].height[Y].width[X],
                                     GUILayout.MaxWidth(20f), GUILayout.MaxHeight(20f));
-
+                                    
                                     GUI.backgroundColor = Color.white;
 
                                     if (Y == 0)
@@ -186,6 +192,8 @@ public class MapDataEditer : EditorWindow
                             }
                         }
                     }
+
+                    baseData.preset[sliderPreset].destValue = destvalue;
                 }
             }
 
