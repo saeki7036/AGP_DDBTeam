@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 8617226929457021335}
   - component: {fileID: 6538208351265198017}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1651684197993862309
 Transform:
   m_ObjectHideFlags: 0
