@@ -12,7 +12,7 @@ public class PlayerMoveCameraPerspective : MonoBehaviour
     float moveZ;
     float moveX;
 
-    float moveSpeed = 6f; //ˆÚ“®‘¬“x
+    [SerializeField] float moveSpeed = 6f; //ˆÚ“®‘¬“x
 
     Vector3 velocity = Vector3.zero; //ˆÚ“®•ûŒü
 
@@ -52,12 +52,21 @@ public class PlayerMoveCameraPerspective : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
+        if(input.magnitude > 1f)
+        {
+            input.Normalize();
+        }
+        Debug.Log(input);
         //Debug.Log("Move");
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
         inputR = context.ReadValue<Vector2>();
+        if(inputR.magnitude > 1f)
+        {
+            inputR.Normalize();
+        }
         //Debug.Log("Look");
     }
 
