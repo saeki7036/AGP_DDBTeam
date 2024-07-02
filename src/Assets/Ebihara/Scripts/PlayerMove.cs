@@ -1,50 +1,46 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
+using UnityEngine.UIElements;
+
 
 public class PlayerMove : MonoBehaviour
 {
-    Vector2 inputR, input;
+    Vector2 input, inputR;
+
     float moveZ;
     float moveX;
 
     float moveSpeed = 6f; //移動速度
 
-    Vector3 velocity = Vector3.zero;　//移動方向
-    Vector3 startpos;   //開始位置
-    Vector3 rotation;   //回転
-    Vector3 rotaMemory; //回転記憶
+    Vector3 velocity = Vector3.zero; //移動方向
 
-    float rotaSpeedX = 0.5f;   //x回転速度
-    float rotaSpeedY = 0.5f;   //y回転速度
+    GameObject playerParent;
 
-
-    float upLim = 315f;   //上角度上限
-    float downLim = 45f;   //下角度上限
-
-
+    [SerializeField] GameObject camera;
+    PlayerRay playerRay;
+    GameObject objParent;
 
     // Start is called before the first frame update
     void Start()
     {
-        startpos = transform.position;
+        playerParent = transform.parent.gameObject;
+        playerRay = camera.GetComponent<PlayerRay>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(playerParent.transform.eulerAngles);
 
-        // 移動設定
+        // 現オブジェクトからメインカメラ方向のベクトルを取得する
+        Vector3 direction = camera.transform.position - this.transform.position;
+        Vector3 keep = new Vector3(0f, playerParent.transform.rotation.y, 0f);
 
-        rotation = transform.eulerAngles;
-        rotaMemory = transform.eulerAngles;
-        rotation.x = 0f;
-        rotation.z = 0f;
+        Vector3 lookdirection=new Vector3(direction.x,0.0f,direction.z);
 
-        transform.eulerAngles = rotation;
+        playerParent.transform.rotation = Quaternion.LookRotation(-1.0f * lookdirection);
 
         //前後移動
         moveZ = input.y;
@@ -52,39 +48,7 @@ public class PlayerMove : MonoBehaviour
         moveX = input.x;
 
         velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * Time.deltaTime;
-        this.transform.Translate(velocity.x, velocity.y, velocity.z);
-
-        transform.eulerAngles = rotaMemory;
-
-        inputR.x += inputR.x * rotaSpeedX * Time.deltaTime;
-        inputR.y += inputR.y * rotaSpeedY * Time.deltaTime;
-
-        if (inputR.x > 1) { inputR.x = 1; }
-        if (inputR.y > 1) { inputR.y = 1; }
-        //Debug.Log(inputR.x+":"+inputR.y);
-
-        transform.Rotate(-inputR.y, inputR.x, 0);
-
-        rotation = transform.eulerAngles;
-
-        if (rotation.x > downLim)
-        {
-            if (rotation.x > 180f)
-            {
-                if (upLim > rotation.x)
-                {
-                    rotation.x = upLim;
-                }
-            }
-            else
-            {
-                rotation.x = downLim;
-            }
-        }
-
-        rotation.z = 0f;
-
-        transform.eulerAngles = rotation;
+        playerParent.transform.Translate(velocity.x, velocity.y, velocity.z);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -98,4 +62,44 @@ public class PlayerMove : MonoBehaviour
         inputR = context.ReadValue<Vector2>();
         //Debug.Log("Look");
     }
+
+    public void ChangeEnemy(InputAction.CallbackContext context)
+    {
+        objParent = playerRay.GetObj();
+        Debug.Log("倒した敵:" + objParent.name);
+
+        if (context.phase == InputActionPhase.Performed && objParent != null)
+        {
+            Debug.Log("Change");
+            Vector3 quaternion = objParent.transform.eulerAngles;
+            Debug.Log(quaternion);
+
+            //親をEnemyに
+            transform.parent.gameObject.tag = "Enemy";
+            //playerParent.transform.rotation = Quaternion.identity;
+
+            //親の付け替え
+            this.gameObject.transform.parent = objParent.transform;
+            playerParent = this.transform.parent.gameObject;
+
+            //親をPlayerに
+            this.transform.parent.gameObject.tag = "Player";
+
+            this.transform.position = objParent.transform.position;
+            Vector3 correction = new Vector3(0f, 1.5f, 0f);
+            this.transform.position += correction;
+
+            Vector3 cameraCorrection = new Vector3(0f, 2.5f, -5f);
+
+            playerParent.transform.eulerAngles = quaternion;
+            Debug.Log("change:"+playerParent.transform.eulerAngles);
+
+            //camera.transform.position += cameraCorrection;
+            //camera.transform.eulerAngles = quaternion;
+            //this.transform.localRotation = Quaternion.identity;
+
+            //objParent = null;
+        }
+    }
+
 }

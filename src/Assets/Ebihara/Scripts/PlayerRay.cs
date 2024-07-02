@@ -10,7 +10,6 @@ public class PlayerRay : MonoBehaviour
 {
     [SerializeField] float distance = 50.0f;//検出可能な距離
     Transform transforms;//倒した敵の保存
-    [SerializeField] GameObject player;
     GameObject game;
 
     // Start is called before the first frame update
@@ -22,10 +21,16 @@ public class PlayerRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //カメラの位置からとばす
+        var rayStartPosition = this.transform.position;
 
+        //カメラが向いてる方向にとばす
+        var rayDirection = this.transform.forward.normalized;
+
+        Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
     }
 
-    public GameObject GetTransform()
+    public GameObject GetObj()
     {
         return game;
     }
@@ -60,30 +65,4 @@ public class PlayerRay : MonoBehaviour
             }
         }
     }
-
-    //public void ChangeEnemy(InputAction.CallbackContext context)
-    //{
-    //    if (context.phase == InputActionPhase.Performed && transforms != null)
-    //    {
-    //        Debug.Log("Change");
-
-    //        //親をEnemyに
-    //        transform.parent.gameObject.tag = "Enemy";
-    //        objParent.transform.rotation = Quaternion.identity;
-
-    //        //親の付け替え
-    //        player.gameObject.transform.parent = transforms;
-    //        objParent = player.transform.parent.gameObject;
-
-    //        //親をPlayerに
-    //        player.transform.parent.gameObject.tag = "Player";
-
-    //        //_cam.Follow = raycastHit.transform;
-    //        player.transform.position = transforms.position;
-    //        //this.transform.localPosition = new Vector3(0f, 1.5f, -3f);
-    //        //this.transform.localRotation = Quaternion.identity;
-
-    //        transforms = null;
-    //    }
-    //}
 }
