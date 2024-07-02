@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyStayController : MonoBehaviour
 {
+    public int HP = 1;
     public int remainingBullets;
     [SerializeField] private NavMeshAgent Agent;
     [SerializeField] private float moveSpeed = 3.5f;
@@ -12,11 +13,18 @@ public class EnemyStayController : MonoBehaviour
     [SerializeField] private float distance = 12f;
     [SerializeField] private float rotationSpeed = 0.1f;
     [SerializeField] private float fireIntarval = 3f;
+    [SerializeField] private Rigidbody rb;
     private float timeCount = 0;
     // Start is called before the first frame update
     void Start()
     {
         Agent.speed = moveSpeed;
+    }
+    public void LostHitPoint()
+    {
+        Agent.enabled = false;
+        rb.isKinematic = false;
+
     }
 
     void TargetChase()
@@ -59,12 +67,17 @@ public class EnemyStayController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TargetChase();
-        //float roteBefore = transform.rotation.y;
-        StopChase();
-        //float roteValue = transform.rotation.y - roteBefore;
+        if(this.gameObject.tag == "Enemy" && HP > 0)
+        {
+            TargetChase();
+            //float roteBefore = transform.rotation.y;
+            StopChase();
+            //float roteValue = transform.rotation.y - roteBefore;
 
-        if (timeCount > fireIntarval && remainingBullets > 0)
-            OnFire();
+            if (timeCount > fireIntarval && remainingBullets > 0)
+                OnFire();
+        }
+        else
+        LostHitPoint();
     }
 }

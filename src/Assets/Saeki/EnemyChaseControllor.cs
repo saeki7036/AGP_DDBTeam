@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyChaseControllor : MonoBehaviour
 {
+    public int HP = 1;
     public int remainingBullets;
     [SerializeField] private NavMeshAgent Agent;
     [SerializeField] private float moveSpeed = 3.5f;
@@ -13,6 +14,8 @@ public class EnemyChaseControllor : MonoBehaviour
     [SerializeField] private float distance = 12f;
     [SerializeField] private float rotationSpeed = 0.1f;
     [SerializeField] private float fireIntarval = 3f;
+
+    [SerializeField] private Rigidbody rb;
     private float timeCount = 0;
     // Start is called before the first frame update
     void Start()
@@ -20,10 +23,18 @@ public class EnemyChaseControllor : MonoBehaviour
         Agent.speed = moveSpeed;
     }
 
+    public void LostHitPoint()
+    {
+        Agent.enabled = false;
+        rb.isKinematic = false;
+
+    }
     void TargetChase()
     {
-        if (Agent.enabled)
+        Debug.Log(Agent.enabled);
+        if (Agent.enabled && Agent.isOnNavMesh)
         {
+            
             if (Agent.pathStatus == NavMeshPathStatus.PathInvalid)          
                 Destroy(this.gameObject);           
             else
@@ -61,12 +72,18 @@ public class EnemyChaseControllor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TargetChase();
-        //float roteBefore = transform.rotation.y;
-        StopChase();
-        //float roteValue = transform.rotation.y - roteBefore;
+        if (this.gameObject.tag == "Enemy" && HP > 0)
+        {
+            TargetChase();
+            //float roteBefore = transform.rotation.y;
+            StopChase();
+            //float roteValue = transform.rotation.y - roteBefore;
 
-        if (timeCount > fireIntarval && remainingBullets > 0)
-            OnFire();
+            if (timeCount > fireIntarval && remainingBullets > 0)
+                OnFire();
+        }
+        else
+        LostHitPoint();
+
     }
 }
