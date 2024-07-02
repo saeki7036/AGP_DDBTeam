@@ -4,17 +4,19 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerRay : MonoBehaviour
 {
-    private CinemachineVirtualCamera _cam;
-    [SerializeField] Camera fpsCam;
-    [SerializeField] float distance = 50.0f;    //検出可能な距離
+    [SerializeField] float distance = 50.0f;//検出可能な距離
+    Transform transforms;//倒した敵の保存
+    [SerializeField] GameObject player;
+    GameObject game;
 
     // Start is called before the first frame update
     void Start() 
     {
-       _cam= GetComponent<CinemachineVirtualCamera>();
+
     }
 
     // Update is called once per frame
@@ -23,22 +25,27 @@ public class PlayerRay : MonoBehaviour
 
     }
 
+    public GameObject GetTransform()
+    {
+        return game;
+    }
+
     public void Fire(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
             //カメラの位置からとばす
-            var rayStartPosition = fpsCam.transform.position;
+            var rayStartPosition = this.transform.position;
 
             //カメラが向いてる方向にとばす
-            var rayDirection = fpsCam.transform.forward.normalized;
+            var rayDirection = this.transform.forward.normalized;
 
             //Hitしたオブジェクト格納用
             RaycastHit raycastHit;
 
             Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
 
-            if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance)) 
+            if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance))
             {
                 // LogにHitしたオブジェクト名を出力
                 //Debug.Log(context.phase);
@@ -46,18 +53,37 @@ public class PlayerRay : MonoBehaviour
 
                 if (raycastHit.collider.tag == "Enemy")
                 {
-                    Debug.Log("Hit");
-                    //親をEnemyに
-                    transform.parent.gameObject.tag = "Enemy";
-                    //親の付け替え
-                    this.gameObject.transform.parent = raycastHit.transform;
-                    //親をPlayerに
-                    transform.parent.gameObject.tag = "Player";
-
-                    _cam.Follow = raycastHit.transform;
-                    this.transform.position = raycastHit.transform.position;
+                    Debug.Log("EnemyHit");
+                    transforms = raycastHit.transform;
+                    game=raycastHit.collider.gameObject;
                 }
             }
         }
     }
+
+    //public void ChangeEnemy(InputAction.CallbackContext context)
+    //{
+    //    if (context.phase == InputActionPhase.Performed && transforms != null)
+    //    {
+    //        Debug.Log("Change");
+
+    //        //親をEnemyに
+    //        transform.parent.gameObject.tag = "Enemy";
+    //        objParent.transform.rotation = Quaternion.identity;
+
+    //        //親の付け替え
+    //        player.gameObject.transform.parent = transforms;
+    //        objParent = player.transform.parent.gameObject;
+
+    //        //親をPlayerに
+    //        player.transform.parent.gameObject.tag = "Player";
+
+    //        //_cam.Follow = raycastHit.transform;
+    //        player.transform.position = transforms.position;
+    //        //this.transform.localPosition = new Vector3(0f, 1.5f, -3f);
+    //        //this.transform.localRotation = Quaternion.identity;
+
+    //        transforms = null;
+    //    }
+    //}
 }
