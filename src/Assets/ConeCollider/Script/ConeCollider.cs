@@ -17,6 +17,12 @@ public class ConeCollider : MonoBehaviour {
     [SerializeField]
     private bool m_isFixScale = true;
 
+    // Add Property that Asset didn't have
+    public float Distance
+    {
+        get { return m_distance; }
+    }
+
     void Awake()
     {
         //リソースロード
