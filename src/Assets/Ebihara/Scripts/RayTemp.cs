@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class RayTPS : MonoBehaviour
+public class RayTemp : MonoBehaviour
 {
     [SerializeField] Camera tpsCam;
     [SerializeField] float distance = 50.0f;    //検出可能な距離
     GameObject objParent;
-    PlayerMove playerMove;
+    Move Move;
     Transform transforms;
 
     // Start is called before the first frame update
     void Start()
     {
         objParent = transform.parent.gameObject;
-        playerMove= objParent.GetComponent<PlayerMove>();
+        Move= objParent.GetComponent<Move>();
     }
 
     // Update is called once per frame
@@ -69,16 +69,16 @@ public class RayTPS : MonoBehaviour
             //親をEnemyに
             transform.parent.gameObject.tag = "Enemy";
             objParent.transform.rotation = Quaternion.identity;
-            playerMove.enabled = false;
+            Move.enabled = false;
 
             //親の付け替え
             this.gameObject.transform.parent = transforms;
             objParent = transform.parent.gameObject;
-            playerMove = objParent.GetComponent<PlayerMove>();
+            Move = objParent.GetComponent<Move>();
 
             //親をPlayerに
             transform.parent.gameObject.tag = "Player";
-            playerMove.enabled = true;
+            Move.enabled = true;
 
             //_cam.Follow = raycastHit.transform;
             this.transform.position = transforms.position;
