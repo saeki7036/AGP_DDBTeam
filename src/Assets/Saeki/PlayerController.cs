@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     Camera playerCamera;
 
     float rotaSpeed = 100f;
+    [SerializeField]
     float Speed  = 3.0f;
 
     float upLim = 315f;   //è„äpìxè„å¿
@@ -128,7 +129,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Attack = false;
-            Speed = 1f;
+            Speed = 5f;
         }
     }
 }

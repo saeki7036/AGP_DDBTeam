@@ -32,11 +32,8 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(playerParent.transform.eulerAngles);
-
         // 現オブジェクトからメインカメラ方向のベクトルを取得する
         Vector3 direction = camera.transform.position - this.transform.position;
-        Vector3 keep = new Vector3(0f, playerParent.transform.rotation.y, 0f);
 
         Vector3 lookdirection=new Vector3(direction.x,0.0f,direction.z);
 
@@ -66,40 +63,32 @@ public class PlayerMove : MonoBehaviour
     public void ChangeEnemy(InputAction.CallbackContext context)
     {
         objParent = playerRay.GetObj();
-        Debug.Log("倒した敵:" + objParent.name);
 
         if (context.phase == InputActionPhase.Performed && objParent != null)
         {
+            Debug.Log("倒した敵:" + objParent.name);
+
             Debug.Log("Change");
             Vector3 quaternion = objParent.transform.eulerAngles;
             Debug.Log(quaternion);
 
             //親をEnemyに
             transform.parent.gameObject.tag = "Enemy";
-            //playerParent.transform.rotation = Quaternion.identity;
 
             //親の付け替え
             this.gameObject.transform.parent = objParent.transform;
             playerParent = this.transform.parent.gameObject;
+            playerParent.transform.eulerAngles = quaternion;
 
             //親をPlayerに
             this.transform.parent.gameObject.tag = "Player";
 
+            //Playerの位置調整
             this.transform.position = objParent.transform.position;
             Vector3 correction = new Vector3(0f, 1.5f, 0f);
             this.transform.position += correction;
 
-            Vector3 cameraCorrection = new Vector3(0f, 2.5f, -5f);
-
-            playerParent.transform.eulerAngles = quaternion;
-            Debug.Log("change:"+playerParent.transform.eulerAngles);
-
-            //camera.transform.position += cameraCorrection;
-            //camera.transform.eulerAngles = quaternion;
-            //this.transform.localRotation = Quaternion.identity;
-
-            //objParent = null;
+            objParent = null;
         }
     }
-
 }
