@@ -10,6 +10,7 @@ public class EnemyStayController : MonoBehaviour
     [SerializeField] private NavMeshAgent Agent;
     [SerializeField] private float moveSpeed = 3.5f;
     [SerializeField] private GameObject Target;
+    [SerializeField] private GameObject Bullet;
     [SerializeField] private float distance = 12f;
     [SerializeField] private float rotationSpeed = 0.1f;
     [SerializeField] private float fireIntarval = 3f;
@@ -62,7 +63,7 @@ public class EnemyStayController : MonoBehaviour
         remainingBullets--;
         timeCount = 0f;
         Debug.Log("FIRE!!");
-        //GameObject.Instantiate(Bullet, Muzzle.transform.position, Quaternion.identity);
+        GameObject.Instantiate(Bullet, transform.position, Quaternion.identity);
     }
     // Update is called once per frame
     void Update()
