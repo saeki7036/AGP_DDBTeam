@@ -10,6 +10,8 @@ public class BulletBaseClass : MonoBehaviour
     private float DestroyTime = 0;
     [SerializeField]
     private Rigidbody rb;
+    [SerializeField] private BulletData bulletData;
+    [Header("弾が衝突するレイヤー"), SerializeField] private LayerMask layerMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,9 +40,21 @@ public class BulletBaseClass : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        //if (other.gameObject.tag == "Player")
+        //{
+        //    Debug.Log("Dameged!");
+        //    Destroy(this.gameObject);
+        //}
+
+        if (other.gameObject.layer == layerMask)// 衝突したとき
         {
-            Debug.Log("Dameged!");
+            if (other.TryGetComponent<CharacterStatus>(out CharacterStatus character))// キャラクターに当たったとき
+            {
+                if (gameObject.tag != other.tag)// 弾のtagと衝突した相手のtagが違うとき（プレイヤーの弾が敵に、敵の弾がプレイヤーに当たったとき）
+                {
+                    character.TakeDamage(bulletData.AttackPower);
+                }
+            }
             Destroy(this.gameObject);
         }
     }

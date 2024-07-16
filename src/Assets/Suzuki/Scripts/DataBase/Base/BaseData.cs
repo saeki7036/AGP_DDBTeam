@@ -17,4 +17,9 @@ public abstract class BaseData : ScriptableObject
     {
         get { return id; }
     }
+
+    public void SetId(int value)
+    {
+        id = value;
+    }
 }
