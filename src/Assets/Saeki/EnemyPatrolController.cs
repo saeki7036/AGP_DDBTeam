@@ -17,6 +17,7 @@ public class EnemyPatrolController : MonoBehaviour
     [SerializeField] private float fireIntarval = 3f;
     [SerializeField] private Transform[] wayPoints;
     [SerializeField] private bool isRoop = true;
+    [SerializeField] private SearchColliderScript collScript;
     [SerializeField] private Rigidbody rb;
     private float timeCount = 0;
     private int nextPoint = -1;
@@ -49,8 +50,9 @@ public class EnemyPatrolController : MonoBehaviour
     }
     void StopChase()
     {
-        float isDistanse = Vector3.Distance(Target.transform.position, transform.position);
-        if (isDistanse < targetDistance)
+        //float isDistanse = Vector3.Distance(Target.transform.position, transform.position);
+        //isDistanse < targetDistance       
+        if (collScript.FindPlayer)
         {
             Agent.speed = 0f;
             // ƒ^[ƒQƒbƒg‚Ì•ûŒü‚Ö‚Ì‰ñ“]
