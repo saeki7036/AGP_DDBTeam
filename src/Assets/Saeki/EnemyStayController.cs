@@ -14,6 +14,7 @@ public class EnemyStayController : MonoBehaviour
     [SerializeField] private float distance = 12f;
     [SerializeField] private float rotationSpeed = 0.1f;
     [SerializeField] private float fireIntarval = 3f;
+    [SerializeField] private SearchColliderScript collScript;
     [SerializeField] private Rigidbody rb;
     private float timeCount = 0;
     // Start is called before the first frame update
@@ -40,7 +41,8 @@ public class EnemyStayController : MonoBehaviour
     }
     void StopChase()
     {
-        if (Agent.remainingDistance < distance)
+        //Agent.remainingDistance < distance
+        if (collScript.FindPlayer)
         {
             Agent.speed = 0f;
             // ƒ^[ƒQƒbƒg‚Ì•ûŒü‚Ö‚Ì‰ñ“]
