@@ -8,8 +8,8 @@ using UnityEngine.UIElements;
 
 public class PlayerRay : MonoBehaviour
 {
+    [SerializeField] Change change;
     [SerializeField] float distance = 50.0f;//検出可能な距離
-    Transform transforms;//倒した敵の保存
     GameObject game;
 
     // Start is called before the first frame update
@@ -23,17 +23,52 @@ public class PlayerRay : MonoBehaviour
     {
         //カメラの位置からとばす
         var rayStartPosition = this.transform.position;
-
         //カメラが向いてる方向にとばす
         var rayDirection = this.transform.forward.normalized;
-
         Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
     }
 
-    public GameObject GetObj()
+    public GameObject GetObj(){ return game; }
+
+    public void Change(InputAction.CallbackContext context)
     {
-        return game;
-    }
+        if (context.phase == InputActionPhase.Performed)
+        {
+            //var center = transform.position;
+
+            //// CapsuleCastによる当たり判定
+            //var isHit = Physics.CapsuleCast(
+            //    center + new Vector3(0, 0.5f, 0), // 始点
+            //    center + new Vector3(0, -0.5f, 0), // 終点
+            //    0.5f, // キャストする幅
+            //    Vector3.forward, // キャスト方向
+            //    out var hit // ヒット情報
+            //);
+
+            //if (isHit == true)
+            //{
+            //    game = hit.collider.GameObject();
+            //    change.ChangeEnemy(game);
+            //}
+            //カメラの位置からとばす
+            var rayStartPosition = this.transform.position;
+
+            //カメラが向いてる方向にとばす
+            var rayDirection = this.transform.forward.normalized;
+
+            //Hitしたオブジェクト格納用
+            RaycastHit raycastHit;
+
+            Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
+
+            if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance) && raycastHit.collider.tag == "Enemy")
+            {
+                game = raycastHit.collider.gameObject;
+                change.ChangeEnemy(game);
+            }
+
+        }
+        }
 
     public void Fire(InputAction.CallbackContext context)
     {
@@ -58,9 +93,14 @@ public class PlayerRay : MonoBehaviour
 
                 if (raycastHit.collider.tag == "Enemy")
                 {
-                    Debug.Log("EnemyHit");
-                    transforms = raycastHit.transform;
+                    //Debug.Log("EnemyHit");
+                    
                     game=raycastHit.collider.gameObject;
+                    game.GetComponent<CharacterStatus>().TakeDamage(100f);
+                    if (game.GetComponent<CharacterStatus>().IsDead == true)
+                    {
+                        Debug.Log("殺した");
+                    }
                 }
             }
         }
