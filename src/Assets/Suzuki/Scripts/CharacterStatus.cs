@@ -28,7 +28,7 @@ public class CharacterStatus : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp = characterData.MaxHp;
+        SetHpMax();
         remainPossessTime = characterData.MaxPossessTime;
     }
 
@@ -54,5 +54,15 @@ public class CharacterStatus : MonoBehaviour
         {
             remainPossessTime = 0f;
         }
+    }
+
+    public void OnPossess()
+    {
+        SetHpMax();
+    }
+
+    void SetHpMax()
+    {
+        hp = characterData.MaxHp;
     }
 }
