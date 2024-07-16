@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1157931739555840177}
   - component: {fileID: 3579924218698173949}
   - component: {fileID: 917455539160926237}
-  - component: {fileID: 4455382304074298076}
+  - component: {fileID: 6630565505482725132}
   m_Layer: 0
   m_Name: EnemyTPS
   m_TagString: Enemy
@@ -109,18 +109,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &4455382304074298076
+--- !u!114 &6630565505482725132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7945204675777045934}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 130e3045a6a7e3f409274cd4b5d23b6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6765eec97cfa7f8488e840ae7f1f6ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterData: {fileID: 11400000, guid: 03539c3839b013742834995b8963811a, type: 2}
 --- !u!1 &8546268653520237636
 GameObject:
   m_ObjectHideFlags: 0
