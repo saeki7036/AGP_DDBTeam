@@ -1371,6 +1371,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1728994569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017623949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6765eec97cfa7f8488e840ae7f1f6ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterData: {fileID: 0}
 --- !u!1 &1864018189 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7945204675777045934, guid: a9689af0d63d30a4dabdff5aada8dd11, type: 3}
@@ -1492,11 +1505,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2307382400225162994, guid: a9689af0d63d30a4dabdff5aada8dd11, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 2307382400225162994, guid: a9689af0d63d30a4dabdff5aada8dd11, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11
+      value: 8.09
       objectReference: {fileID: 0}
     - target: {fileID: 2307382400225162994, guid: a9689af0d63d30a4dabdff5aada8dd11, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1597,6 +1610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3491878697989373311, guid: f1a101855e2034e4c8dfe2857ac6023a, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5035299982585497919, guid: f1a101855e2034e4c8dfe2857ac6023a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1607,7 +1624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5035299982585497919, guid: f1a101855e2034e4c8dfe2857ac6023a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -7.3
       objectReference: {fileID: 0}
     - target: {fileID: 5035299982585497919, guid: f1a101855e2034e4c8dfe2857ac6023a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1644,6 +1661,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3491878697989373311, guid: f1a101855e2034e4c8dfe2857ac6023a, type: 3}
       insertIndex: 4
       addedObject: {fileID: 1728994564}
+    - targetCorrespondingSourceObject: {fileID: 3491878697989373311, guid: f1a101855e2034e4c8dfe2857ac6023a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1728994569}
   m_SourcePrefab: {fileID: 100100000, guid: f1a101855e2034e4c8dfe2857ac6023a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
