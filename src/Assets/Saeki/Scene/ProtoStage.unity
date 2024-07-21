@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4147,7 +4146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &93194164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4160,17 +4159,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52eb56401577ec4bb620f47fb9a2295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1
-  remainingBullets: 9999
-  Agent: {fileID: 93194165}
-  moveSpeed: 3.5
+  HitPoint: 1
   Target: {fileID: 1772310690}
-  Bullet: {fileID: 2720097741136659255, guid: b2d413c1cbe80254297c4db0b73c0cd6, type: 3}
-  distance: 12
-  rotationSpeed: 0.1
-  fireIntarval: 0.1
   collScript: {fileID: 331466502}
   rb: {fileID: 93194170}
+  Agent: {fileID: 93194165}
+  moveSpeed: 3.5
+  rotationSpeed: 0.1
+  Bullet: {fileID: 2720097741136659255, guid: b2d413c1cbe80254297c4db0b73c0cd6, type: 3}
+  remainingBullets: 9999
+  fireIntarval: 0.1
 --- !u!195 &93194165
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -10859,7 +10857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1013459773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10872,24 +10870,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bbb9e849c410749801b82baa891f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1
-  remainingBullets: 9999
+  HitPoint: 1
+  Target: {fileID: 1772310690}
+  collScript: {fileID: 119956267}
+  rb: {fileID: 1013459780}
   Agent: {fileID: 1013459775}
   moveSpeed: 3.5
-  Target: {fileID: 1772310690}
-  Bullet: {fileID: 2720097741136659255, guid: b2d413c1cbe80254297c4db0b73c0cd6, type: 3}
-  targetDistance: 12
-  nextPosDistance: 12
   rotationSpeed: 0.1
+  Bullet: {fileID: 2720097741136659255, guid: b2d413c1cbe80254297c4db0b73c0cd6, type: 3}
+  remainingBullets: 9999
   fireIntarval: 0.1
+  nextPosDistance: 12
   wayPoints:
   - {fileID: 41683403}
   - {fileID: 538736593}
   - {fileID: 500574079}
   - {fileID: 1647022114}
   isRoop: 1
-  collScript: {fileID: 0}
-  rb: {fileID: 1013459780}
 --- !u!195 &1013459775
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -36830,26 +36827,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Stay
       objectReference: {fileID: 0}
-    - target: {fileID: 2882178713526567929, guid: 910f66cd97234f94da757a4084207875, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265237180155114160, guid: 910f66cd97234f94da757a4084207875, type: 3}
+    - target: {fileID: 5726790053844523867, guid: 910f66cd97234f94da757a4084207875, type: 3}
       propertyPath: Target
       value: 
       objectReference: {fileID: 1772310690}
-    - target: {fileID: 4265237180155114160, guid: 910f66cd97234f94da757a4084207875, type: 3}
-      propertyPath: fireIntarval
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265237180155114160, guid: 910f66cd97234f94da757a4084207875, type: 3}
-      propertyPath: remainingBullets
-      value: 9999
-      objectReference: {fileID: 0}
-    - target: {fileID: 6439609842285851648, guid: 910f66cd97234f94da757a4084207875, type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 72
-      objectReference: {fileID: 0}
     - target: {fileID: 8296507633599513238, guid: 910f66cd97234f94da757a4084207875, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.37
@@ -36890,17 +36871,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8542849288380349671, guid: 910f66cd97234f94da757a4084207875, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8542849288380349671, guid: 910f66cd97234f94da757a4084207875, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.7
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5897489077399639336, guid: 910f66cd97234f94da757a4084207875, type: 3}
-    - {fileID: 439414936924923702, guid: 910f66cd97234f94da757a4084207875, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -46,7 +46,9 @@ public class BulletBaseClass : MonoBehaviour
         //    Destroy(this.gameObject);
         //}
 
-        if (other.gameObject.layer == layerMask)// 衝突したとき
+        //Debug.Log(CompareLayer(layerMask, other.gameObject.layer) + "layer:" + other.gameObject.layer);
+
+        if (CompareLayer(layerMask, other.gameObject.layer))// 衝突したとき
         {
             if (other.TryGetComponent<CharacterStatus>(out CharacterStatus character))// キャラクターに当たったとき
             {
@@ -57,5 +59,11 @@ public class BulletBaseClass : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
+    }
+
+    // LayerMaskに対象のLayerが含まれているかチェックする
+    private bool CompareLayer(LayerMask layerMask, int layer)
+    {
+        return ((1 << layer) & layerMask) != 0;
     }
 }
