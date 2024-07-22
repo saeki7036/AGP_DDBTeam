@@ -10,6 +10,7 @@ public class PlayerRay : MonoBehaviour
 {
     [SerializeField] Change change;
     [SerializeField] float distance = 50.0f;//���o�\�ȋ���
+    Transform transforms;
     GameObject game;
     PlayerMove playerMove;
 
