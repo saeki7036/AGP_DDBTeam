@@ -125,6 +125,10 @@ MonoBehaviour:
   DestroyIntarval: 5
   BulletPower: 50
   rb: {fileID: -2397765559653570604}
+  bulletData: {fileID: 11400000, guid: eee7d5ba61c5f9849a157a03244435c1, type: 2}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!54 &-2397765559653570604
 Rigidbody:
   m_ObjectHideFlags: 0
