@@ -18,7 +18,8 @@ public class BulletBaseClass : MonoBehaviour
         Player = GameObject.FindWithTag("Player");
         //rb = GetComponent<Rigidbody>();
 
-        Vector3 Forward = Player.transform.position - transform.position + Vector3.up * 0.5f;
+        //Vector3 Forward = Player.transform.position - transform.position + Vector3.up * 0.5f;
+        Vector3 Forward = transform.forward;
         Forward.Normalize();
         Quaternion look = Quaternion.LookRotation(Forward);
         transform.rotation = look * Quaternion.Euler(90, 0, 0);
@@ -46,13 +47,14 @@ public class BulletBaseClass : MonoBehaviour
         //    Destroy(this.gameObject);
         //}
 
-        if (other.gameObject.layer == layerMask)// 衝突したとき
+        if (((1 << other.gameObject.layer) & layerMask) != 0)// 衝突したとき
         {
             if (other.TryGetComponent<CharacterStatus>(out CharacterStatus character))// キャラクターに当たったとき
             {
                 if (gameObject.tag != other.tag)// 弾のtagと衝突した相手のtagが違うとき（プレイヤーの弾が敵に、敵の弾がプレイヤーに当たったとき）
                 {
                     character.TakeDamage(bulletData.AttackPower);
+                    Debug.Log("Dagamed!");
                 }
             }
             Destroy(this.gameObject);

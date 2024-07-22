@@ -17,16 +17,28 @@ public class PlayerMove : MonoBehaviour
     Vector3 velocity = Vector3.zero; //移動方向
 
     GameObject playerParent;
+    GunStatus gun;
 
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
     GameObject objParent;
+
+    // プロパティ
+    public GameObject PlayerParent
+    {
+        get { return playerParent; }
+    }
+    public GunStatus Gun
+    {
+        get { return gun; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         playerParent = transform.parent.gameObject;
         playerRay = camera.GetComponent<PlayerRay>();
+        SetGunObject();
     }
 
     // Update is called once per frame
@@ -90,5 +102,10 @@ public class PlayerMove : MonoBehaviour
 
             objParent = null;
         }
+    }
+
+    void SetGunObject()
+    {
+        gun = playerParent.GetComponentInChildren<GunStatus>();
     }
 }

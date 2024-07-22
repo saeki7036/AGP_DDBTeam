@@ -328,6 +328,24 @@ Transform:
   - {fileID: 1699231964}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &571197406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8546268653520237636, guid: a9689af0d63d30a4dabdff5aada8dd11, type: 3}
+  m_PrefabInstance: {fileID: 665865107}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &571197408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571197406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df767222f9fd33642b9088e8bd9d402b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 35f2ee39b40fd964bbdc3b1b423a789b, type: 2}
 --- !u!1 &647287871
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +585,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8546268653520237636, guid: a9689af0d63d30a4dabdff5aada8dd11, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 571197408}
   m_SourcePrefab: {fileID: 100100000, guid: a9689af0d63d30a4dabdff5aada8dd11, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -797,6 +818,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771026960}
   m_CullTransparentMesh: 1
+--- !u!1 &874707662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3725754813835048020, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+  m_PrefabInstance: {fileID: 7793309313113484726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &874707664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874707662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df767222f9fd33642b9088e8bd9d402b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 35f2ee39b40fd964bbdc3b1b423a789b, type: 2}
 --- !u!1 &1291050733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,6 +1303,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 50
+--- !u!1 &1767858068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8546268653520237636, guid: a9689af0d63d30a4dabdff5aada8dd11, type: 3}
+  m_PrefabInstance: {fileID: 5412933484922794242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1767858070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767858068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df767222f9fd33642b9088e8bd9d402b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 35f2ee39b40fd964bbdc3b1b423a789b, type: 2}
 --- !u!1 &1902962914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1490,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8546268653520237636, guid: a9689af0d63d30a4dabdff5aada8dd11, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1767858070}
   m_SourcePrefab: {fileID: 100100000, guid: a9689af0d63d30a4dabdff5aada8dd11, type: 3}
 --- !u!1001 &7793309313113484726
 PrefabInstance:
@@ -1493,7 +1553,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3278852524711979044, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 647287872}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3725754813835048020, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 874707664}
   m_SourcePrefab: {fileID: 100100000, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
 --- !u!4 &7793309313113484727 stripped
 Transform:
