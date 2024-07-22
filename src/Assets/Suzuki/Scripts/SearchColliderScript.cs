@@ -8,7 +8,7 @@ public class SearchColliderScript : MonoBehaviour
     Transform player;
     bool inSearchArea = false;
     bool findPlayer = false;
-
+    [SerializeField] LayerMask layerMask;
     public bool FindPlayer
     {
         get { return findPlayer; }
@@ -27,16 +27,22 @@ public class SearchColliderScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(inSearchArea && player != null)
+        if (inSearchArea && player != null)
         {
             Vector3 targetDirection = player.position - transform.position;
             Ray ray = new Ray(transform.position, targetDirection);
-            if(Physics.Raycast(ray, out RaycastHit hit, coneCollider.Distance))// プレイヤーが隠れていないとき（現在は照射した一点が通るかどうかで判定している）
+            bool raycast = Physics.Raycast(ray, out RaycastHit hit, coneCollider.Distance, layerMask);
+            if (raycast)// プレイヤーが隠れていないとき（現在は照射した一点が通るかどうかで判定している）
             {
-                if (hit.transform == player)
+                if (hit.transform.gameObject.tag == "Player")
                 {
                     findPlayer = true;
                     Debug.Log("FindPlayer : true");
+                }
+                else
+                {
+                    findPlayer = false;
+                    Debug.Log("FindPlayer : false");
                 }
             }
         }
@@ -46,9 +52,10 @@ public class SearchColliderScript : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if(other.TryGetComponent<PlayerMove>(out PlayerMove playerMove) && playerMove.enabled)// プレイヤーだったとき
+        //if(other.TryGetComponent<PlayerMove>(out PlayerMove playerMove) && playerMove.enabled)// プレイヤーだったとき
+        if (other.gameObject.tag == "Player")
         {
             inSearchArea = true;
             player = other.transform;
@@ -57,7 +64,8 @@ public class SearchColliderScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent<PlayerMove>(out PlayerMove playerMove) && playerMove.enabled)// プレイヤーだったとき
+        //if (other.TryGetComponent<PlayerMove>(out PlayerMove playerMove) && playerMove.enabled)// プレイヤーだったとき
+        if (other.gameObject.tag == "Player")
         {
             inSearchArea = false;
         }
