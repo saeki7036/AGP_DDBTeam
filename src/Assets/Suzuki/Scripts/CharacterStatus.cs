@@ -26,7 +26,7 @@ public class CharacterStatus : MonoBehaviour
         get { return IsDead && remainPossessTime > 0; }
     }
     // Start is called before the first frame update
-    void Start()
+    public void StartSetUp()
     {
         SetHpMax();
         remainPossessTime = characterData.MaxPossessTime;

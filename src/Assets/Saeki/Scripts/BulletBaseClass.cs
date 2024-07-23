@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,15 +11,18 @@ public class BulletBaseClass : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
     [SerializeField] private BulletData bulletData;
-    [Header("’e‚ªÕ“Ë‚·‚éƒŒƒCƒ„["), SerializeField] private LayerMask layerMask;
+    [Header("å¼¾ãŒè¡çªã™ã‚‹ãƒ¬ã‚¤ãƒ¤ãƒ¼"), SerializeField] private LayerMask layerMask;
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindWithTag("Player");
         //rb = GetComponent<Rigidbody>();
 
-        ///Vector3 Forward = Player.transform.position - transform.position + Vector3.up * 0.5f;
-        Vector3 Forward = transform.position;
+        Vector3 Forward = Player.transform.position - transform.position + Vector3.up * 0.5f;
+        if (tag == "Player")
+        {
+            Forward = transform.forward;
+        }
         Forward.Normalize();
         Quaternion look = Quaternion.LookRotation(Forward);
         transform.rotation = look * Quaternion.Euler(90, 0, 0);
@@ -49,20 +52,21 @@ public class BulletBaseClass : MonoBehaviour
 
         //Debug.Log(CompareLayer(layerMask, other.gameObject.layer) + "layer:" + other.gameObject.layer);
 
-        if (CompareLayer(layerMask, other.gameObject.layer))// Õ“Ë‚µ‚½‚Æ‚«
+        if (CompareLayer(layerMask, other.gameObject.layer))// è¡çªã—ãŸã¨ã
         {
-            if (other.TryGetComponent<CharacterStatus>(out CharacterStatus character))// ƒLƒƒƒ‰ƒNƒ^[‚É“–‚½‚Á‚½‚Æ‚«
+            if (other.TryGetComponent<CharacterStatus>(out CharacterStatus character))// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã«å½“ãŸã£ãŸã¨ã
             {
-                if (gameObject.tag != other.tag)// ’e‚Ìtag‚ÆÕ“Ë‚µ‚½‘Šè‚Ìtag‚ªˆá‚¤‚Æ‚«iƒvƒŒƒCƒ„[‚Ì’e‚ª“G‚ÉA“G‚Ì’e‚ªƒvƒŒƒCƒ„[‚É“–‚½‚Á‚½‚Æ‚«j
+                if (gameObject.tag != other.tag)// å¼¾ã®tagã¨è¡çªã—ãŸç›¸æ‰‹ã®tagãŒé•ã†ã¨ãï¼ˆãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ãŒæ•µã«ã€æ•µã®å¼¾ãŒãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«å½“ãŸã£ãŸã¨ãï¼‰
                 {
                     character.TakeDamage(bulletData.AttackPower);
+                    Destroy(this.gameObject);
                 }
             }
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 
-    // LayerMask‚É‘ÎÛ‚ÌLayer‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN‚·‚é
+    // è¡çªã—ãŸLayerãŒLayerMaskã«å«ã¾ã‚Œã¦ã„ã‚‹ã‹ç¢ºèª
     private bool CompareLayer(LayerMask layerMask, int layer)
     {
         return ((1 << layer) & layerMask) != 0;
