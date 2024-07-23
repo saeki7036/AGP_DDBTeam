@@ -15,6 +15,4 @@ MonoBehaviour:
   name: TestEnemy
   id: 0
   maxHp: 10
-  maxPossesTime: 10
-  attackPower: 0
-  maxBullet: 0
+  maxPossessTime: 10
