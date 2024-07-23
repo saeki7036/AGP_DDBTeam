@@ -11,4 +11,12 @@ public abstract class BaseDataBase<T> : ScriptableObject where T : BaseData
     {
         get { return itemList; }
     }
+
+    void OnValidate()// インスペクター上で変更があったとき
+    {
+        for(int i = 0; i < itemList.Count; i++)
+        {
+            itemList[i].SetId(i);
+        }
+    }
 }

@@ -19,14 +19,11 @@ public class PlayerMove : MonoBehaviour
     GameObject playerParent;
 
     [SerializeField] GameObject camera;
-    PlayerRay playerRay;
-    GameObject objParent;
 
     // Start is called before the first frame update
     void Start()
     {
         playerParent = transform.parent.gameObject;
-        playerRay = camera.GetComponent<PlayerRay>();
     }
 
     // Update is called once per frame
@@ -48,6 +45,11 @@ public class PlayerMove : MonoBehaviour
         playerParent.transform.Translate(velocity.x, velocity.y, velocity.z);
     }
 
+    public void SetplayerParent(GameObject gameObject)
+    {
+        playerParent = gameObject;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
@@ -60,35 +62,4 @@ public class PlayerMove : MonoBehaviour
         //Debug.Log("Look");
     }
 
-    public void ChangeEnemy(InputAction.CallbackContext context)
-    {
-        objParent = playerRay.GetObj();
-
-        if (context.phase == InputActionPhase.Performed && objParent != null)
-        {
-            Debug.Log("倒した敵:" + objParent.name);
-
-            Debug.Log("Change");
-            Vector3 quaternion = objParent.transform.eulerAngles;
-            Debug.Log(quaternion);
-
-            //親をEnemyに
-            transform.parent.gameObject.tag = "Enemy";
-
-            //親の付け替え
-            this.gameObject.transform.parent = objParent.transform;
-            playerParent = this.transform.parent.gameObject;
-            playerParent.transform.eulerAngles = quaternion;
-
-            //親をPlayerに
-            this.transform.parent.gameObject.tag = "Player";
-
-            //Playerの位置調整
-            this.transform.position = objParent.transform.position;
-            Vector3 correction = new Vector3(0f, 1.5f, 0f);
-            this.transform.position += correction;
-
-            objParent = null;
-        }
-    }
 }
