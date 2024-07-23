@@ -18,7 +18,8 @@ public class BulletBaseClass : MonoBehaviour
         Player = GameObject.FindWithTag("Player");
         //rb = GetComponent<Rigidbody>();
 
-        Vector3 Forward = Player.transform.position - transform.position + Vector3.up * 0.5f;
+        ///Vector3 Forward = Player.transform.position - transform.position + Vector3.up * 0.5f;
+        Vector3 Forward = transform.position;
         Forward.Normalize();
         Quaternion look = Quaternion.LookRotation(Forward);
         transform.rotation = look * Quaternion.Euler(90, 0, 0);
