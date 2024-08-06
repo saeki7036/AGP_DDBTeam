@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,15 +11,18 @@ public class BulletBaseClass : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
     [SerializeField] private BulletData bulletData;
-    [Header("�e���Փ˂��郌�C���["), SerializeField] private LayerMask layerMask;
+    [Header("弾が衝突するレイヤー"), SerializeField] private LayerMask layerMask;
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindWithTag("Player");
         //rb = GetComponent<Rigidbody>();
 
-        ///Vector3 Forward = Player.transform.position - transform.position + Vector3.up * 0.5f;
-        Vector3 Forward = transform.position;
+        Vector3 Forward = Player.transform.position - transform.position + Vector3.up * 0.5f;
+        if (tag == "Player")
+        {
+            Forward = transform.forward;
+        }
         Forward.Normalize();
         Quaternion look = Quaternion.LookRotation(Forward);
         transform.rotation = look * Quaternion.Euler(90, 0, 0);
@@ -49,20 +52,21 @@ public class BulletBaseClass : MonoBehaviour
 
         //Debug.Log(CompareLayer(layerMask, other.gameObject.layer) + "layer:" + other.gameObject.layer);
 
-        if (CompareLayer(layerMask, other.gameObject.layer))// �Փ˂����Ƃ�
+        if (CompareLayer(layerMask, other.gameObject.layer))// 衝突したとき
         {
-            if (other.TryGetComponent<CharacterStatus>(out CharacterStatus character))// �L�����N�^�[�ɓ��������Ƃ�
+            if (other.TryGetComponent<CharacterStatus>(out CharacterStatus character))// キャラクターに当たったとき
             {
-                if (gameObject.tag != other.tag)// �e��tag�ƏՓ˂��������tag���Ⴄ�Ƃ��i�v���C���[�̒e���G�ɁA�G�̒e���v���C���[�ɓ��������Ƃ��j
+                if (gameObject.tag != other.tag)// 弾のtagと衝突した相手のtagが違うとき（プレイヤーの弾が敵に、敵の弾がプレイヤーに当たったとき）
                 {
                     character.TakeDamage(bulletData.AttackPower);
+                    Destroy(this.gameObject);
                 }
             }
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 
-    // LayerMask�ɑΏۂ�Layer���܂܂�Ă��邩�`�F�b�N����
+    // 衝突したLayerがLayerMaskに含まれているか確認
     private bool CompareLayer(LayerMask layerMask, int layer)
     {
         return ((1 << layer) & layerMask) != 0;

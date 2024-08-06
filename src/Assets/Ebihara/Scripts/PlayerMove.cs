@@ -77,11 +77,11 @@ public class PlayerMove : MonoBehaviour
         //Debug.Log("Look");
     }
 
-    public void ChangeEnemy(InputAction.CallbackContext context)
+    public void ChangeEnemy(GameObject game)
     {
-        objParent = playerRay.GetObj();
+        objParent = game;
 
-        if (context.phase == InputActionPhase.Performed && objParent != null)
+        if ( objParent != null)
         {
             Debug.Log("�|�����G:" + objParent.name);
 
