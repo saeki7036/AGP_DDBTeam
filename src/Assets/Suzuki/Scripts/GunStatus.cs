@@ -10,7 +10,7 @@ public class GunStatus : MonoBehaviour
 
     void Start()
     {
-        remainBullets = weaponData.MaxBullet;
+        FillBullet();
     }
     /// <summary>
     /// e‚©‚ç”­Ë•ûŒü‚ğŒü‚¢‚½e’e‚ğ¶¬‚·‚é
@@ -26,5 +26,10 @@ public class GunStatus : MonoBehaviour
         bullet.tag = tag;
         bullet.transform.forward = forward;
         return true;
+    }
+
+    void FillBullet()
+    {
+        remainBullets = weaponData.MaxBullet;
     }
 }
