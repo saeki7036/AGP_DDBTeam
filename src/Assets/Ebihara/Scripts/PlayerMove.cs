@@ -109,7 +109,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    void SetGunObject()
+    public void SetGunObject()
     {
         gun = playerParent.GetComponentInChildren<GunStatus>();
     }
