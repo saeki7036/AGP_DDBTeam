@@ -23,9 +23,9 @@ public class PlayerRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //�J�����̈ʒu����Ƃ΂�
+        //rayの始まり
         var rayStartPosition = this.transform.position;
-        //�J�����������Ă�����ɂƂ΂�
+        //rayの方向
         var rayDirection = this.transform.forward.normalized;
         Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
         playerMove.Gun.transform.forward = rayDirection;
@@ -53,13 +53,13 @@ public class PlayerRay : MonoBehaviour
             //    game = hit.collider.GameObject();
             //    change.ChangeEnemy(game);
             //}
-            //�J�����̈ʒu����Ƃ΂�
+            //rayの始まり
             var rayStartPosition = this.transform.position;
 
-            //�J�����������Ă�����ɂƂ΂�
+            //rayの方向
             var rayDirection = this.transform.forward.normalized;
 
-            //Hit�����I�u�W�F�N�g�i�[�p
+            //Hitしたオブジェクト格納
             RaycastHit raycastHit;
 
             Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
@@ -103,7 +103,7 @@ public class PlayerRay : MonoBehaviour
             //    }
             //}
 
-            // PlayerMove���猻�ݑ��쒆�̃L�����N�^�[���擾���A���̃L�����N�^�[�̎�����̒e�ۂ𔭎˗\��
+            // PlayerMoveに飛ばして弾を出す
             playerMove.Gun.Shoot(transform.position, playerMove.Gun.transform.forward, "Player", false);
         }
     }
@@ -112,20 +112,19 @@ public class PlayerRay : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            //�J�����̈ʒu����Ƃ΂�
+            //rayの始まり
             var rayStartPosition = this.transform.position;
 
-            //�J�����������Ă�����ɂƂ΂�
+            //rayの方向
             var rayDirection = this.transform.forward.normalized;
 
-            //Hit�����I�u�W�F�N�g�i�[�p
+            //Hitしたオブジェクト格納
             RaycastHit raycastHit;
 
             Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
 
             if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance))
             {
-                // Log��Hit�����I�u�W�F�N�g�����o��
                 //Debug.Log(context.phase);
                 Debug.Log("HitObject : " + raycastHit.collider.gameObject.name);
 
