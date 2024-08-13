@@ -12,33 +12,48 @@ public class PlayerMove : MonoBehaviour
     float moveZ;
     float moveX;
 
-    float moveSpeed = 6f; //ˆÚ“®‘¬“x
+    [SerializeField]float moveSpeed = 6f; //ã‚¹ãƒ”ãƒ¼ãƒ‰
 
-    Vector3 velocity = Vector3.zero; //ˆÚ“®•ûŒü
+    Vector3 velocity = Vector3.zero; //å‘ã
 
     GameObject playerParent;
+    GunStatus gun;
 
     [SerializeField] GameObject camera;
+    PlayerRay playerRay;
+    GameObject objParent;
+
+    //è¦ª
+    public GameObject PlayerParent
+    {
+        get { return playerParent; }
+    }
+    public GunStatus Gun
+    {
+        get { return gun; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         playerParent = transform.parent.gameObject;
+        playerRay = camera.GetComponent<PlayerRay>();
+        SetGunObject();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Œ»ƒIƒuƒWƒFƒNƒg‚©‚çƒƒCƒ“ƒJƒƒ‰•ûŒü‚ÌƒxƒNƒgƒ‹‚ğæ“¾‚·‚é
+        //ã‚«ãƒ¡ãƒ©ã®æ–¹å‘ã«å‘ã
         Vector3 direction = camera.transform.position - this.transform.position;
 
         Vector3 lookdirection=new Vector3(direction.x,0.0f,direction.z);
 
         playerParent.transform.rotation = Quaternion.LookRotation(-1.0f * lookdirection);
 
-        //‘OŒãˆÚ“®
+        //å‰å¾Œ
         moveZ = input.y;
-        //¶‰EˆÚ“®
+        //å·¦å³
         moveX = input.x;
 
         velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * Time.deltaTime;
@@ -62,4 +77,40 @@ public class PlayerMove : MonoBehaviour
         //Debug.Log("Look");
     }
 
+    public void ChangeEnemy(GameObject game)
+    {
+        objParent = game;
+
+        if ( objParent != null)
+        {
+            Debug.Log("ï¿½|ï¿½ï¿½ï¿½ï¿½ï¿½G:" + objParent.name);
+
+            Debug.Log("Change");
+            Vector3 quaternion = objParent.transform.eulerAngles;
+            Debug.Log(quaternion);
+
+            //è¦ªã®ã‚¿ã‚°ã‚’Enemyã«
+            transform.parent.gameObject.tag = "Enemy";
+
+            //è¦ªã®ä»˜ã‘æ›¿ãˆ
+            this.gameObject.transform.parent = objParent.transform;
+            playerParent = this.transform.parent.gameObject;
+            playerParent.transform.eulerAngles = quaternion;
+
+            //è¦ªã®ã‚¿ã‚°ã‚’Playerã«
+            this.transform.parent.gameObject.tag = "Player";
+
+            //Playerã®ä½ç½®èª¿æ•´
+            this.transform.position = objParent.transform.position;
+            Vector3 correction = new Vector3(0f, 1.5f, 0f);
+            this.transform.position += correction;
+
+            objParent = null;
+        }
+    }
+
+    void SetGunObject()
+    {
+        gun = playerParent.GetComponentInChildren<GunStatus>();
+    }
 }

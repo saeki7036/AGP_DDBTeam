@@ -15,3 +15,5 @@ MonoBehaviour:
   name: "\u30E9\u30A4\u30D5\u30EB\u5F3E"
   id: 0
   attackPower: 1
+  speed: 50
+  prefab: {fileID: 2720097741136659255, guid: b2d413c1cbe80254297c4db0b73c0cd6, type: 3}

@@ -9,23 +9,26 @@ using UnityEngine.UIElements;
 public class PlayerRay : MonoBehaviour
 {
     [SerializeField] Change change;
-    [SerializeField] float distance = 50.0f;//ŒŸo‰Â”\‚È‹——£
+    [SerializeField] float distance = 50.0f;//ï¿½ï¿½ï¿½oï¿½Â”\ï¿½È‹ï¿½ï¿½ï¿½
+    Transform transforms;
     GameObject game;
+    PlayerMove playerMove;
 
     // Start is called before the first frame update
     void Start() 
     {
-
+        playerMove = FindObjectOfType<PlayerMove>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ƒJƒƒ‰‚ÌˆÊ’u‚©‚ç‚Æ‚Î‚·
+        //rayã®å§‹ã¾ã‚Š
         var rayStartPosition = this.transform.position;
-        //ƒJƒƒ‰‚ªŒü‚¢‚Ä‚é•ûŒü‚É‚Æ‚Î‚·
+        //rayã®æ–¹å‘
         var rayDirection = this.transform.forward.normalized;
         Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
+        playerMove.Gun.transform.forward = rayDirection;
     }
 
     public GameObject GetObj(){ return game; }
@@ -36,13 +39,13 @@ public class PlayerRay : MonoBehaviour
         {
             //var center = transform.position;
 
-            //// CapsuleCast‚É‚æ‚é“–‚½‚è”»’è
+            //// CapsuleCastï¿½É‚ï¿½é“–ï¿½ï¿½ï¿½è”»ï¿½ï¿½
             //var isHit = Physics.CapsuleCast(
-            //    center + new Vector3(0, 0.5f, 0), // n“_
-            //    center + new Vector3(0, -0.5f, 0), // I“_
-            //    0.5f, // ƒLƒƒƒXƒg‚·‚é•
-            //    Vector3.forward, // ƒLƒƒƒXƒg•ûŒü
-            //    out var hit // ƒqƒbƒgî•ñ
+            //    center + new Vector3(0, 0.5f, 0), // ï¿½nï¿½_
+            //    center + new Vector3(0, -0.5f, 0), // ï¿½Iï¿½_
+            //    0.5f, // ï¿½Lï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½é•
+            //    Vector3.forward, // ï¿½Lï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½
+            //    out var hit // ï¿½qï¿½bï¿½gï¿½ï¿½ï¿½
             //);
 
             //if (isHit == true)
@@ -50,13 +53,13 @@ public class PlayerRay : MonoBehaviour
             //    game = hit.collider.GameObject();
             //    change.ChangeEnemy(game);
             //}
-            //ƒJƒƒ‰‚ÌˆÊ’u‚©‚ç‚Æ‚Î‚·
+            //rayã®å§‹ã¾ã‚Š
             var rayStartPosition = this.transform.position;
 
-            //ƒJƒƒ‰‚ªŒü‚¢‚Ä‚é•ûŒü‚É‚Æ‚Î‚·
+            //rayã®æ–¹å‘
             var rayDirection = this.transform.forward.normalized;
 
-            //Hit‚µ‚½ƒIƒuƒWƒFƒNƒgŠi”[—p
+            //Hitã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ ¼ç´
             RaycastHit raycastHit;
 
             Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
@@ -74,35 +77,72 @@ public class PlayerRay : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            //ƒJƒƒ‰‚ÌˆÊ’u‚©‚ç‚Æ‚Î‚·
+            // ï¿½eï¿½eï¿½ï¿½ï¿½Ëï¿½ï¿½ï¿½ï¿½È‘Oï¿½Ìï¿½ï¿½ï¿½ï¿½Aï¿½Oï¿½Ìˆ×ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚ªï¿½sï¿½vï¿½É‚È‚èŸï¿½ï¿½ï¿½ï¿½ï¿½
+            ////ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ÌˆÊ’uï¿½ï¿½ï¿½ï¿½Æ‚Î‚ï¿½
+            //var rayStartPosition = this.transform.position;
+
+            ////ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½É‚Æ‚Î‚ï¿½
+            //var rayDirection = this.transform.forward.normalized;
+
+            ////Hitï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½iï¿½[ï¿½p
+            //RaycastHit raycastHit;
+
+            //Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
+
+            //if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance))
+            //{
+            //    // Logï¿½ï¿½Hitï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½
+            //    //Debug.Log(context.phase);
+            //    Debug.Log("HitObject : " + raycastHit.collider.gameObject.name);
+
+            //    if (raycastHit.collider.tag == "Enemy")
+            //    {
+            //        Debug.Log("EnemyHit");
+            //        transforms = raycastHit.transform;
+            //        game=raycastHit.collider.gameObject;
+            //    }
+            //}
+
+            // PlayerMoveã«é£›ã°ã—ã¦å¼¾ã‚’å‡ºã™
+            playerMove.Gun.Shoot(transform.position, playerMove.Gun.transform.forward, "Player", false);
+        }
+    }
+
+    public void CheckCanPossess(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            //rayã®å§‹ã¾ã‚Š
             var rayStartPosition = this.transform.position;
 
-            //ƒJƒƒ‰‚ªŒü‚¢‚Ä‚é•ûŒü‚É‚Æ‚Î‚·
+            //rayã®æ–¹å‘
             var rayDirection = this.transform.forward.normalized;
 
-            //Hit‚µ‚½ƒIƒuƒWƒFƒNƒgŠi”[—p
+            //Hitã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ ¼ç´
             RaycastHit raycastHit;
 
             Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
 
             if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance))
             {
-                // Log‚ÉHit‚µ‚½ƒIƒuƒWƒFƒNƒg–¼‚ğo—Í
                 //Debug.Log(context.phase);
                 Debug.Log("HitObject : " + raycastHit.collider.gameObject.name);
 
                 if (raycastHit.collider.tag == "Enemy")
                 {
-                    //Debug.Log("EnemyHit");
-                    
-                    game=raycastHit.collider.gameObject;
-                    game.GetComponent<CharacterStatus>().TakeDamage(100f);
-                    if (game.GetComponent<CharacterStatus>().IsDead == true)
+                    if (raycastHit.collider.TryGetComponent<CharacterStatus>(out CharacterStatus character) && character.CanPossess)
                     {
-                        Debug.Log("E‚µ‚½");
+                        Debug.Log("EnemyHit");
+                        transforms = raycastHit.transform;
+                        game = raycastHit.collider.gameObject;
                     }
                 }
             }
+        }
+        if(context.phase == InputActionPhase.Canceled)
+        {
+            transforms = null;
+            game = null;
         }
     }
 }
