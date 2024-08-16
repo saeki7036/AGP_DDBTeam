@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 201641357}
   - component: {fileID: 201641356}
   - component: {fileID: 201641355}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Cube (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1258,6 +1258,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1844609685602155583, guid: 910f66cd97234f94da757a4084207875, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 2882178713526567929, guid: 910f66cd97234f94da757a4084207875, type: 3}
       propertyPath: m_Name
       value: Enemy_Stay
@@ -1272,15 +1276,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8296507633599513238, guid: 910f66cd97234f94da757a4084207875, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.12
+      value: -34.84
       objectReference: {fileID: 0}
     - target: {fileID: 8296507633599513238, guid: 910f66cd97234f94da757a4084207875, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.06
+      value: 7.99
       objectReference: {fileID: 0}
     - target: {fileID: 8296507633599513238, guid: 910f66cd97234f94da757a4084207875, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.46
+      value: -39.9
       objectReference: {fileID: 0}
     - target: {fileID: 8296507633599513238, guid: 910f66cd97234f94da757a4084207875, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3866,7 +3870,7 @@ GameObject:
   - component: {fileID: 1000852854}
   - component: {fileID: 1000852853}
   - component: {fileID: 1000852852}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Cube (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4616,7 +4620,7 @@ GameObject:
   - component: {fileID: 1274429214}
   - component: {fileID: 1274429213}
   - component: {fileID: 1274429212}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Cube (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6901,6 +6905,10 @@ PrefabInstance:
     - target: {fileID: 6662400259486573223, guid: d4e82a18eead91c48b9872209990b41d, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352963230645573959, guid: d4e82a18eead91c48b9872209990b41d, type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
