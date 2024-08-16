@@ -41,7 +41,7 @@ public class EnemyBaseClass : CharacterStatus
     public void LostHitPoint()
     {
         Agent.enabled = false;
-        //rb.isKinematic = false;
+        rb.isKinematic = false;
     }
 
     void TargetChase()
