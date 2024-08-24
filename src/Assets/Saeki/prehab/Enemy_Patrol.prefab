@@ -335,6 +335,7 @@ MonoBehaviour:
   collScript: {fileID: 5166960523934786525}
   rb: {fileID: 568851089354297039}
   Agent: {fileID: 1780109936553995133}
+  material: {fileID: 2100000, guid: 18d29b99dc1cf4d4b97cdeb5681d9b5b, type: 2}
   moveSpeed: 3.5
   rotationSpeed: 0.1
   gunStatus: {fileID: 7150966990042947511}
@@ -373,5 +374,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
