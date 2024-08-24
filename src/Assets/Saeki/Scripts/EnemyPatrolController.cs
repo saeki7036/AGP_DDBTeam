@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyPatrolController : EnemyBaseClass
 { 
-    [SerializeField] private float nextPosDistance = 12f;
+    [SerializeField] private float nextPosDistance = 4f;
     [SerializeField] private Transform[] wayPoints;
     [SerializeField] private bool isRoop = true;
    
