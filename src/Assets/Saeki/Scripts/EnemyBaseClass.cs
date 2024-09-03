@@ -4,7 +4,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBaseClass : MonoBehaviour
+public class EnemyBaseClass : CharacterStatus
 {
     [SerializeField] private float HitPoint = 1f;
 
@@ -16,7 +16,8 @@ public class EnemyBaseClass : MonoBehaviour
     [SerializeField] private float moveSpeed = 3.5f;
     [SerializeField] private float rotationSpeed = 0.1f;
 
-    [SerializeField] private GameObject Bullet;
+    [SerializeField] private GunStatus gunStatus;
+    [SerializeField] private GameObject gunObject;
     [SerializeField] private int remainingBullets;
     [SerializeField] private float fireIntarval = 3f;
 
@@ -32,7 +33,9 @@ public class EnemyBaseClass : MonoBehaviour
 
     void Start()
     {
+        Target = GameObject.FindWithTag("Player");
         Agent.speed = moveSpeed;
+        StartSetUp();
     }
 
     public void LostHitPoint()
@@ -54,10 +57,13 @@ public class EnemyBaseClass : MonoBehaviour
     protected virtual Vector3 GetTargetPos() { return this.transform.position; }
     void OnFire()
     {
-        remainingBullets--;
         remainingIntarval = 0f;
-        Debug.Log("FIRE!!");
-        GameObject.Instantiate(Bullet, transform.position, Quaternion.identity);
+        if(gunStatus.Shoot(gunObject.transform.position, gunObject.transform.forward, this.tag, true))
+        {
+            remainingBullets--;
+            Debug.Log("FIRE!!");
+        }
+        //GameObject.Instantiate(Bullet, transform.position, Quaternion.identity);
     }
 
     void StopChase()
@@ -81,7 +87,11 @@ public class EnemyBaseClass : MonoBehaviour
         }
     }
 
-    private bool HealthCheck() {  return this.gameObject.tag == "Enemy" && HitPoint > 0; }
+    private bool HealthCheck() 
+    {
+        Debug.Log(Hp);
+        return this.gameObject.tag == "Enemy" && Hp > 0; 
+    }
 
     private bool ShotCheck() { return remainingIntarval > fireIntarval && remainingBullets > 0; }
 

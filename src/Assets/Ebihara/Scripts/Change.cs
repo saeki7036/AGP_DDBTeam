@@ -7,7 +7,7 @@ public class Change : MonoBehaviour
 {
     //GameObject changeObj;
 
-    PlayerMove PlayerMove;
+    PlayerMove playerMove;
     CharacterStatus characterStatus;
 
 
@@ -18,7 +18,7 @@ public class Change : MonoBehaviour
     void Start()
     {
         playerRay = camera.GetComponent<PlayerRay>();
-        PlayerMove = this.GetComponent<PlayerMove>();
+        playerMove = this.GetComponent<PlayerMove>();
     }
 
     // Update is called once per frame
@@ -45,10 +45,13 @@ public class Change : MonoBehaviour
 
             //親の付け替え
             this.gameObject.transform.parent = changeObj.transform;
-            PlayerMove.SetplayerParent(this.transform.parent.gameObject);
+            playerMove.SetplayerParent(this.transform.parent.gameObject);
 
             //親をPlayerに
             this.transform.parent.gameObject.tag = "Player";
+
+            //銃の変更
+            playerMove.SetGunObject();
 
             //Playerの位置調整
             this.transform.position = changeObj.transform.position;

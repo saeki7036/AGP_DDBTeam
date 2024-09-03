@@ -12,9 +12,9 @@ public class PlayerMove : MonoBehaviour
     float moveZ;
     float moveX;
 
-    float moveSpeed = 6f; //�ړ����x
+    [SerializeField]float moveSpeed = 6f; //スピード
 
-    Vector3 velocity = Vector3.zero; //�ړ�����
+    Vector3 velocity = Vector3.zero; //向き
 
     GameObject playerParent;
     GunStatus gun;
@@ -23,7 +23,7 @@ public class PlayerMove : MonoBehaviour
     PlayerRay playerRay;
     GameObject objParent;
 
-    // �v���p�e�B
+    //親
     public GameObject PlayerParent
     {
         get { return playerParent; }
@@ -44,16 +44,16 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ���I�u�W�F�N�g���烁�C���J���������̃x�N�g�����擾����
+        //カメラの方向に向く
         Vector3 direction = camera.transform.position - this.transform.position;
 
         Vector3 lookdirection=new Vector3(direction.x,0.0f,direction.z);
 
         playerParent.transform.rotation = Quaternion.LookRotation(-1.0f * lookdirection);
 
-        //�O��ړ�
+        //前後
         moveZ = input.y;
-        //���E�ړ�
+        //左右
         moveX = input.x;
 
         velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * Time.deltaTime;
@@ -77,11 +77,11 @@ public class PlayerMove : MonoBehaviour
         //Debug.Log("Look");
     }
 
-    public void ChangeEnemy(InputAction.CallbackContext context)
+    public void ChangeEnemy(GameObject game)
     {
-        objParent = playerRay.GetObj();
+        objParent = game;
 
-        if (context.phase == InputActionPhase.Performed && objParent != null)
+        if ( objParent != null)
         {
             Debug.Log("�|�����G:" + objParent.name);
 
@@ -89,18 +89,18 @@ public class PlayerMove : MonoBehaviour
             Vector3 quaternion = objParent.transform.eulerAngles;
             Debug.Log(quaternion);
 
-            //�e��Enemy��
+            //親のタグをEnemyに
             transform.parent.gameObject.tag = "Enemy";
 
-            //�e�̕t���ւ�
+            //親の付け替え
             this.gameObject.transform.parent = objParent.transform;
             playerParent = this.transform.parent.gameObject;
             playerParent.transform.eulerAngles = quaternion;
 
-            //�e��Player��
+            //親のタグをPlayerに
             this.transform.parent.gameObject.tag = "Player";
 
-            //Player�̈ʒu����
+            //Playerの位置調整
             this.transform.position = objParent.transform.position;
             Vector3 correction = new Vector3(0f, 1.5f, 0f);
             this.transform.position += correction;
@@ -109,7 +109,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    void SetGunObject()
+    public void SetGunObject()
     {
         gun = playerParent.GetComponentInChildren<GunStatus>();
     }

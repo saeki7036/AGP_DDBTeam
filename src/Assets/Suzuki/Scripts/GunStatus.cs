@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GunStatus : MonoBehaviour
@@ -8,9 +9,14 @@ public class GunStatus : MonoBehaviour
 
     int remainBullets;
 
+    public int RemainBullets
+    {
+        get { return remainBullets; }
+    }
+
     void Start()
     {
-        remainBullets = weaponData.MaxBullet;
+        FillBullet();
     }
     /// <summary>
     /// 銃から発射方向を向いた銃弾を生成する
@@ -25,6 +31,31 @@ public class GunStatus : MonoBehaviour
         GameObject bullet = Instantiate(weaponData.BulletPrefab, position, Quaternion.identity);
         bullet.tag = tag;
         bullet.transform.forward = forward;
+
+        if(remainBullets == 0 && weaponData.Role == WeaponData.WeaponRole.main)
+        {
+            ChangeWeapon();
+        }
         return true;
+    }
+
+    void FillBullet()
+    {
+        remainBullets = weaponData.MaxBullet;
+    }
+
+    void ChangeWeapon()
+    {
+        if (weaponData.SubWeapon != null)
+        {
+            Debug.Log("サブ武器を使う！");
+            Transform parent = this.transform.parent;
+            Instantiate(weaponData.SubWeapon, parent);// 武器の生成
+            PlayerMove playerMove = parent.GetComponentInChildren<PlayerMove>();
+
+            this.transform.SetParent(null);// 親子付けを外す
+            playerMove.SetGunObject();// 持っている銃の設定
+            Destroy(this.gameObject);
+        }
     }
 }
