@@ -2226,14 +2226,6 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerRay, Assembly-CSharp
       objectReference: {fileID: 0}
-    - target: {fileID: 4134593644958650990, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 1595529925}
-    - target: {fileID: 4134593644958650990, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6759962006202915710, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -2241,24 +2233,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1322741449114171707, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 385298058}
   m_SourcePrefab: {fileID: 100100000, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
 --- !u!4 &385298056 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589091017956262548, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
   m_PrefabInstance: {fileID: 385298055}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &385298060 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4134593644958650990, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+--- !u!1 &385298057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1322741449114171707, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
   m_PrefabInstance: {fileID: 385298055}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &385298058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385298057}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d02ee993b8b72464baa50f05fc132ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 1595529925}
 --- !u!1 &390252656
 GameObject:
   m_ObjectHideFlags: 0
@@ -9631,7 +9633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2671c338b26ec45bd41334be705895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  change: {fileID: 385298060}
+  change: {fileID: 385298058}
   distance: 50
 --- !u!114 &1595529927
 MonoBehaviour:
