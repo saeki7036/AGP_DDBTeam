@@ -152,6 +152,7 @@ MonoBehaviour:
   collScript: {fileID: 456301811658538094}
   rb: {fileID: 7352963230645573959}
   Agent: {fileID: 7503960935113673405}
+  material: {fileID: 2100000, guid: 18d29b99dc1cf4d4b97cdeb5681d9b5b, type: 2}
   moveSpeed: 3.5
   rotationSpeed: 0.1
   gunStatus: {fileID: 2125578939104689318}
@@ -183,7 +184,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!1 &3530127511531670376
 GameObject:
@@ -315,7 +316,7 @@ GameObject:
   - component: {fileID: 277261417716621207}
   - component: {fileID: 2892249186948461878}
   - component: {fileID: 456301811658538094}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FindArea_c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,4 +368,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 200
