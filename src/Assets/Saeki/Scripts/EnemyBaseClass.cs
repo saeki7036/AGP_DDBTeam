@@ -12,6 +12,7 @@ public class EnemyBaseClass : CharacterStatus
     [SerializeField] private SearchColliderScript collScript;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private NavMeshAgent Agent;
+    [SerializeField] private Material material;
 
     [SerializeField] private float moveSpeed = 3.5f;
     [SerializeField] private float rotationSpeed = 0.1f;
@@ -22,7 +23,7 @@ public class EnemyBaseClass : CharacterStatus
     [SerializeField] private float fireIntarval = 3f;
 
     private float remainingIntarval = 0;
-
+    private MeshRenderer mesh;
     public GameObject TargetSetting
     {
         get { return Target; }  //Žæ“¾—p
@@ -35,6 +36,7 @@ public class EnemyBaseClass : CharacterStatus
     {
         Target = GameObject.FindWithTag("Player");
         Agent.speed = moveSpeed;
+        mesh = GetComponent<MeshRenderer>();
         StartSetUp();
     }
 
@@ -42,6 +44,10 @@ public class EnemyBaseClass : CharacterStatus
     {
         Agent.enabled = false;
         rb.isKinematic = false;
+        if (mesh.material != material)
+        {
+            mesh.material = material;
+        }
     }
 
     void TargetChase()
