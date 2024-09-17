@@ -39,12 +39,12 @@ public class GunStatus : MonoBehaviour
         return true;
     }
 
-    void FillBullet()
+    void FillBullet()// ’eŠÛ‚Ì•â[
     {
         remainBullets = weaponData.MaxBullet;
     }
 
-    void ChangeWeapon()
+    void ChangeWeapon()// •Ší‚ÌØ‚è‘Ö‚¦
     {
         if (weaponData.SubWeapon != null)
         {

@@ -44,7 +44,7 @@ public class GameStateScript : MonoBehaviour
         gameState = state;
     }
 
-    void UpdateByState()
+    void UpdateByState()// ゲームの状態ごとのUpdate
     {
         switch(gameState)
         {
@@ -63,7 +63,7 @@ public class GameStateScript : MonoBehaviour
         }
     }
 
-    IEnumerator ClearProcess()
+    IEnumerator ClearProcess()// クリア処理
     {
         yield return new WaitForSecondsRealtime(waitTime);
         Time.timeScale = 0f;
@@ -73,7 +73,7 @@ public class GameStateScript : MonoBehaviour
         yield return RisePanels(clearCanvasGroup);
     }
 
-    IEnumerator RisePanels(CanvasGroup canvasGroup)
+    IEnumerator RisePanels(CanvasGroup canvasGroup)// クリア画面を上げる
     {
         float riseRate = panelRiseHeight / panelRiseTime;
         float timer = panelRiseTime;
