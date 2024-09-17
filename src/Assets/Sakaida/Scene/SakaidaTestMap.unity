@@ -2664,9 +2664,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2060907325627715054, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: aim
+      value: 
+      objectReference: {fileID: -6063233619249004855, guid: 7261909591a1b7549b1dc279cefcc10c, type: 3}
+    - target: {fileID: 2060907325627715054, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: look
+      value: 
+      objectReference: {fileID: 4293749442301454819, guid: 7261909591a1b7549b1dc279cefcc10c, type: 3}
+    - target: {fileID: 2060907325627715054, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 1595529925}
+    - target: {fileID: 2060907325627715054, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: inputProvider
+      value: 
+      objectReference: {fileID: 1197329996}
     - target: {fileID: 3278852524711979044, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.82
@@ -2708,6 +2720,34 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: 8c98ddd7-d704-43bd-8ac8-14a21e1a43ed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
+      value: 7515f904-acb2-49c1-ad8f-49575c36a210
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: Player/Aim[/Mouse/delta]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
+      value: Player/GunHold[/Mouse/rightButton]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1595529926}
@@ -2720,12 +2760,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1595529926}
     - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1775959271}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Change
       objectReference: {fileID: 0}
     - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeAim
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerRay, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerMove, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015283182654696042, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4134593644958650990, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
       propertyPath: camera
@@ -15469,6 +15529,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1899651452}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1775959271 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2060907325627715054, guid: c958c2d058ba5724b823e5a118640d9c, type: 3}
+  m_PrefabInstance: {fileID: 385298055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71ff7f4ced99174a907c1fc35417300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1788943646
 PrefabInstance:
   m_ObjectHideFlags: 0
