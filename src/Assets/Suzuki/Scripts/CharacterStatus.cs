@@ -21,7 +21,7 @@ public class CharacterStatus : MonoBehaviour
     {
         get { return hp <= 0; }
     }
-    public bool CanPossess
+    public bool CanPossess// æ‚èˆÚ‚ê‚é‚©‚Ç‚¤‚©
     {
         get { return IsDead && remainPossessTime > 0; }
     }
@@ -56,13 +56,13 @@ public class CharacterStatus : MonoBehaviour
         }
     }
 
-    public void OnPossess()
+    public void OnPossess()// æ‚èœß‚«‚Ìˆ—
     {
         SetHpMax();
     }
 
     void SetHpMax()
     {
-        hp = characterData.MaxHp;
+        hp = characterData.MaxHp;// HP‚ğÅ‘å‚Éİ’è
     }
 }
