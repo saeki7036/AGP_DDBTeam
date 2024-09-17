@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-
+using Cinemachine;
+using TMPro;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class PlayerMove : MonoBehaviour
 
     GameObject playerParent;
     GunStatus gun;
+
+    [SerializeField] CinemachineInputProvider inputProvider;
+    [SerializeField] InputActionReference look;
+    [SerializeField] InputActionReference aim;
+    bool isAiming;
+    [SerializeField] TextMeshProUGUI aimDebugText;
 
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
@@ -39,6 +46,7 @@ public class PlayerMove : MonoBehaviour
         playerParent = transform.parent.gameObject;
         playerRay = camera.GetComponent<PlayerRay>();
         SetGunObject();
+        isAiming= false;
     }
 
     // Update is called once per frame
@@ -58,6 +66,7 @@ public class PlayerMove : MonoBehaviour
 
         velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * Time.deltaTime;
         playerParent.transform.Translate(velocity.x, velocity.y, velocity.z);
+
     }
 
     public void SetplayerParent(GameObject gameObject)
@@ -69,6 +78,22 @@ public class PlayerMove : MonoBehaviour
     {
         input = context.ReadValue<Vector2>();
         //Debug.Log("Move");
+    }
+
+    public void ChangeAim(InputAction.CallbackContext context)
+    {
+        if(isAiming==false)
+        {
+            isAiming= true;
+            inputProvider.XYAxis = aim;
+            aimDebugText.text = "aimMode";
+        }
+        else
+        {
+            isAiming= false;
+            inputProvider.XYAxis = look;
+            aimDebugText.text = "normal";
+        }
     }
 
     public void OnLook(InputAction.CallbackContext context)
