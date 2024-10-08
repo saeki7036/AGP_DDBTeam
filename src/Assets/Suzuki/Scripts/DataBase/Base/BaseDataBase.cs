@@ -16,7 +16,7 @@ public abstract class BaseDataBase<T> : ScriptableObject where T : BaseData
     {
         for(int i = 0; i < itemList.Count; i++)
         {
-            itemList[i].SetId(i);
+            itemList[i].SetId(i);// ƒŠƒXƒg‚É“o˜^‚³‚ê‚Ä‚¢‚é‡‚ÉID‚ðU‚è’¼‚·
         }
     }
 }
