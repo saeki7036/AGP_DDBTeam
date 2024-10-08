@@ -24,7 +24,7 @@ public class Change : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Debug.Log(this.transform.localEulerAngles.ToString());
     }
 
     public void ChangeEnemy(GameObject changeObj)
@@ -36,7 +36,7 @@ public class Change : MonoBehaviour
         //æ‚èˆÚ‚èˆ—
         if (characterStatus.IsDead == true)
         {
-            Debug.Log("æ‚èˆÚ‚é“G:" + changeObj.name);
+            //Debug.Log("æ‚èˆÚ‚é“G:" + changeObj.name);
 
             Debug.Log("Change");
 
@@ -57,6 +57,11 @@ public class Change : MonoBehaviour
             this.transform.position = changeObj.transform.position;
             Vector3 correction = new Vector3(0f, 1.5f, 0f);
             this.transform.position += correction;
+
+            Vector3 angles = this.transform.localEulerAngles;
+            angles.y = 0f;
+            this.transform.localEulerAngles = angles;
+            Debug.Log(this.transform.localEulerAngles.ToString());
 
             changeObj = null;
         }

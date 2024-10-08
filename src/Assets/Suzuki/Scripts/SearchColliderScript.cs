@@ -9,7 +9,12 @@ public class SearchColliderScript : MonoBehaviour
     bool inSearchArea = false;
     bool findPlayer = false;
     [SerializeField] LayerMask layerMask;
-    public bool FindPlayer
+
+    public Transform FoundPlayer
+    {
+        get { return player != null ? player : null; }
+    }
+    public bool IsFindPlayer
     {
         get { return findPlayer; }
     }
@@ -69,5 +74,14 @@ public class SearchColliderScript : MonoBehaviour
         {
             inSearchArea = false;
         }
+    }
+
+    /// <summary>
+    /// プレイヤーの発見情報をリセット
+    /// </summary>
+    public void OnPlayerChange()
+    {
+        inSearchArea = false;
+        player = null;
     }
 }
