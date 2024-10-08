@@ -6,10 +6,40 @@ using UnityEngine.InputSystem;
 
 public class ChangeSensitivity : MonoBehaviour
 {
+    [SerializeField] InputActionAsset actionAsset;
+    [SerializeField] string actionName;
+
+    InputAction target;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (actionAsset == null)
+            return;
+
+        target = actionAsset.FindAction(actionName);
+        if (target == null) return;
+
+        target.ApplyBindingOverride(new InputBinding
+        {
+            overrideProcessors = "scale(factor=10)"
+        });
+
+        actionAsset.Enable();
+    }
+
+    private void Awake()
+    {
+        //if (actionAsset == null)
+        //    return;
+
+        //target = actionAsset.FindAction(actionName);
+        //if(target==null) return;
+
+        //target.ApplyBindingOverride(new InputBinding
+        //{
+        //    overrideProcessors="scale(factor=10)"
+        //});
     }
 
     // Update is called once per frame
@@ -18,13 +48,8 @@ public class ChangeSensitivity : MonoBehaviour
         
     }
 
-    public void Sensitivity()
+    private void OnDestroy()
     {
-
+        target.Dispose();
     }
-
-    //public static InputActionSetupExtensions.BindingSyntax ChangeBinding(this InputAction action, string name)
-    //{
-    //    return action.ChangeBinding(name);
-    //}
 }
