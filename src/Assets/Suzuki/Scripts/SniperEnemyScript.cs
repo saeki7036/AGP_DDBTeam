@@ -33,6 +33,11 @@ public class SniperEnemyScript : MonoBehaviour
         if(searchColliderScript.FindPlayer)
         {
             foundTimer += Time.deltaTime;
+            CreateLaser();
+        }
+        else if(firstFind)
+        {
+            OffLaser();
         }
     }
 
@@ -44,6 +49,19 @@ public class SniperEnemyScript : MonoBehaviour
             firstFind = true;
             // ここにレーザーのシェーダーに再生開始処理を追加予定
         }
+
+        Vector3 direction = searchColliderScript.FoundPlayer.position - transform.position;
+
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, transform.position + direction);
+    }
+
+    void OffLaser()
+    {
+        lineRenderer.SetPosition(0, Vector3.zero);
+        lineRenderer.SetPosition(1, Vector3.zero);
+
+        firstFind = false;
     }
 
     IEnumerator Emit()
