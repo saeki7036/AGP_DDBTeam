@@ -30,7 +30,7 @@ public class SniperEnemyScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(searchColliderScript.FindPlayer)
+        if(searchColliderScript.IsFindPlayer)
         {
             foundTimer += Time.deltaTime;
             CreateLaser();

@@ -14,7 +14,7 @@ public class SearchColliderScript : MonoBehaviour
     {
         get { return player != null ? player : null; }
     }
-    public bool FindPlayer
+    public bool IsFindPlayer
     {
         get { return findPlayer; }
     }
@@ -76,6 +76,9 @@ public class SearchColliderScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// プレイヤーの発見情報をリセット
+    /// </summary>
     public void OnPlayerChange()
     {
         inSearchArea = false;
