@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyScript : MonoBehaviour
+public class EnemyScript_Scrapped : MonoBehaviour
 {
     [SerializeField] Transform[] targetPoints;
     [SerializeField] bool patrol = false;

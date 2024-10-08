@@ -24,7 +24,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] InputActionReference look;
     [SerializeField] InputActionReference aim;
     bool isAiming;
-    [SerializeField] TextMeshProUGUI aimDebugText;
+    [SerializeField] CinemachineVirtualCameraBase lookCamera;
+    [SerializeField] CinemachineVirtualCameraBase aimCamera;
 
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
@@ -55,9 +56,9 @@ public class PlayerMove : MonoBehaviour
         //カメラの方向に向く
         Vector3 direction = camera.transform.position - this.transform.position;
 
-        Vector3 lookdirection=new Vector3(direction.x,0.0f,direction.z);
+        Vector3 lookdirection = new Vector3(direction.x * -1.0f, 0.0f, direction.z * -1.0f);
 
-        playerParent.transform.rotation = Quaternion.LookRotation(-1.0f * lookdirection);
+        playerParent.transform.rotation = Quaternion.LookRotation(lookdirection);
 
         //前後
         moveZ = input.y;
@@ -77,7 +78,7 @@ public class PlayerMove : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
-        //Debug.Log("Move");
+        Debug.Log(input);
     }
 
     public void ChangeAim(InputAction.CallbackContext context)
@@ -85,14 +86,14 @@ public class PlayerMove : MonoBehaviour
         if(isAiming==false)
         {
             isAiming= true;
-            inputProvider.XYAxis = aim;
-            aimDebugText.text = "aimMode";
+            aimCamera.Priority = 1;
+            lookCamera.Priority = 0;
         }
         else
         {
             isAiming= false;
-            inputProvider.XYAxis = look;
-            aimDebugText.text = "normal";
+            lookCamera.Priority = 1;
+            aimCamera.Priority = 0;
         }
     }
 
