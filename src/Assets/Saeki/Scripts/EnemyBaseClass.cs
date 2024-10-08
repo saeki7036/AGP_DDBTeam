@@ -93,7 +93,7 @@ public class EnemyBaseClass : CharacterStatus
         }
     }
 
-    private bool HealthCheck() 
+    public bool HealthCheck() 
     {
         Debug.Log(Hp);
         return this.gameObject.tag == "Enemy" && Hp > 0; 
