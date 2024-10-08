@@ -14,6 +14,8 @@ public class Change : MonoBehaviour
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
 
+    [SerializeField] EnemyManager enemyManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +65,7 @@ public class Change : MonoBehaviour
             this.transform.localEulerAngles = angles;
             Debug.Log(this.transform.localEulerAngles.ToString());
 
+            enemyManager.ResetSearch();
             changeObj = null;
         }
     }
