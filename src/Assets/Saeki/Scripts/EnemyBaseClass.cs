@@ -75,7 +75,7 @@ public class EnemyBaseClass : CharacterStatus
     void StopChase()
     {
         //Agent.remainingDistance < distance
-        if (collScript.FindPlayer)
+        if (collScript.IsFindPlayer)
         {
             Agent.speed = 0f;
             // ƒ^[ƒQƒbƒg‚Ì•ûŒü‚Ö‚Ì‰ñ“]
@@ -93,7 +93,7 @@ public class EnemyBaseClass : CharacterStatus
         }
     }
 
-    private bool HealthCheck() 
+    public bool HealthCheck() 
     {
         Debug.Log(Hp);
         return this.gameObject.tag == "Enemy" && Hp > 0; 

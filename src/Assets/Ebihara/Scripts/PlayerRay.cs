@@ -71,38 +71,12 @@ public class PlayerRay : MonoBehaviour
             }
 
         }
-        }
+    }
 
     public void Fire(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            // �e�e���ˏ����ȑO�̏����A�O�̈׎���Ă����Ă��邪�s�v�ɂȂ莟�����
-            ////�J�����̈ʒu����Ƃ΂�
-            //var rayStartPosition = this.transform.position;
-
-            ////�J�����������Ă�����ɂƂ΂�
-            //var rayDirection = this.transform.forward.normalized;
-
-            ////Hit�����I�u�W�F�N�g�i�[�p
-            //RaycastHit raycastHit;
-
-            //Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
-
-            //if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance))
-            //{
-            //    // Log��Hit�����I�u�W�F�N�g�����o��
-            //    //Debug.Log(context.phase);
-            //    Debug.Log("HitObject : " + raycastHit.collider.gameObject.name);
-
-            //    if (raycastHit.collider.tag == "Enemy")
-            //    {
-            //        Debug.Log("EnemyHit");
-            //        transforms = raycastHit.transform;
-            //        game=raycastHit.collider.gameObject;
-            //    }
-            //}
-
             // PlayerMoveに飛ばして弾を出す
             playerMove.Gun.Shoot(transform.position, playerMove.Gun.transform.forward, "Player", false);
         }

@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 277261417716621207}
   - component: {fileID: 2892249186948461878}
   - component: {fileID: 456301811658538094}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FindArea_c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,4 +368,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 200

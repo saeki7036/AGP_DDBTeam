@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-
+using Cinemachine;
+using TMPro;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -18,6 +19,13 @@ public class PlayerMove : MonoBehaviour
 
     GameObject playerParent;
     GunStatus gun;
+
+    [SerializeField] CinemachineInputProvider inputProvider;
+    [SerializeField] InputActionReference look;
+    [SerializeField] InputActionReference aim;
+    bool isAiming;
+    [SerializeField] CinemachineVirtualCameraBase lookCamera;
+    [SerializeField] CinemachineVirtualCameraBase aimCamera;
 
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
@@ -39,6 +47,7 @@ public class PlayerMove : MonoBehaviour
         playerParent = transform.parent.gameObject;
         playerRay = camera.GetComponent<PlayerRay>();
         SetGunObject();
+        isAiming= false;
     }
 
     // Update is called once per frame
@@ -47,9 +56,9 @@ public class PlayerMove : MonoBehaviour
         //カメラの方向に向く
         Vector3 direction = camera.transform.position - this.transform.position;
 
-        Vector3 lookdirection=new Vector3(direction.x,0.0f,direction.z);
+        Vector3 lookdirection = new Vector3(direction.x * -1.0f, 0.0f, direction.z * -1.0f);
 
-        playerParent.transform.rotation = Quaternion.LookRotation(-1.0f * lookdirection);
+        playerParent.transform.rotation = Quaternion.LookRotation(lookdirection);
 
         //前後
         moveZ = input.y;
@@ -58,6 +67,7 @@ public class PlayerMove : MonoBehaviour
 
         velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * Time.deltaTime;
         playerParent.transform.Translate(velocity.x, velocity.y, velocity.z);
+
     }
 
     public void SetplayerParent(GameObject gameObject)
@@ -68,7 +78,23 @@ public class PlayerMove : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
-        //Debug.Log("Move");
+        Debug.Log(input);
+    }
+
+    public void ChangeAim(InputAction.CallbackContext context)
+    {
+        if(isAiming==false)
+        {
+            isAiming= true;
+            aimCamera.Priority = 1;
+            lookCamera.Priority = 0;
+        }
+        else
+        {
+            isAiming= false;
+            lookCamera.Priority = 1;
+            aimCamera.Priority = 0;
+        }
     }
 
     public void OnLook(InputAction.CallbackContext context)

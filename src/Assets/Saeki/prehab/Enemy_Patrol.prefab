@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 7158997100444929980}
   - component: {fileID: 95119072675478846}
   - component: {fileID: 5166960523934786525}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FindArea_p
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 200
 --- !u!1 &4584851563842569468
 GameObject:
   m_ObjectHideFlags: 0
