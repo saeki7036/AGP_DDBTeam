@@ -8,6 +8,10 @@ public class GunStatus : MonoBehaviour
     [SerializeField] WeaponData weaponData;
 
     int remainBullets;
+    [SerializeField] float firstShotIntarval = 2f, defaultShotIntarval = 0.5f;
+
+    public float FirstIntarval => firstShotIntarval;
+    public float DefaultIntarval => defaultShotIntarval;
 
     public int RemainBullets
     {
