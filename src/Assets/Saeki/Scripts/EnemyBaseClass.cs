@@ -81,6 +81,7 @@ public class EnemyBaseClass : CharacterStatus
         if(guns.Shoot(gunObject.transform.position, gunObject.transform.forward, this.tag, true))
         {
             remainingBullets--;
+            if (!remainingCheck) remainingCheck = true;
             Debug.Log("FIRE!!");
         }
         //GameObject.Instantiate(Bullet, transform.position, Quaternion.identity);
@@ -114,6 +115,7 @@ public class EnemyBaseClass : CharacterStatus
         }
         else
         {
+            remainingCheck = false;
             remainingCount = 0f;
             lockonCount = 0f;
             Agent.speed = moveSpeed;
