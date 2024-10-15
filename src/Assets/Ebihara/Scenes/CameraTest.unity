@@ -217,6 +217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 35f2ee39b40fd964bbdc3b1b423a789b, type: 2}
+  firstShotIntarval: 2
+  defaultShotIntarval: 0.5
 --- !u!4 &81330540 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5204290325177240887, guid: 7371e24c411f0e141ae5cf9b4010a694, type: 3}
@@ -432,7 +434,7 @@ Transform:
   m_GameObject: {fileID: 511802178}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: -5}
+  m_LocalPosition: {x: 0, y: 2.5, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -473,6 +475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 35f2ee39b40fd964bbdc3b1b423a789b, type: 2}
+  firstShotIntarval: 2
+  defaultShotIntarval: 0.5
 --- !u!1001 &665865107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -842,6 +846,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 35f2ee39b40fd964bbdc3b1b423a789b, type: 2}
+  firstShotIntarval: 2
+  defaultShotIntarval: 0.5
 --- !u!1 &944098799
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +898,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 0
+  m_Priority: 100
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1883256998}
   m_Follow: {fileID: 1883256998}
@@ -1375,7 +1381,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 5
+  m_CameraDistance: 4
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -1530,7 +1536,7 @@ Transform:
   m_GameObject: {fileID: 1758329825}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: -5}
+  m_LocalPosition: {x: 2.309251, y: 2.1582904, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1568,6 +1574,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 35f2ee39b40fd964bbdc3b1b423a789b, type: 2}
+  firstShotIntarval: 2
+  defaultShotIntarval: 0.5
 --- !u!4 &1883256998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9063877083309467690, guid: 7371e24c411f0e141ae5cf9b4010a694, type: 3}
