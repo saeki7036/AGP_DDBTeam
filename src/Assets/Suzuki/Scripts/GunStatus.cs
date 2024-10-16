@@ -8,6 +8,10 @@ public class GunStatus : MonoBehaviour
     [SerializeField] WeaponData weaponData;
 
     int remainBullets;
+    [SerializeField] float firstShotIntarval = 2f, defaultShotIntarval = 0.5f;
+
+    public float FirstIntarval => firstShotIntarval;
+    public float DefaultIntarval => defaultShotIntarval;
 
     public int RemainBullets
     {
@@ -29,7 +33,8 @@ public class GunStatus : MonoBehaviour
         if(!infiniteBullet) remainBullets--;
         
         GameObject bullet = Instantiate(weaponData.BulletPrefab, position, Quaternion.identity);
-        bullet.tag = tag;
+       
+        bullet.tag = tag == "Player" ? "PlayerBullet" : "EnemyBullet";
         bullet.transform.forward = forward;
 
         if(remainBullets == 0 && weaponData.Role == WeaponData.WeaponRole.main)

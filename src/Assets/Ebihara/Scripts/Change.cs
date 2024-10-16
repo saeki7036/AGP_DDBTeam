@@ -14,6 +14,9 @@ public class Change : MonoBehaviour
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
 
+ã€€ã€€[SerializeField] EnemyTargetManeger enemyTargetManeger;
+    [SerializeField] EnemyManager enemyManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,31 +32,31 @@ public class Change : MonoBehaviour
 
     public void ChangeEnemy(GameObject changeObj)
     {
-        //‰¼
+        //ä»®
         //changeObj = playerRay.GetObj();
         characterStatus = changeObj.GetComponent<CharacterStatus>();
 
-        //æ‚èˆÚ‚èˆ—
+        //ä¹—ã‚Šç§»ã‚Šå‡¦ç†
         if (characterStatus.IsDead == true)
         {
-            //Debug.Log("æ‚èˆÚ‚é“G:" + changeObj.name);
+            //Debug.Log("ä¹—ã‚Šç§»ã‚‹æ•µ:" + changeObj.name);
 
             Debug.Log("Change");
 
-            //e‚ğEnemy‚É
+            //è¦ªã‚’Enemyã«
             transform.parent.gameObject.tag = "Enemy";
 
-            //e‚Ì•t‚¯‘Ö‚¦
+            //è¦ªã®ä»˜ã‘æ›¿ãˆ
             this.gameObject.transform.parent = changeObj.transform;
             playerMove.SetplayerParent(this.transform.parent.gameObject);
 
-            //e‚ğPlayer‚É
+            //è¦ªã‚’Playerã«
             this.transform.parent.gameObject.tag = "Player";
 
-            //e‚Ì•ÏX
+            //éŠƒã®å¤‰æ›´
             playerMove.SetGunObject();
 
-            //Player‚ÌˆÊ’u’²®
+            //Playerã®ä½ç½®èª¿æ•´
             this.transform.position = changeObj.transform.position;
             Vector3 correction = new Vector3(0f, 1.5f, 0f);
             this.transform.position += correction;
@@ -63,7 +66,11 @@ public class Change : MonoBehaviour
             this.transform.localEulerAngles = angles;
             Debug.Log(this.transform.localEulerAngles.ToString());
 
+            enemyManager.ResetSearch();
             changeObj = null;
+
+            if (enemyTargetManeger != null)
+                enemyTargetManeger.SetTarget(this.transform.parent.gameObject);
         }
     }
 }
