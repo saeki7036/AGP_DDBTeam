@@ -31,9 +31,11 @@ public class DisplayLaserSight : MonoBehaviour
         firstFind = false;
     }
 
+    bool Createcheck() => enemyBaseClass.FindCheck() && enemyBaseClass.HealthCheck() && searchColliderScript.FoundPlayer != null;
+        
     void FixedUpdate()
     {
-        if (enemyBaseClass.FindCheck() && enemyBaseClass.HealthCheck())
+        if (Createcheck())
         {
             foundTimer += Time.deltaTime;
             CreateLaser();
