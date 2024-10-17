@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc91cc7213ff09458443814c9f5ad55, type: 3}
-  m_Name: BulletDataBase
+  m_Script: {fileID: 11500000, guid: bca5a02060f406544935f645d9f5e346, type: 3}
+  m_Name: Mortar
   m_EditorClassIdentifier: 
-  itemList:
-  - {fileID: 11400000, guid: eee7d5ba61c5f9849a157a03244435c1, type: 2}
-  - {fileID: 11400000, guid: 7cc7be761b287cd4694026f8ec324841, type: 2}
+  name: "\u8FEB\u6483\u7832"
+  id: 2
+  bulletPrefab: {fileID: 1769422712026113426, guid: 695ed0040ac83954eba614ba42aae781, type: 3}
+  maxBullet: 1
+  weaponRole: 0
+  subWeapon: {fileID: 0}

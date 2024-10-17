@@ -67,6 +67,7 @@ public class EnemyBaseClass : CharacterStatus
     {
         if (Agent.enabled && Agent.isOnNavMesh)
         {
+            CorrectTargetPlayer();
             if (Agent.pathStatus == NavMeshPathStatus.PathInvalid)
                 Destroy(this.gameObject);
             else
@@ -74,6 +75,14 @@ public class EnemyBaseClass : CharacterStatus
         }
     }
     protected virtual Vector3 GetTargetPos() { return this.transform.position; }
+    
+    void CorrectTargetPlayer()
+    {
+        if(!Target.CompareTag("Player"))
+        {
+            Target = GameObject.FindWithTag("Player");
+        }
+    }
     void OnFire()
     {
         Debug.Log("FIRE!!");
