@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Wall
   - Enemy
+  - PlayerBullet
+  - EnemyBullet
+  - Breakable
   layers:
   - Default
   - TransparentFX

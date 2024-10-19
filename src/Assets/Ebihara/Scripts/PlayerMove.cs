@@ -78,20 +78,34 @@ public class PlayerMove : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
-        Debug.Log(input);
+        //Debug.Log(input);
     }
-
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        playerParent.GetComponent<Rigidbody>().AddForce(0f, 1.4f, 0f, ForceMode.Impulse);
+    }
     public void ChangeAim(InputAction.CallbackContext context)
     {
+        Vector3 angle = this.transform.parent.localEulerAngles;
+        Debug.Log(angle);
+
         if(isAiming==false)
         {
             isAiming= true;
+            //Debug.Log("before:" + aimCamera.transform.eulerAngles);     
+            //aimCamera.transform.localEulerAngles = angle;
+            //Debug.Log("after:" + aimCamera.transform.eulerAngles);
+
             aimCamera.Priority = 1;
             lookCamera.Priority = 0;
         }
         else
         {
             isAiming= false;
+            //Debug.Log("before:" + aimCamera.transform.eulerAngles);
+            //lookCamera.transform.localEulerAngles = angle;
+            //Debug.Log("after:" + aimCamera.transform.eulerAngles);
+
             lookCamera.Priority = 1;
             aimCamera.Priority = 0;
         }
