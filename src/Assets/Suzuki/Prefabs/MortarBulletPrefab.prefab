@@ -146,9 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be262c4867989d74390a1d4b35a61f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 60
+  flightTime: 2
+  speedRate: 1
   bulletData: {fileID: 11400000, guid: 7cc7be761b287cd4694026f8ec324841, type: 2}
   explosionPrefab: {fileID: 9203838667209479746, guid: 8f5159412f6b0344cbe307b9917a8aff, type: 3}
+  warningAreaPrefab: {fileID: 1796833605161279368, guid: cd1f9225976009242ab0b3b9c62e2684, type: 3}
   hitLayerMask:
     serializedVersion: 2
     m_Bits: 64

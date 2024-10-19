@@ -17,4 +17,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1769422712026113426, guid: 695ed0040ac83954eba614ba42aae781, type: 3}
   maxBullet: 1
   weaponRole: 0
-  subWeapon: {fileID: 0}
+  subWeapon: {fileID: 3993766834917909290, guid: 03f82252fc4ff8340936cdb188a204da, type: 3}

@@ -17,6 +17,12 @@ public class Change : MonoBehaviour
 　　[SerializeField] EnemyTargetManeger enemyTargetManeger;
     [SerializeField] EnemyManager enemyManager;
 
+    bool changed;
+
+    public bool Changed
+    {
+        get { return changed; }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +77,17 @@ public class Change : MonoBehaviour
 
             if (enemyTargetManeger != null)
                 enemyTargetManeger.SetTarget(this.transform.parent.gameObject);
+            if(!changed)
+            {
+                StartCoroutine(SetChangedTrueForSeconds(0.2f));
+            }
         }
+    }
+
+    IEnumerator SetChangedTrueForSeconds(float second)
+    {
+        changed = true;
+        yield return new WaitForSeconds(second);
+        changed = false;
     }
 }
