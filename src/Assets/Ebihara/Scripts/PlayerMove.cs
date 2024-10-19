@@ -80,7 +80,10 @@ public class PlayerMove : MonoBehaviour
         input = context.ReadValue<Vector2>();
         //Debug.Log(input);
     }
-
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        playerParent.GetComponent<Rigidbody>().AddForce(0f, 1.4f, 0f, ForceMode.Impulse);
+    }
     public void ChangeAim(InputAction.CallbackContext context)
     {
         Vector3 angle = this.transform.parent.localEulerAngles;
