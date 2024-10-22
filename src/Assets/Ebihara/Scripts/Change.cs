@@ -72,7 +72,7 @@ public class Change : MonoBehaviour
             this.transform.localEulerAngles = angles;
             Debug.Log(this.transform.localEulerAngles.ToString());
 
-            enemyManager.ResetSearch();
+            enemyManager.ResetSearch(playerMove.transform.position);
             changeObj = null;
 
             if (enemyTargetManeger != null)
