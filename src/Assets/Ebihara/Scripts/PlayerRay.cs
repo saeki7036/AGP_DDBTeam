@@ -90,7 +90,7 @@ public class PlayerRay : MonoBehaviour
             if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance) && raycastHit.collider.tag == "Enemy")
             {
                 game = raycastHit.collider.gameObject;
-                change.ChangeEnemy(game);
+                change.ChangeEnemy(game);//FPS状態の時でもOK(playerMove.IsChangeGame == true)
             }
 
         }
