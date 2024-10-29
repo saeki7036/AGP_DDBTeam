@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletBaseClass : MonoBehaviour
 {
-    [SerializeField] private GameObject Player;
+    //[SerializeField] private GameObject Player;
     [SerializeField] private float DestroyIntarval = 10f;
     [SerializeField] private float BulletPower = 60;
     private float DestroyTime = 0;
@@ -16,10 +16,9 @@ public class BulletBaseClass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.FindWithTag("Player");
-        //rb = GetComponent<Rigidbody>();
-
-        Vector3 Forward = Player.transform.position - transform.position + Vector3.up * 0.5f;
+        //Player = GameObject.FindWithTag("Player");
+        //rb = GetComponent<Rigidbody>();   
+        Vector3 Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
         if (this.tag == "PlayerBullet")
         {
             Forward = transform.forward;

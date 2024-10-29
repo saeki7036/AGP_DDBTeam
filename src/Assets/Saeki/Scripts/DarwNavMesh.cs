@@ -32,7 +32,7 @@ public class DarwNavMesh : MonoBehaviour
         if (agent.hasPath)
         {
             Vector3[] corners = agent.path.corners;
-            Debug.Log(corners.Length);
+            //Debug.Log(corners.Length);
             return;
             Vector3 fromPoint = transform.position;
             foreach(var toPoint in agent.path.corners)
