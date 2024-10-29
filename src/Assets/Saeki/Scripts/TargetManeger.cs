@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTargetManeger : MonoBehaviour
+public class TargetManeger : MonoBehaviour
 {
-    private List<EnemyBaseClass> Enemy = new List<EnemyBaseClass>();
-    private GameObject playerObject;
+    private static List<EnemyBaseClass> Enemy = new List<EnemyBaseClass>();
+    private static GameObject playerObject;
+    /// <summary>
+    /// staticで宣言されたGetメゾット
+    /// </summary>
+    /// <returns>プレイヤーのオブジェクト</returns>
+    public static GameObject getPlayerObj() { return playerObject; }
     void Start()
     {
         playerObject = GameObject.FindWithTag("Player");
         GameObject[] onFieldEnemy = GameObject.FindGameObjectsWithTag("Enemy");
 
-        foreach (GameObject g in onFieldEnemy)       
-            Enemy.Add(g.GetComponentInParent<EnemyBaseClass>());
-        
+        foreach (GameObject g in onFieldEnemy)
+            AddEnemyBaseClass(g);
     }
 
     /// <summary>
     /// 敵対する対象を変更する
     /// </summary>
-    public void SetTarget(GameObject player)
+    public static void SetTarget(GameObject player)
     {
         playerObject = player;
         foreach (EnemyBaseClass baseClass in Enemy)
@@ -30,7 +34,7 @@ public class EnemyTargetManeger : MonoBehaviour
     /// <summary>
     /// 敵対対象の引数の確保
     /// </summary>
-    public void AddEnemyBaseClass(GameObject enemy)
+    public static void AddEnemyBaseClass(GameObject enemy)
     {
         Enemy.Add(enemy.GetComponentInParent<EnemyBaseClass>());
     }

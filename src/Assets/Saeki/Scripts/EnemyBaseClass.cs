@@ -6,23 +6,24 @@ using UnityEngine.AI;
 
 public class EnemyBaseClass : CharacterStatus
 {
-    [SerializeField] private GameObject Target;
+    [SerializeField] protected GameObject Target;
     [SerializeField] private SearchColliderScript collScript;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private NavMeshAgent Agent;
+    [SerializeField] protected NavMeshAgent Agent;
     [SerializeField] private Material material;
 
-    [SerializeField] private float moveSpeed = 3.5f;
-    [SerializeField] private float rotationSpeed = 0.1f;
+    [SerializeField] protected float moveSpeed = 3.5f;
+    [SerializeField] protected float rotationSpeed = 0.1f;
 
     [SerializeField] private GunStatus guns;
     [SerializeField] private GameObject gunObject;
     [SerializeField] private int remainingBullets;
 
-    [SerializeField] private float lockonIntarval = 3f;
+    [SerializeField] protected float lockonIntarval = 3f;
 
-    private float remainingCount = 0,lockonCount = 0;
-    private bool remainingCheck = false, lockonCheck = false;
+    protected float remainingCount = 0,lockonCount = 0;
+    protected bool remainingCheck = false, lockonCheck = false;
+
     private MeshRenderer mesh;
     public GameObject TargetSetting
     {
@@ -98,7 +99,7 @@ public class EnemyBaseClass : CharacterStatus
 
     public bool FindCheck() { return (collScript.IsFindPlayer || lockonCheck); }
 
-    void StopChase()
+    protected virtual void StopChase()
     {
         //Agent.remainingDistance < distance
         if (FindCheck())
