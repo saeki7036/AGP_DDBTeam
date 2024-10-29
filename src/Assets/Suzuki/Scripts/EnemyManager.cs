@@ -16,6 +16,7 @@ using UnityEngine;
     public SearchColliderScript SearchColliderScript
     {
         get { return searchColliderScript; }
+        set { searchColliderScript = value; }
     }
 
     //public void SetSearchColliderScript(SearchColliderScript searchColliderScript)
@@ -47,4 +48,20 @@ public class EnemyManager : MonoBehaviour
             }
         }
     }
+
+#if UNITY_EDITOR
+    void OnValidate()// インスペクター上の変更時
+    {
+        if(enemyList != null)
+        {
+            foreach(var enemy in enemyList)
+            {
+                if(enemy != null)
+                {
+                    enemy.SearchColliderScript = enemy.EnemyClass.GetComponentInChildren<SearchColliderScript>();
+                }
+            }
+        }
+    }
+#endif
 }
