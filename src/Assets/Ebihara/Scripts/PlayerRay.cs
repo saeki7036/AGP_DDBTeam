@@ -10,14 +10,27 @@ public class PlayerRay : MonoBehaviour
 {
     [SerializeField] Change change;
     [SerializeField] float distance = 50.0f;//���o�\�ȋ���
+    [SerializeField] LayerMask gazeHitMask;
     Transform transforms;
     GameObject game;
     PlayerMove playerMove;
+    bool shoot;
+    Vector3 rayHitPosition;
+    
+    public bool Shoot
+    {
+        get { return shoot; }
+    }
+    public Vector3 RayHitPosition
+    {
+        get { return rayHitPosition; }
+    }
 
     // Start is called before the first frame update
     void Start() 
     {
         playerMove = FindObjectOfType<PlayerMove>();
+        shoot = false;
     }
 
     // Update is called once per frame
@@ -29,6 +42,16 @@ public class PlayerRay : MonoBehaviour
         var rayDirection = this.transform.forward.normalized;
         Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
         playerMove.Gun.transform.forward = rayDirection;
+
+        Ray playerGaze = new Ray(rayStartPosition, rayDirection);
+        if(Physics.Raycast(playerGaze, out RaycastHit hit, distance, gazeHitMask))
+        {
+            rayHitPosition = hit.transform.position;
+        }
+        else
+        {
+            rayHitPosition = transform.position + rayDirection * distance;
+        }
     }
 
     public GameObject GetObj(){ return game; }
@@ -67,18 +90,22 @@ public class PlayerRay : MonoBehaviour
             if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance) && raycastHit.collider.tag == "Enemy")
             {
                 game = raycastHit.collider.gameObject;
-                change.ChangeEnemy(game);
+                change.ChangeEnemy(game);//FPS状態の時でもOK(playerMove.IsChangeGame == true)
             }
 
         }
     }
 
-    public void Fire(InputAction.CallbackContext context)
+    public void OnFire(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
             // PlayerMoveに飛ばして弾を出す
             playerMove.Gun.Shoot(transform.position, playerMove.Gun.transform.forward, "Player", false);
+            if(!shoot)
+            {
+                StartCoroutine(SetShootTrueForSeconds(0.2f));
+            }
         }
     }
 
@@ -118,5 +145,12 @@ public class PlayerRay : MonoBehaviour
             transforms = null;
             game = null;
         }
+    }
+
+    IEnumerator SetShootTrueForSeconds(float second)
+    {
+        shoot = true;
+        yield return new WaitForSeconds(second);
+        shoot = false;
     }
 }
