@@ -14,7 +14,7 @@ public class Change : MonoBehaviour
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
 
-　　[SerializeField] EnemyTargetManeger enemyTargetManeger;
+　　[SerializeField] TargetManeger targetManeger;
     [SerializeField] EnemyManager enemyManager;
 
     bool changed;
@@ -75,8 +75,9 @@ public class Change : MonoBehaviour
             enemyManager.ResetSearch(playerMove.transform.position);
             changeObj = null;
 
-            if (enemyTargetManeger != null)
-                enemyTargetManeger.SetTarget(this.transform.parent.gameObject);
+            //if (targetManeger != null)
+            TargetManeger.SetTarget(this.transform.parent.gameObject);
+
             if(!changed)
             {
                 StartCoroutine(SetChangedTrueForSeconds(0.2f));
