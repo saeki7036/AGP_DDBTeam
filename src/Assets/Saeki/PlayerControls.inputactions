@@ -313,6 +313,17 @@
                 },
                 {
                     "name": "",
+                    "id": "69a56cd8-27de-44d8-8454-778aca256b02",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Abutton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fc9f97d4-4b41-4485-8a44-9f82723c08d2",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
