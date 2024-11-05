@@ -64,7 +64,7 @@ public class Change : MonoBehaviour
 
             //Playerの位置調整
             this.transform.position = changeObj.transform.position;
-            Vector3 correction = new Vector3(0f, 1.5f, 0f);
+            Vector3 correction = new Vector3(0f, 0.4f, 0f);
             this.transform.position += correction;
 
             Vector3 angles = this.transform.localEulerAngles;
