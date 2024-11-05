@@ -97,7 +97,6 @@ public class PlayerRay : MonoBehaviour
                     playerAnimator.SetTrigger("Change");
                 }
             }
-            
         }
     }
 
