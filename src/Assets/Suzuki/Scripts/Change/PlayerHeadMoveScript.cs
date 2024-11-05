@@ -13,6 +13,8 @@ public class PlayerHeadMoveScript : MonoBehaviour
     }
     public IEnumerator MoveHead(Vector3 start, Vector3 end, GameObject changeObj)
     {
+        transform.LookAt(end);
+
         float totalTime = Vector3.Distance(start, end) / moveSpeed;
         float timer = 0f;
 

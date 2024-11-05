@@ -32,7 +32,6 @@ public class PlayerRay : MonoBehaviour
     {
         playerMove = FindObjectOfType<PlayerMove>();
         shoot = false;
-        playerAnimator = TargetManeger.getPlayerObj().GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -93,7 +92,10 @@ public class PlayerRay : MonoBehaviour
             {
                 game = raycastHit.collider.gameObject;
                 change.ChangeEnemy(game);
-                playerAnimator.SetTrigger("Change");
+                if (TargetManeger.getPlayerObj().TryGetComponent<Animator>(out playerAnimator))
+                {
+                    playerAnimator.SetTrigger("Change");
+                }
             }
             
         }
