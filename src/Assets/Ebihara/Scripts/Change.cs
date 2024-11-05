@@ -17,6 +17,7 @@ public class Change : MonoBehaviour
 　　[SerializeField] TargetManeger targetManeger;
     [SerializeField] EnemyManager enemyManager;
 
+    [SerializeField] GameObject playerHead;
     bool changed;
 
     public bool Changed
@@ -46,42 +47,83 @@ public class Change : MonoBehaviour
         if (characterStatus.IsDead == true)
         {
             //Debug.Log("乗り移る敵:" + changeObj.name);
-
             Debug.Log("Change");
 
-            //親をEnemyに
-            transform.parent.gameObject.tag = "Enemy";
+            // 頭を飛ばしてからカメラ変更
+            PlayerHeadMoveScript playerHeadMoveScript = Instantiate(playerHead, transform.position, Quaternion.identity).GetComponent<PlayerHeadMoveScript>();// プレイヤーの頭の位置からの生成に変更予定
+            StartCoroutine(playerHeadMoveScript.MoveHead(transform.position, characterStatus.transform.position, changeObj));
 
-            //親の付け替え
-            this.gameObject.transform.parent = changeObj.transform;
-            playerMove.SetplayerParent(this.transform.parent.gameObject);
+            ////親をEnemyに
+            //transform.parent.gameObject.tag = "Enemy";
 
-            //親をPlayerに
-            this.transform.parent.gameObject.tag = "Player";
+            ////親の付け替え
+            //this.gameObject.transform.parent = changeObj.transform;
+            //playerMove.SetplayerParent(this.transform.parent.gameObject);
 
-            //銃の変更
-            playerMove.SetGunObject();
+            ////親をPlayerに
+            //this.transform.parent.gameObject.tag = "Player";
 
-            //Playerの位置調整
-            this.transform.position = changeObj.transform.position;
-            Vector3 correction = new Vector3(0f, 1.5f, 0f);
-            this.transform.position += correction;
+            ////銃の変更
+            //playerMove.SetGunObject();
 
-            Vector3 angles = this.transform.localEulerAngles;
-            angles.y = 0f;
-            this.transform.localEulerAngles = angles;
-            Debug.Log(this.transform.localEulerAngles.ToString());
+            ////Playerの位置調整
+            //this.transform.position = changeObj.transform.position;
+            //Vector3 correction = new Vector3(0f, 1.5f, 0f);
+            //this.transform.position += correction;
 
-            enemyManager.ResetSearch(playerMove.transform.position);
-            changeObj = null;
+            //Vector3 angles = this.transform.localEulerAngles;
+            //angles.y = 0f;
+            //this.transform.localEulerAngles = angles;
+            //Debug.Log(this.transform.localEulerAngles.ToString());
 
-            //if (targetManeger != null)
-            TargetManeger.SetTarget(this.transform.parent.gameObject);
+            //enemyManager.ResetSearch(playerMove.transform.position);
+            //changeObj = null;
 
-            if(!changed)
-            {
-                StartCoroutine(SetChangedTrueForSeconds(0.2f));
-            }
+            ////if (targetManeger != null)
+            //TargetManeger.SetTarget(this.transform.parent.gameObject);
+
+            //if(!changed)
+            //{
+            //    StartCoroutine(SetChangedTrueForSeconds(0.2f));
+            //}
+        }
+    }
+
+    public void ChangeCameraTarget(GameObject changeObj)
+    {
+
+        //親をEnemyに
+        transform.parent.gameObject.tag = "Enemy";
+
+        //親の付け替え
+        this.gameObject.transform.parent = changeObj.transform;
+        playerMove.SetplayerParent(this.transform.parent.gameObject);
+
+        //親をPlayerに
+        this.transform.parent.gameObject.tag = "Player";
+
+        //銃の変更
+        playerMove.SetGunObject();
+
+        //Playerの位置調整
+        this.transform.position = changeObj.transform.position;
+        Vector3 correction = new Vector3(0f, 1.5f, 0f);
+        this.transform.position += correction;
+
+        Vector3 angles = this.transform.localEulerAngles;
+        angles.y = 0f;
+        this.transform.localEulerAngles = angles;
+        Debug.Log(this.transform.localEulerAngles.ToString());
+
+        enemyManager.ResetSearch(playerMove.transform.position);
+        changeObj = null;
+
+        //if (targetManeger != null)
+        TargetManeger.SetTarget(this.transform.parent.gameObject);
+
+        if (!changed)
+        {
+            StartCoroutine(SetChangedTrueForSeconds(0.2f));
         }
     }
 
