@@ -95,7 +95,6 @@ public class PlayerRay : MonoBehaviour
                 change.ChangeEnemy(game);
                 playerAnimator.SetTrigger("Change");
             }
-            
         }
     }
 

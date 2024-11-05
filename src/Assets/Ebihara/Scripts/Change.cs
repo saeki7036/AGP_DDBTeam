@@ -105,10 +105,10 @@ public class Change : MonoBehaviour
         //銃の変更
         playerMove.SetGunObject();
 
-        //Playerの位置調整
-        this.transform.position = changeObj.transform.position;
-        Vector3 correction = new Vector3(0f, 1.5f, 0f);
-        this.transform.position += correction;
+            //Playerの位置調整
+            this.transform.position = changeObj.transform.position;
+            Vector3 correction = new Vector3(0f, 0.4f, 0f);
+            this.transform.position += correction;
 
         Vector3 angles = this.transform.localEulerAngles;
         angles.y = 0f;
