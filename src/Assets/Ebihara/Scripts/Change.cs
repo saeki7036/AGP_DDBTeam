@@ -18,6 +18,7 @@ public class Change : MonoBehaviour
     [SerializeField] EnemyManager enemyManager;
 
     [SerializeField] GameObject playerHead;
+    bool changing;
     bool changed;
 
     public bool Changed
@@ -29,6 +30,7 @@ public class Change : MonoBehaviour
     {
         playerRay = camera.GetComponent<PlayerRay>();
         playerMove = this.GetComponent<PlayerMove>();
+        changing = false;
     }
 
     // Update is called once per frame
@@ -50,8 +52,10 @@ public class Change : MonoBehaviour
             Debug.Log("Change");
 
             // 頭を飛ばしてからカメラ変更
-            PlayerHeadMoveScript playerHeadMoveScript = Instantiate(playerHead, transform.position, Quaternion.identity).GetComponent<PlayerHeadMoveScript>();// プレイヤーの頭の位置からの生成に変更予定
-            StartCoroutine(playerHeadMoveScript.MoveHead(transform.position, characterStatus.transform.position, changeObj));
+            if (!changing)
+            {
+                StartCoroutine(DelayInstantiateHeadAndShoot(0.8f, changeObj));
+            }
 
             ////親をEnemyに
             //transform.parent.gameObject.tag = "Enemy";
@@ -107,8 +111,8 @@ public class Change : MonoBehaviour
 
             //Playerの位置調整
             this.transform.position = changeObj.transform.position;
-            Vector3 correction = new Vector3(0f, 0.4f, 0f);
-            this.transform.position += correction;
+            Vector3 correction = new Vector3(0f, 1.41f, 0.47f);
+            this.transform.localPosition = correction;
 
         Vector3 angles = this.transform.localEulerAngles;
         angles.y = 0f;
@@ -125,6 +129,7 @@ public class Change : MonoBehaviour
         {
             StartCoroutine(SetChangedTrueForSeconds(0.2f));
         }
+        changing = false;
     }
 
     IEnumerator SetChangedTrueForSeconds(float second)
@@ -132,5 +137,14 @@ public class Change : MonoBehaviour
         changed = true;
         yield return new WaitForSeconds(second);
         changed = false;
+    }
+
+    IEnumerator DelayInstantiateHeadAndShoot(float delaySeconds,GameObject changeObj)
+    {
+        changing = true;
+        yield return new WaitForSeconds(delaySeconds);
+        PlayerHeadMoveScript playerHeadMoveScript = Instantiate(playerHead, transform.position, Quaternion.identity).GetComponent<PlayerHeadMoveScript>();// プレイヤーの頭の位置からの生成に変更予定
+        yield return StartCoroutine(playerHeadMoveScript.MoveHead(transform.position + new Vector3(0f, 1.3f, 0f),
+            characterStatus.transform.position + new Vector3(0f, 1.3f, 0f), changeObj));
     }
 }
