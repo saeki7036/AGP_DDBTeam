@@ -16,7 +16,8 @@ public class PlayerRay : MonoBehaviour
     PlayerMove playerMove;
     bool shoot;
     Vector3 rayHitPosition;
-    
+    Animator playerAnimator;
+
     public bool Shoot
     {
         get { return shoot; }
@@ -31,6 +32,7 @@ public class PlayerRay : MonoBehaviour
     {
         playerMove = FindObjectOfType<PlayerMove>();
         shoot = false;
+        playerAnimator = TargetManeger.getPlayerObj().GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -91,8 +93,8 @@ public class PlayerRay : MonoBehaviour
             {
                 game = raycastHit.collider.gameObject;
                 change.ChangeEnemy(game);
+                playerAnimator.SetTrigger("Change");
             }
-
         }
     }
 

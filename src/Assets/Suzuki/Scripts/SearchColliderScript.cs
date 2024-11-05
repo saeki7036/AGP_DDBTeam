@@ -89,7 +89,6 @@ public class SearchColliderScript : MonoBehaviour
         {
             inSearchArea = true;
             player = other.transform;
-            Debug.Log(player);
         }
     }
 
