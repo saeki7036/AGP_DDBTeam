@@ -25,11 +25,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] InputActionReference aim;
     bool isAiming;
 
-    bool isChangeMode;
+    //bool isChangeMode;
 
-    CinemachineFramingTransposer transposer;
-    [SerializeField] float fpsDistance;
-    [SerializeField] float tpsDistance;
+    //CinemachineFramingTransposer transposer;
+    //[SerializeField] float fpsDistance;
+    //[SerializeField] float tpsDistance;
 
     [SerializeField] CinemachineVirtualCamera lookCamera;
 
@@ -47,10 +47,10 @@ public class PlayerMove : MonoBehaviour
         get { return gun; }
     }
 
-    public bool IsChangeGame
-    {
-        get { return isChangeMode; }
-    }
+    //public bool IsChangeGame
+    //{
+    //    get { return isChangeMode; }
+    //}
 
     // Start is called before the first frame update
     void Start()
@@ -59,9 +59,10 @@ public class PlayerMove : MonoBehaviour
         playerRay = camera.GetComponent<PlayerRay>();
         SetGunObject();
         isAiming= false;
-        isChangeMode= false;
 
-        transposer = lookCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        //isChangeMode= false;
+
+        //transposer = lookCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
     }
 
     // Update is called once per frame
@@ -128,19 +129,19 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    public void ChangeMode(InputAction.CallbackContext context)
-    {
-        if (isChangeMode == false)
-        {
-            isChangeMode= true;
-            transposer.m_CameraDistance = tpsDistance;
-        }
-        else
-        {
-            isChangeMode= false;
-            transposer.m_CameraDistance = fpsDistance;
-        }
-    }
+    //public void ChangeMode(InputAction.CallbackContext context)
+    //{
+    //    if (isChangeMode == false)
+    //    {
+    //        isChangeMode= true;
+    //        transposer.m_CameraDistance = tpsDistance;
+    //    }
+    //    else
+    //    {
+    //        isChangeMode= false;
+    //        transposer.m_CameraDistance = fpsDistance;
+    //    }
+    //}
 
     public void OnLook(InputAction.CallbackContext context)
     {
