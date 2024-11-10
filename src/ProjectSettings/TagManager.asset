@@ -9,6 +9,7 @@ TagManager:
   - PlayerBullet
   - EnemyBullet
   - Breakable
+  - VCamera
   layers:
   - Default
   - TransparentFX
