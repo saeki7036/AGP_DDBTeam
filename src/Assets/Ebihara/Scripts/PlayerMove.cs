@@ -31,7 +31,7 @@ public class PlayerMove : MonoBehaviour
     //[SerializeField] float fpsDistance;
     //[SerializeField] float tpsDistance;
 
-    [SerializeField] CinemachineVirtualCamera lookCamera;
+    //[SerializeField] CinemachineVirtualCamera lookCamera;
 
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
