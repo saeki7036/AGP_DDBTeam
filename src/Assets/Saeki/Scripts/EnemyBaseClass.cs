@@ -58,6 +58,11 @@ public class EnemyBaseClass : CharacterStatus
         StartSetUp();//Šî’êƒNƒ‰ƒX‚Ìˆ—
     }
 
+    protected virtual void SetUpOverride()
+    {
+        return;
+    }
+
     public void LostHitPoint()
     {
         Agent.enabled = false;
@@ -116,6 +121,7 @@ public class EnemyBaseClass : CharacterStatus
             Target = GameObject.FindWithTag("Player");
         }
     }
+
     void OnFire()
     {
         remainingCount = 0f;
