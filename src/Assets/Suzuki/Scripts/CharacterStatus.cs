@@ -25,6 +25,11 @@ public class CharacterStatus : MonoBehaviour
     {
         get { return IsDead && remainPossessTime > 0; }
     }
+
+    public string ObjectTag
+    {
+        get { return gameObject.tag; }
+    }
     // Start is called before the first frame update
     public void StartSetUp()
     {

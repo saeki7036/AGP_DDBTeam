@@ -10,14 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bca5a02060f406544935f645d9f5e346, type: 3}
-  m_Name: HandGun
+  m_Name: ShotGun
   m_EditorClassIdentifier: 
-  name: HandGun
-  id: 1
+  name: "\u30B7\u30E7\u30C3\u30C8\u30AC\u30F3"
+  id: 3
   bulletPrefab: {fileID: 2720097741136659255, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
-  maxBullet: 60
+  maxBullet: 2
   bulletSettings:
-  - diffusion: {x: 0, y: 0}
+  - diffusion: {x: 0.6, y: 0}
     randomNess: 0
-  weaponRole: 1
-  subWeapon: {fileID: 0}
+  - diffusion: {x: -0.6, y: 0}
+    randomNess: 0
+  - diffusion: {x: -0.4, y: 0.6}
+    randomNess: 0
+  - diffusion: {x: 0.4, y: 0.6}
+    randomNess: 0
+  - diffusion: {x: -0.4, y: -0.6}
+    randomNess: 0
+  - diffusion: {x: 0.4, y: -0.6}
+    randomNess: 0
+  weaponRole: 0
+  subWeapon: {fileID: 3993766834917909290, guid: 03f82252fc4ff8340936cdb188a204da, type: 3}

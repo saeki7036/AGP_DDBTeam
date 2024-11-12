@@ -19,7 +19,14 @@ public class BulletScript : MonoBehaviour
         {
             if (other.TryGetComponent<CharacterStatus>(out CharacterStatus character))// キャラクターに当たったとき
             {
-                character.TakeDamage(bulletData.AttackPower);
+                if (character.ObjectTag == "Player")
+                {
+                    character.TakeDamage(1f);// 将来ダメージ種ごとでダメージの値を変えるかも
+                }
+                else
+                {
+                    character.TakeDamage(bulletData.AttackPower);
+                }
                 Destroy(this.gameObject);
             }
         }
