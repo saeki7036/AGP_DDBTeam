@@ -175,7 +175,7 @@ AnimatorStateTransition:
     m_ConditionEvent: SIghtAiming
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: ReloadnigNow
+    m_ConditionEvent: ReloadingNow
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3592898334629337479}
@@ -960,7 +960,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: ReloadnigNow
+  - m_Name: ReloadingNow
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1411,7 +1411,7 @@ AnimatorStateTransition:
     m_ConditionEvent: SIghtAiming
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: ReloadnigNow
+    m_ConditionEvent: ReloadingNow
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3592898334629337479}
