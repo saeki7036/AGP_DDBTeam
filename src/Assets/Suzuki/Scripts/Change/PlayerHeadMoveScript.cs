@@ -9,7 +9,6 @@ public class PlayerHeadMoveScript : MonoBehaviour
     Change change;
     CinemachineVirtualCamera virtualCamera;
 
-    GameObject vCamera;
     CinemachineFramingTransposer framingTransposer;
     float headDistance = 5.0f;
     float playerDistance = 0.3f;
@@ -18,9 +17,6 @@ public class PlayerHeadMoveScript : MonoBehaviour
     {
         Debug.Log("Start");
         change = GameObject.FindObjectOfType<Change>();
-        //vCamera = GameObject.FindWithTag("VCamera");
-        //virtualCamera= vCamera.GetComponent<CinemachineVirtualCamera>();
-        //virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
     }
     public IEnumerator MoveHead(Vector3 start, Vector3 end, GameObject changeObj)
     {
@@ -47,9 +43,8 @@ public class PlayerHeadMoveScript : MonoBehaviour
     {
         Debug.Log("target:" + target.name);
 
-        //change = GameObject.FindObjectOfType<Change>();
-        vCamera = GameObject.FindWithTag("VCamera");
-        virtualCamera = vCamera.GetComponent<CinemachineVirtualCamera>();
+        virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+
         framingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
 
         virtualCamera.Follow = target;
