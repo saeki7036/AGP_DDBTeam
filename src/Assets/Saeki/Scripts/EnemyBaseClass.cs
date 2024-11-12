@@ -25,7 +25,7 @@ public class EnemyBaseClass : CharacterStatus
     protected bool remainingCheck = false, lockonCheck = false;
 
     private float WatchCount = 0;
-    private bool isWatched = false;
+    private bool isWatched = false ,isGetMesh = false;
     private MeshRenderer mesh;
 
     public void Watch() { isWatched = true; WatchCount = 0; }
@@ -53,9 +53,17 @@ public class EnemyBaseClass : CharacterStatus
     {
         Target = GameObject.FindWithTag("Player");
         Agent.speed = moveSpeed;
-        mesh = GetComponent<MeshRenderer>();
+        if(this.TryGetComponent<MeshRenderer>(out MeshRenderer Mesh))
+        {
+            mesh = Mesh; isGetMesh = true;
+        }
         Agent.destination = GetTargetPos();
         StartSetUp();//Šî’êƒNƒ‰ƒX‚Ìˆ—
+    }
+
+    protected virtual void SetUpOverride()
+    {
+        return;
     }
 
     public void LostHitPoint()
@@ -64,7 +72,7 @@ public class EnemyBaseClass : CharacterStatus
         rb.isKinematic = false;
 
         //‰¼€–Sˆ—(3Dƒ‚ƒfƒ‹À‘•Œãíœ)
-        if (mesh.material != material)
+        if (isGetMesh && mesh.material != material)
         {
             mesh.material = material;
         }
@@ -116,6 +124,7 @@ public class EnemyBaseClass : CharacterStatus
             Target = GameObject.FindWithTag("Player");
         }
     }
+
     void OnFire()
     {
         remainingCount = 0f;
