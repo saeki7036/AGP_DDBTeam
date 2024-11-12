@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class EnemyPatrolController : EnemyBaseClass
 { 
-    [SerializeField] private float nextPosDistance = 12f;
+    [SerializeField] private float nextPosDistance = 4f;
     [SerializeField] private Transform[] wayPoints;
     [SerializeField] private bool isRoop = true;
    
-    private int nextPoint = -1;
+    private int nextPoint = 0;
     protected override Vector3 GetTargetPos() { return NextPointUpdate(); }
 
     private void GoNextPoint()
@@ -25,6 +25,7 @@ public class EnemyPatrolController : EnemyBaseClass
     }
     private Vector3 NextPointUpdate()
     {
+        
         // 地点がなにも設定されていないときに返す
         if (wayPoints.Length == 0)
             return this.transform.position;
@@ -36,7 +37,7 @@ public class EnemyPatrolController : EnemyBaseClass
 
         else if (GetDistanseForNavmesh() < nextPosDistance)
             GoNextPoint();
-
+        
         // エージェントが現在設定された目標地点に行くように設定
         return wayPoints[nextPoint].position;
     }

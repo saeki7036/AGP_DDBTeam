@@ -10,25 +10,49 @@ public class PlayerRay : MonoBehaviour
 {
     [SerializeField] Change change;
     [SerializeField] float distance = 50.0f;//���o�\�ȋ���
+    [SerializeField] LayerMask gazeHitMask;
     Transform transforms;
     GameObject game;
     PlayerMove playerMove;
+    bool shoot;
+    Vector3 rayHitPosition;
+    Animator playerAnimator;
+
+    public bool Shoot
+    {
+        get { return shoot; }
+    }
+    public Vector3 RayHitPosition
+    {
+        get { return rayHitPosition; }
+    }
 
     // Start is called before the first frame update
     void Start() 
     {
         playerMove = FindObjectOfType<PlayerMove>();
+        shoot = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //�J�����̈ʒu����Ƃ΂�
+        //rayの始まり
         var rayStartPosition = this.transform.position;
-        //�J�����������Ă�����ɂƂ΂�
+        //rayの方向
         var rayDirection = this.transform.forward.normalized;
         Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
         playerMove.Gun.transform.forward = rayDirection;
+
+        Ray playerGaze = new Ray(rayStartPosition, rayDirection);
+        if(Physics.Raycast(playerGaze, out RaycastHit hit, distance, gazeHitMask))
+        {
+            rayHitPosition = hit.transform.position;
+        }
+        else
+        {
+            rayHitPosition = transform.position + rayDirection * distance;
+        }
     }
 
     public GameObject GetObj(){ return game; }
@@ -53,13 +77,13 @@ public class PlayerRay : MonoBehaviour
             //    game = hit.collider.GameObject();
             //    change.ChangeEnemy(game);
             //}
-            //�J�����̈ʒu����Ƃ΂�
+            //rayの始まり
             var rayStartPosition = this.transform.position;
 
-            //�J�����������Ă�����ɂƂ΂�
+            //rayの方向
             var rayDirection = this.transform.forward.normalized;
 
-            //Hit�����I�u�W�F�N�g�i�[�p
+            //Hitしたオブジェクト格納
             RaycastHit raycastHit;
 
             Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
@@ -68,43 +92,24 @@ public class PlayerRay : MonoBehaviour
             {
                 game = raycastHit.collider.gameObject;
                 change.ChangeEnemy(game);
+                if (TargetManeger.getPlayerObj().TryGetComponent<Animator>(out playerAnimator))
+                {
+                    playerAnimator.SetTrigger("Change");
+                }
             }
-
         }
-        }
+    }
 
-    public void Fire(InputAction.CallbackContext context)
+    public void OnFire(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            // �e�e���ˏ����ȑO�̏����A�O�̈׎���Ă����Ă��邪�s�v�ɂȂ莟�����
-            ////�J�����̈ʒu����Ƃ΂�
-            //var rayStartPosition = this.transform.position;
-
-            ////�J�����������Ă�����ɂƂ΂�
-            //var rayDirection = this.transform.forward.normalized;
-
-            ////Hit�����I�u�W�F�N�g�i�[�p
-            //RaycastHit raycastHit;
-
-            //Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
-
-            //if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance))
-            //{
-            //    // Log��Hit�����I�u�W�F�N�g�����o��
-            //    //Debug.Log(context.phase);
-            //    Debug.Log("HitObject : " + raycastHit.collider.gameObject.name);
-
-            //    if (raycastHit.collider.tag == "Enemy")
-            //    {
-            //        Debug.Log("EnemyHit");
-            //        transforms = raycastHit.transform;
-            //        game=raycastHit.collider.gameObject;
-            //    }
-            //}
-
-            // PlayerMove���猻�ݑ��쒆�̃L�����N�^�[���擾���A���̃L�����N�^�[�̎�����̒e�ۂ𔭎˗\��
+            // PlayerMoveに飛ばして弾を出す
             playerMove.Gun.Shoot(transform.position, playerMove.Gun.transform.forward, "Player", false);
+            if(!shoot)
+            {
+                StartCoroutine(SetShootTrueForSeconds(0.2f));
+            }
         }
     }
 
@@ -112,20 +117,19 @@ public class PlayerRay : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            //�J�����̈ʒu����Ƃ΂�
+            //rayの始まり
             var rayStartPosition = this.transform.position;
 
-            //�J�����������Ă�����ɂƂ΂�
+            //rayの方向
             var rayDirection = this.transform.forward.normalized;
 
-            //Hit�����I�u�W�F�N�g�i�[�p
+            //Hitしたオブジェクト格納
             RaycastHit raycastHit;
 
             Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
 
             if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance))
             {
-                // Log��Hit�����I�u�W�F�N�g�����o��
                 //Debug.Log(context.phase);
                 Debug.Log("HitObject : " + raycastHit.collider.gameObject.name);
 
@@ -145,5 +149,12 @@ public class PlayerRay : MonoBehaviour
             transforms = null;
             game = null;
         }
+    }
+
+    IEnumerator SetShootTrueForSeconds(float second)
+    {
+        shoot = true;
+        yield return new WaitForSeconds(second);
+        shoot = false;
     }
 }

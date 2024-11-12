@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Wall
   - Enemy
+  - PlayerBullet
+  - EnemyBullet
+  - Breakable
+  - VCamera
   layers:
   - Default
   - TransparentFX
@@ -15,7 +19,7 @@ TagManager:
   - UI
   - Stage
   - Enemy
-  - 
+  - BulletThroughLayer
   - 
   - 
   - 

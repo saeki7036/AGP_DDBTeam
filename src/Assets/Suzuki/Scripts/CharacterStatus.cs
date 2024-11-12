@@ -7,6 +7,7 @@ public class CharacterStatus : MonoBehaviour
     [SerializeField] CharacterData characterData;
     float hp;
     float remainPossessTime;
+    float playerInvincibleTIme;
 
     // プロパティ
     public float Hp
@@ -21,9 +22,14 @@ public class CharacterStatus : MonoBehaviour
     {
         get { return hp <= 0; }
     }
-    public bool CanPossess
+    public bool CanPossess// 乗り移れるかどうか
     {
         get { return IsDead && remainPossessTime > 0; }
+    }
+
+    public string ObjectTag
+    {
+        get { return gameObject.tag; }
     }
     // Start is called before the first frame update
     public void StartSetUp()
@@ -42,6 +48,11 @@ public class CharacterStatus : MonoBehaviour
         {
             hp = 0f;
         }
+
+        if(gameObject.tag == "Player")
+        {
+
+        }
     }
 
     /// <summary>
@@ -56,13 +67,13 @@ public class CharacterStatus : MonoBehaviour
         }
     }
 
-    public void OnPossess()
+    public void OnPossess()// 取り憑き時の処理
     {
         SetHpMax();
     }
 
     void SetHpMax()
     {
-        hp = characterData.MaxHp;
+        hp = characterData.MaxHp;// HPを最大に設定
     }
 }

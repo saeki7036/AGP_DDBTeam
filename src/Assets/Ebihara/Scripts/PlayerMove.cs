@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-
+using Cinemachine;
+using TMPro;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -12,18 +13,31 @@ public class PlayerMove : MonoBehaviour
     float moveZ;
     float moveX;
 
-    float moveSpeed = 6f; //�ړ����x
+    [SerializeField]float moveSpeed = 6f; //スピード
 
-    Vector3 velocity = Vector3.zero; //�ړ�����
+    Vector3 velocity = Vector3.zero; //向き
 
     GameObject playerParent;
     GunStatus gun;
+
+    [SerializeField] CinemachineInputProvider inputProvider;
+    [SerializeField] InputActionReference look;
+    [SerializeField] InputActionReference aim;
+    bool isAiming;
+
+    //bool isChangeMode;
+
+    //CinemachineFramingTransposer transposer;
+    //[SerializeField] float fpsDistance;
+    //[SerializeField] float tpsDistance;
+
+    //[SerializeField] CinemachineVirtualCamera lookCamera;
 
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
     GameObject objParent;
 
-    // �v���p�e�B
+    //親
     public GameObject PlayerParent
     {
         get { return playerParent; }
@@ -33,31 +47,42 @@ public class PlayerMove : MonoBehaviour
         get { return gun; }
     }
 
+    //public bool IsChangeGame
+    //{
+    //    get { return isChangeMode; }
+    //}
+
     // Start is called before the first frame update
     void Start()
     {
         playerParent = transform.parent.gameObject;
         playerRay = camera.GetComponent<PlayerRay>();
         SetGunObject();
+        isAiming= false;
+
+        //isChangeMode= false;
+
+        //transposer = lookCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ���I�u�W�F�N�g���烁�C���J���������̃x�N�g�����擾����
+        //カメラの方向に向く
         Vector3 direction = camera.transform.position - this.transform.position;
 
-        Vector3 lookdirection=new Vector3(direction.x,0.0f,direction.z);
+        Vector3 lookdirection = new Vector3(direction.x * -1.0f, 0.0f, direction.z * -1.0f);
 
-        playerParent.transform.rotation = Quaternion.LookRotation(-1.0f * lookdirection);
+        playerParent.transform.rotation = Quaternion.LookRotation(lookdirection);
 
-        //�O��ړ�
+        //前後
         moveZ = input.y;
-        //���E�ړ�
+        //左右
         moveX = input.x;
 
         velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * Time.deltaTime;
         playerParent.transform.Translate(velocity.x, velocity.y, velocity.z);
+
     }
 
     public void SetplayerParent(GameObject gameObject)
@@ -68,8 +93,55 @@ public class PlayerMove : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
-        //Debug.Log("Move");
+        //Debug.Log(input);
     }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        playerParent.GetComponent<Rigidbody>().AddForce(0f, 1.4f, 0f, ForceMode.Impulse);
+    }
+    public void ChangeAim(InputAction.CallbackContext context)
+    {
+        //Vector3 angle = this.transform.parent.localEulerAngles;
+
+        if(isAiming==false)
+        {
+            isAiming= true;
+            //Debug.Log("before:" + aimCamera.transform.eulerAngles);     
+            //aimCamera.transform.localEulerAngles = angle;
+            //Debug.Log("after:" + aimCamera.transform.eulerAngles);
+            inputProvider.XYAxis = aim;
+
+            //transposer.m_CameraDistance = aimDistance;//徐々に近づけるようにする
+
+            //aimCamera.Priority = 1;
+            //lookCamera.Priority = 0;
+        }
+        else
+        {
+            isAiming= false;
+            //Debug.Log("before:" + aimCamera.transform.eulerAngles);
+            //lookCamera.transform.localEulerAngles = angle;
+            //Debug.Log("after:" + aimCamera.transform.eulerAngles);
+            inputProvider.XYAxis = look;
+            //transposer.m_CameraDistance = lookDistance;
+            //lookCamera.Priority = 1;
+            //aimCamera.Priority = 0;
+        }
+    }
+
+    //public void ChangeMode(InputAction.CallbackContext context)
+    //{
+    //    if (isChangeMode == false)
+    //    {
+    //        isChangeMode= true;
+    //        transposer.m_CameraDistance = tpsDistance;
+    //    }
+    //    else
+    //    {
+    //        isChangeMode= false;
+    //        transposer.m_CameraDistance = fpsDistance;
+    //    }
+    //}
 
     public void OnLook(InputAction.CallbackContext context)
     {
@@ -89,18 +161,18 @@ public class PlayerMove : MonoBehaviour
             Vector3 quaternion = objParent.transform.eulerAngles;
             Debug.Log(quaternion);
 
-            //�e��Enemy��
+            //親のタグをEnemyに
             transform.parent.gameObject.tag = "Enemy";
 
-            //�e�̕t���ւ�
+            //親の付け替え
             this.gameObject.transform.parent = objParent.transform;
             playerParent = this.transform.parent.gameObject;
             playerParent.transform.eulerAngles = quaternion;
 
-            //�e��Player��
+            //親のタグをPlayerに
             this.transform.parent.gameObject.tag = "Player";
 
-            //Player�̈ʒu����
+            //Playerの位置調整
             this.transform.position = objParent.transform.position;
             Vector3 correction = new Vector3(0f, 1.5f, 0f);
             this.transform.position += correction;
@@ -109,7 +181,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    void SetGunObject()
+    public void SetGunObject()
     {
         gun = playerParent.GetComponentInChildren<GunStatus>();
     }
