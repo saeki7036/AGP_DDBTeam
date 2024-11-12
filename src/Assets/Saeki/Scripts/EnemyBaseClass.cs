@@ -6,44 +6,69 @@ using UnityEngine.AI;
 
 public class EnemyBaseClass : CharacterStatus
 {
-    [SerializeField] private float HitPoint = 1f;
-
-    [SerializeField] private GameObject Target;
+    [SerializeField] protected GameObject Target;
     [SerializeField] private SearchColliderScript collScript;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private NavMeshAgent Agent;
+    [SerializeField] protected NavMeshAgent Agent;
     [SerializeField] private Material material;
 
-    [SerializeField] private float moveSpeed = 3.5f;
-    [SerializeField] private float rotationSpeed = 0.1f;
+    [SerializeField] protected float moveSpeed = 3.5f;
+    [SerializeField] protected float rotationSpeed = 0.1f;
 
-    [SerializeField] private GunStatus gunStatus;
+    [SerializeField] private GunStatus guns;
     [SerializeField] private GameObject gunObject;
     [SerializeField] private int remainingBullets;
-    [SerializeField] private float fireIntarval = 3f;
 
-    private float remainingIntarval = 0;
+    [SerializeField] protected float lockonIntarval = 3f;
+
+    protected float remainingCount = 0, lockonCount = 0;
+    protected bool remainingCheck = false, lockonCheck = false;
+
+    private float WatchCount = 0;
+    private bool isWatched = false;
     private MeshRenderer mesh;
+
+    public void Watch() { isWatched = true; WatchCount = 0; }
+
+
     public GameObject TargetSetting
     {
         get { return Target; }  //取得用
         private set { Target = value; } //値入力用
     }
+    /// <summary>
+    /// 外部からのTargetの変更
+    /// </summary>
+    public void ChangeTarget(GameObject Set) { TargetSetting = Set; }
 
-    protected float GetDistanseForNavmesh() { return Agent.remainingDistance; }
+    protected float GetDistanseForNavmesh()
+    {
+        if (Agent.pathPending)
+            return float.MaxValue;
+        return
+            Agent.remainingDistance;
+    }
 
     void Start()
     {
         Target = GameObject.FindWithTag("Player");
         Agent.speed = moveSpeed;
         mesh = GetComponent<MeshRenderer>();
-        StartSetUp();
+        Agent.destination = GetTargetPos();
+        StartSetUp();//基底クラスの処理
+    }
+
+    protected virtual void SetUpOverride()
+    {
+        return;
     }
 
     public void LostHitPoint()
     {
         Agent.enabled = false;
         rb.isKinematic = false;
+
+        //仮死亡処理(3Dモデル実装後削除)
         if (mesh.material != material)
         {
             mesh.material = material;
@@ -54,52 +79,110 @@ public class EnemyBaseClass : CharacterStatus
     {
         if (Agent.enabled && Agent.isOnNavMesh)
         {
+            CorrectTargetPlayer();
+
             if (Agent.pathStatus == NavMeshPathStatus.PathInvalid)
-                Destroy(this.gameObject);
+            { 
+                this.gameObject.SetActive(false); 
+            }
             else
-                Agent.destination = GetTargetPos();
+            {
+                if (isWatched)
+                {
+                    WatchCount += Time.deltaTime;
+                    if(WatchCount > lockonIntarval)
+                    {
+                        isWatched = false;
+                    }
+                }
+
+                Agent.destination = GetPoison();
+            }        
         }
     }
-    protected virtual Vector3 GetTargetPos() { return this.transform.position; }
+
+
+    private Vector3 GetPoison()
+    {
+        if (isWatched)
+            return Target.transform.position;
+
+        return GetTargetPos(); 
+    }
+    protected virtual Vector3 GetTargetPos() 
+    {
+        return this.transform.position; 
+    }
+    
+    void CorrectTargetPlayer()
+    {
+        if(!Target.CompareTag("Player"))
+        {
+            Target = GameObject.FindWithTag("Player");
+        }
+    }
+
     void OnFire()
     {
-        remainingIntarval = 0f;
-        if(gunStatus.Shoot(gunObject.transform.position, gunObject.transform.forward, this.tag, true))
+        remainingCount = 0f;
+        if(guns.Shoot(gunObject.transform.position, gunObject.transform.forward, this.tag, true))
         {
             remainingBullets--;
-            Debug.Log("FIRE!!");
+            if (!remainingCheck) remainingCheck = true;
+            TargetManeger.WatchTarget();
+            //Debug.Log("FIRE!!");
         }
         //GameObject.Instantiate(Bullet, transform.position, Quaternion.identity);
     }
 
-    void StopChase()
+    public bool FindCheck() { return (collScript.IsFindPlayer || lockonCheck); }
+
+    protected virtual void StopChase()
     {
         //Agent.remainingDistance < distance
-        if (collScript.IsFindPlayer)
+        if (FindCheck())
         {
             Agent.speed = 0f;
             // ターゲットの方向への回転
             Vector3 direction = Target.transform.position - transform.position;
             direction.y = 0.0f;
             Quaternion lookRotation = Quaternion.LookRotation(direction, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotationSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
 
-            remainingIntarval += Time.deltaTime;
+            remainingCount += Time.deltaTime;
+            
+            if(lockonCount < lockonIntarval) 
+            {
+                lockonCount += Time.deltaTime;
+                lockonCheck = true;
+            }
+            else
+            {
+                lockonCheck = false;
+            }
         }
         else
         {
-            remainingIntarval = 0f;
+            remainingCheck = false;
+            remainingCount = 0f;
+            lockonCount = 0f;
             Agent.speed = moveSpeed;
         }
     }
 
-    private bool HealthCheck() 
+    public bool HealthCheck() 
     {
-        Debug.Log(Hp);
+        //Debug.Log(Hp);
         return this.gameObject.tag == "Enemy" && Hp > 0; 
     }
 
-    private bool ShotCheck() { return remainingIntarval > fireIntarval && remainingBullets > 0; }
+    private bool ShotCheck()
+    { 
+        if(remainingCheck)
+            return remainingCount > guns.DefaultIntarval && remainingBullets > 0;
+        else
+            return remainingCount > guns.FirstIntarval && remainingBullets > 0;
+    }
 
     private void MoveEnemy()
     {

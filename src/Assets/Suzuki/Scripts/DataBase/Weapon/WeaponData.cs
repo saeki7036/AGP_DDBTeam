@@ -1,6 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[Serializable] public class BulletSettings
+{
+    [SerializeField] Vector2 diffusion;
+    [Range(0,1),SerializeField] float randomNess = 0f;
+
+    public Vector2 Diffusion
+    {
+        get { return diffusion; }
+    }
+    public float RandomNess
+    {
+        get { return randomNess;}
+    }
+}
 
 [CreateAssetMenu(menuName = "OriginalScriptableObjects/Data/WeaponData")]
 public class WeaponData : BaseData
@@ -13,6 +29,7 @@ public class WeaponData : BaseData
 
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] int maxBullet;
+    [SerializeField] List<BulletSettings> bulletSettings;
     [SerializeField] WeaponRole weaponRole;
     [SerializeField] GameObject subWeapon;
 
@@ -24,6 +41,10 @@ public class WeaponData : BaseData
     public int MaxBullet
     {
         get { return maxBullet; }
+    }
+    public List<BulletSettings> BulletSettings
+    {
+        get { return bulletSettings; }
     }
     public WeaponRole Role
     {
