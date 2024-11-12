@@ -4504,8 +4504,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30FC\u79FB\u52D5\u3067\u4EFB\u52D9\u958B\u59CB\u30FC\u79FB\u52D5\u3067\u4EFB\u52D9\u958B\u59CB\u30FC\u79FB\u52D5\u3067\u4EFB\u52D9\u958B\u59CB\u30FC\u79FB\u52D5\u3067\u4EFB\u52D9\u958B\u59CB\u30FC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 48162e91d15ed2846851ccf5fe55f5ac, type: 2}
-  m_sharedMaterial: {fileID: 5222261331942574683, guid: 48162e91d15ed2846851ccf5fe55f5ac, type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12375,8 +12375,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u5168\u54E1\u59CB\u672B\u3057\u308D!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 48162e91d15ed2846851ccf5fe55f5ac, type: 2}
-  m_sharedMaterial: {fileID: 5222261331942574683, guid: 48162e91d15ed2846851ccf5fe55f5ac, type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19439,8 +19439,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30FC\u79FB\u52D5\u3067\u4EFB\u52D9\u958B\u59CB\u30FC\u79FB\u52D5\u3067\u4EFB\u52D9\u958B\u59CB\u30FC\u79FB\u52D5\u3067\u4EFB\u52D9\u958B\u59CB\u30FC\u79FB\u52D5\u3067\u4EFB\u52D9\u958B\u59CB\u30FC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 48162e91d15ed2846851ccf5fe55f5ac, type: 2}
-  m_sharedMaterial: {fileID: 5222261331942574683, guid: 48162e91d15ed2846851ccf5fe55f5ac, type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -26677,7 +26677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2411019202748612138, guid: 71bf2fdcff55fc74887411215cc95ab9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3712557931961945664, guid: 71bf2fdcff55fc74887411215cc95ab9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27621,6 +27621,10 @@ PrefabInstance:
     - target: {fileID: 874819271759652710, guid: 081831410f0c9244fb45c05842c4aa31, type: 3}
       propertyPath: m_Name
       value: StageG
+      objectReference: {fileID: 0}
+    - target: {fileID: 874819271759652710, guid: 081831410f0c9244fb45c05842c4aa31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8446138775491339670, guid: 081831410f0c9244fb45c05842c4aa31, type: 3}
       propertyPath: m_LocalPosition.x
