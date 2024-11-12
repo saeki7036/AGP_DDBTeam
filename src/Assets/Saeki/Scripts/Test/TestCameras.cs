@@ -14,14 +14,10 @@ public class TestCameras : MonoBehaviour
     [SerializeField] private float yAxisSpeed = 2f;
 
     void Start()
-    {
-       
+    {      
             var pov = v.GetCinemachineComponent<CinemachinePOV>();
-
-         
-            pov.m_HorizontalAxis.m_MaxSpeed = xAxisSpeed;
-            pov.m_VerticalAxis.m_MaxSpeed = yAxisSpeed;
-        
        
+            pov.m_HorizontalAxis.m_MaxSpeed = xAxisSpeed;
+            pov.m_VerticalAxis.m_MaxSpeed = yAxisSpeed;              
     }
 }
