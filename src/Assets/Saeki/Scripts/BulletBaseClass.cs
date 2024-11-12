@@ -61,7 +61,14 @@ public class BulletBaseClass : MonoBehaviour
             {
                 if (HitTagCheck(other.tag))// 弾のtagと衝突した相手のtagが違うとき（プレイヤーの弾が敵に、敵の弾がプレイヤーに当たったとき）
                 {
-                    character.TakeDamage(bulletData.AttackPower);
+                    if (character.ObjectTag == "Player")
+                    {
+                        character.TakeDamage(1f);// 将来ダメージ種ごとでダメージの値を変えるかも
+                    }
+                    else
+                    {
+                        character.TakeDamage(bulletData.AttackPower);
+                    }
                     Destroy(this.gameObject);
                 }
             }          

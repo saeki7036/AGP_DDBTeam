@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 290368421239167485}
   - component: {fileID: 7881053478512199571}
   - component: {fileID: 3055849044214662722}
-  - component: {fileID: 1515054058738349459}
   m_Layer: 0
   m_Name: RifleBulletPrefab
   m_TagString: Untagged
@@ -134,23 +133,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1515054058738349459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4272163307259488399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30cad8b62e8ca8140ad753a9e623fc5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  DestroyIntarval: 10
-  BulletPower: 60
-  rb: {fileID: 0}
-  bulletData: {fileID: 11400000, guid: eee7d5ba61c5f9849a157a03244435c1, type: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
