@@ -60,7 +60,7 @@ public class BulletBaseClass : MonoBehaviour
             if (other.TryGetComponent<CharacterStatus>(out CharacterStatus character))// キャラクターに当たったとき
             {
                 if (HitTagCheck(other.tag))// 弾のtagと衝突した相手のtagが違うとき（プレイヤーの弾が敵に、敵の弾がプレイヤーに当たったとき）
-                {
+                {            
                     character.TakeDamage(bulletData.AttackPower);
                     Destroy(this.gameObject);
                 }
