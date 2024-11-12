@@ -14,11 +14,23 @@ public class Change : MonoBehaviour
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
 
+　　[SerializeField] TargetManeger targetManeger;
+    [SerializeField] EnemyManager enemyManager;
+
+    [SerializeField] GameObject playerHead;
+    bool changing;
+    bool changed;
+
+    public bool Changed
+    {
+        get { return changed; }
+    }
     // Start is called before the first frame update
     void Start()
     {
         playerRay = camera.GetComponent<PlayerRay>();
         playerMove = this.GetComponent<PlayerMove>();
+        changing = false;
     }
 
     // Update is called once per frame
@@ -29,41 +41,110 @@ public class Change : MonoBehaviour
 
     public void ChangeEnemy(GameObject changeObj)
     {
-        //��
+        //仮
         //changeObj = playerRay.GetObj();
         characterStatus = changeObj.GetComponent<CharacterStatus>();
 
-        //���ڂ菈��
+        //乗り移り処理
         if (characterStatus.IsDead == true)
         {
-            //Debug.Log("���ڂ�G:" + changeObj.name);
-
+            //Debug.Log("乗り移る敵:" + changeObj.name);
             Debug.Log("Change");
 
-            //�e��Enemy��
-            transform.parent.gameObject.tag = "Enemy";
+            // 頭を飛ばしてからカメラ変更
+            if (!changing)
+            {
+                StartCoroutine(DelayInstantiateHeadAndShoot(0.8f, changeObj));
+            }
 
-            //�e�̕t���ւ�
-            this.gameObject.transform.parent = changeObj.transform;
-            playerMove.SetplayerParent(this.transform.parent.gameObject);
+            ////親をEnemyに
+            //transform.parent.gameObject.tag = "Enemy";
 
-            //�e��Player��
-            this.transform.parent.gameObject.tag = "Player";
+            ////親の付け替え
+            //this.gameObject.transform.parent = changeObj.transform;
+            //playerMove.SetplayerParent(this.transform.parent.gameObject);
 
-            //�e�̕ύX
-            playerMove.SetGunObject();
+            ////親をPlayerに
+            //this.transform.parent.gameObject.tag = "Player";
 
-            //Player�̈ʒu����
-            this.transform.position = changeObj.transform.position;
-            Vector3 correction = new Vector3(0f, 1.5f, 0f);
-            this.transform.position += correction;
+            ////銃の変更
+            //playerMove.SetGunObject();
 
-            Vector3 angles = this.transform.localEulerAngles;
-            angles.y = 0f;
-            this.transform.localEulerAngles = angles;
-            Debug.Log(this.transform.localEulerAngles.ToString());
+            ////Playerの位置調整
+            //this.transform.position = changeObj.transform.position;
+            //Vector3 correction = new Vector3(0f, 1.5f, 0f);
+            //this.transform.position += correction;
 
-            changeObj = null;
+            //Vector3 angles = this.transform.localEulerAngles;
+            //angles.y = 0f;
+            //this.transform.localEulerAngles = angles;
+            //Debug.Log(this.transform.localEulerAngles.ToString());
+
+            //enemyManager.ResetSearch(playerMove.transform.position);
+            //changeObj = null;
+
+            ////if (targetManeger != null)
+            //TargetManeger.SetTarget(this.transform.parent.gameObject);
+
+            //if(!changed)
+            //{
+            //    StartCoroutine(SetChangedTrueForSeconds(0.2f));
+            //}
         }
+    }
+
+    public void ChangeCameraTarget(GameObject changeObj)
+    {
+
+        //親をEnemyに
+        transform.parent.gameObject.tag = "Enemy";
+
+        //親の付け替え
+        this.gameObject.transform.parent = changeObj.transform;
+        playerMove.SetplayerParent(this.transform.parent.gameObject);
+
+        //親をPlayerに
+        this.transform.parent.gameObject.tag = "Player";
+
+        //銃の変更
+        playerMove.SetGunObject();
+
+            //Playerの位置調整
+            this.transform.position = changeObj.transform.position;
+            Vector3 correction = new Vector3(0f, 1.41f, 0.47f);
+            this.transform.localPosition = correction;
+
+        Vector3 angles = this.transform.localEulerAngles;
+        angles.y = 0f;
+        this.transform.localEulerAngles = angles;
+        Debug.Log(this.transform.localEulerAngles.ToString());
+
+        enemyManager.ResetSearch(playerMove.transform.position);
+        changeObj = null;
+
+        //if (targetManeger != null)
+        TargetManeger.SetTarget(this.transform.parent.gameObject);
+
+        if (!changed)
+        {
+            StartCoroutine(SetChangedTrueForSeconds(0.2f));
+        }
+        changing = false;
+    }
+
+    IEnumerator SetChangedTrueForSeconds(float second)
+    {
+        changed = true;
+        yield return new WaitForSeconds(second);
+        changed = false;
+    }
+
+    IEnumerator DelayInstantiateHeadAndShoot(float delaySeconds,GameObject changeObj)
+    {
+        changing = true;
+        yield return new WaitForSeconds(delaySeconds);
+        PlayerHeadMoveScript playerHeadMoveScript = Instantiate(playerHead, transform.position, Quaternion.identity).GetComponent<PlayerHeadMoveScript>();// プレイヤーの頭の位置からの生成に変更予定
+        yield return StartCoroutine(playerHeadMoveScript.MoveHead(transform.position + new Vector3(0f, 1.3f, 0f),
+            characterStatus.transform.position + new Vector3(0f, 1.3f, 0f), changeObj));
     }
 }

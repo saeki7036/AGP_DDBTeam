@@ -7,6 +7,7 @@ public class CharacterStatus : MonoBehaviour
     [SerializeField] CharacterData characterData;
     float hp;
     float remainPossessTime;
+    float playerInvincibleTIme;
 
     // プロパティ
     public float Hp
@@ -25,6 +26,11 @@ public class CharacterStatus : MonoBehaviour
     {
         get { return IsDead && remainPossessTime > 0; }
     }
+
+    public string ObjectTag
+    {
+        get { return gameObject.tag; }
+    }
     // Start is called before the first frame update
     public void StartSetUp()
     {
@@ -41,6 +47,11 @@ public class CharacterStatus : MonoBehaviour
         if(hp <= 0f)
         {
             hp = 0f;
+        }
+
+        if(gameObject.tag == "Player")
+        {
+
         }
     }
 

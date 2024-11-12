@@ -24,8 +24,14 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] InputActionReference look;
     [SerializeField] InputActionReference aim;
     bool isAiming;
-    [SerializeField] CinemachineVirtualCameraBase lookCamera;
-    [SerializeField] CinemachineVirtualCameraBase aimCamera;
+
+    //bool isChangeMode;
+
+    //CinemachineFramingTransposer transposer;
+    //[SerializeField] float fpsDistance;
+    //[SerializeField] float tpsDistance;
+
+    //[SerializeField] CinemachineVirtualCamera lookCamera;
 
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
@@ -41,6 +47,11 @@ public class PlayerMove : MonoBehaviour
         get { return gun; }
     }
 
+    //public bool IsChangeGame
+    //{
+    //    get { return isChangeMode; }
+    //}
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +59,10 @@ public class PlayerMove : MonoBehaviour
         playerRay = camera.GetComponent<PlayerRay>();
         SetGunObject();
         isAiming= false;
+
+        //isChangeMode= false;
+
+        //transposer = lookCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
     }
 
     // Update is called once per frame
@@ -78,24 +93,55 @@ public class PlayerMove : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
-        Debug.Log(input);
+        //Debug.Log(input);
     }
-
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        playerParent.GetComponent<Rigidbody>().AddForce(0f, 1.4f, 0f, ForceMode.Impulse);
+    }
     public void ChangeAim(InputAction.CallbackContext context)
     {
+        //Vector3 angle = this.transform.parent.localEulerAngles;
+
         if(isAiming==false)
         {
             isAiming= true;
-            aimCamera.Priority = 1;
-            lookCamera.Priority = 0;
+            //Debug.Log("before:" + aimCamera.transform.eulerAngles);     
+            //aimCamera.transform.localEulerAngles = angle;
+            //Debug.Log("after:" + aimCamera.transform.eulerAngles);
+            inputProvider.XYAxis = aim;
+
+            //transposer.m_CameraDistance = aimDistance;//徐々に近づけるようにする
+
+            //aimCamera.Priority = 1;
+            //lookCamera.Priority = 0;
         }
         else
         {
             isAiming= false;
-            lookCamera.Priority = 1;
-            aimCamera.Priority = 0;
+            //Debug.Log("before:" + aimCamera.transform.eulerAngles);
+            //lookCamera.transform.localEulerAngles = angle;
+            //Debug.Log("after:" + aimCamera.transform.eulerAngles);
+            inputProvider.XYAxis = look;
+            //transposer.m_CameraDistance = lookDistance;
+            //lookCamera.Priority = 1;
+            //aimCamera.Priority = 0;
         }
     }
+
+    //public void ChangeMode(InputAction.CallbackContext context)
+    //{
+    //    if (isChangeMode == false)
+    //    {
+    //        isChangeMode= true;
+    //        transposer.m_CameraDistance = tpsDistance;
+    //    }
+    //    else
+    //    {
+    //        isChangeMode= false;
+    //        transposer.m_CameraDistance = fpsDistance;
+    //    }
+    //}
 
     public void OnLook(InputAction.CallbackContext context)
     {
