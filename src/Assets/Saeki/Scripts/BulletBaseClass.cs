@@ -41,6 +41,9 @@ public class BulletBaseClass : MonoBehaviour
             DestroyTime = 0f;
             Destroy(this.gameObject);
         }
+
+        float deltaTime = tag == "PlayerBullet" ? Time.unscaledDeltaTime : Time.deltaTime;// プレイヤーの弾はスロー中でも飛び方を変えない
+        //transform.Translate(transform.forward * BulletPower * deltaTime);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -60,8 +63,6 @@ public class BulletBaseClass : MonoBehaviour
             if (other.TryGetComponent<CharacterStatus>(out CharacterStatus character))// キャラクターに当たったとき
             {
                 if (HitTagCheck(other.tag))// 弾のtagと衝突した相手のtagが違うとき（プレイヤーの弾が敵に、敵の弾がプレイヤーに当たったとき）
-                {            
-                    character.TakeDamage(bulletData.AttackPower);
                 {
                     if (character.ObjectTag == "Player")
                     {
