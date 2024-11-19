@@ -55,13 +55,17 @@ public class CharacterStatus : MonoBehaviour
     /// <summary>
     /// ダメージを与える
     /// </summary>
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool launch = false)
     {
         if (damageTimer >= 0f) return;// 無敵時間中はダメージをくらわない
         hp -= damage;
         if(hp <= 0f)
         {
             hp = 0f;
+            if(TryGetComponent<Rigidbody>(out Rigidbody rb))
+            {
+                rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+            }
         }
 
         if(gameObject.tag == "Player")
