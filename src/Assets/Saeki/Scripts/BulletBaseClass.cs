@@ -13,12 +13,14 @@ public class BulletBaseClass : MonoBehaviour
     [SerializeField] private BulletData bulletData;
     [Header("弾が衝突するレイヤー"), SerializeField] private LayerMask hitLayerMask;
     [Header("弾が消滅するレイヤー"), SerializeField] private LayerMask lapseLayerMask;
+
+    Vector3 Forward;
     // Start is called before the first frame update
     void Start()
     {
         //Player = GameObject.FindWithTag("Player");
         //rb = GetComponent<Rigidbody>();   
-        Vector3 Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
+        Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
         if (this.tag == "PlayerBullet")
         {
             Forward = transform.forward;
@@ -28,7 +30,6 @@ public class BulletBaseClass : MonoBehaviour
         transform.rotation = look * Quaternion.Euler(90, 0, 0);
 
         rb.AddForce(Forward * BulletPower, ForceMode.Impulse);
-
     }
 
     // Update is called once per frame
@@ -41,6 +42,10 @@ public class BulletBaseClass : MonoBehaviour
             DestroyTime = 0f;
             Destroy(this.gameObject);
         }
+
+        float deltaTime = tag == "PlayerBullet" ? Time.unscaledDeltaTime : Time.deltaTime;// プレイヤーの弾はスロー中でも飛び方を変えない
+        //transform.Translate(Forward * BulletPower * deltaTime);
+        
     }
     private void OnTriggerEnter(Collider other)
     {

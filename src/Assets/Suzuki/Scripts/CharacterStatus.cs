@@ -5,19 +5,19 @@ using UnityEngine;
 public class CharacterStatus : MonoBehaviour
 {
     [SerializeField] CharacterData characterData;
-    float hp;
-    float remainPossessTime;
-    float playerInvincibleTIme;
 
-    // プロパティ
+    float hp;
     public float Hp
     {
         get { return hp; }
     }
+
+    float remainPossessTime;
     public float RemainPossessTime
     {
         get { return remainPossessTime; }
     }
+
     public bool IsDead
     {
         get { return hp <= 0; }
@@ -26,32 +26,51 @@ public class CharacterStatus : MonoBehaviour
     {
         get { return IsDead && remainPossessTime > 0; }
     }
-
     public string ObjectTag
     {
         get { return gameObject.tag; }
     }
-    // Start is called before the first frame update
+    float damageTimer;
+
+    void Start()
+    {
+        //damageTimer = 0f;
+    }
+
+    void FixedUpdate()
+    {
+        if(damageTimer > 0f)
+        {
+            damageTimer -= Time.deltaTime;
+        }
+    }
+
     public void StartSetUp()
     {
         SetHpMax();
         remainPossessTime = characterData.MaxPossessTime;
+        damageTimer = 0f;
     }
 
     /// <summary>
     /// ダメージを与える
     /// </summary>
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool launch = false)
     {
+        if (damageTimer >= 0f) return;// 無敵時間中はダメージをくらわない
         hp -= damage;
         if(hp <= 0f)
         {
             hp = 0f;
+            if(TryGetComponent<Rigidbody>(out Rigidbody rb))
+            {
+                rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+            }
         }
 
         if(gameObject.tag == "Player")
         {
-
+            damageTimer = characterData.ImmunityTime;
         }
     }
 
