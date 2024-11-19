@@ -7,10 +7,9 @@ public class TargetManeger : MonoBehaviour
 {
     private static List<EnemyBaseClass> Enemy = new List<EnemyBaseClass>();
     private static GameObject playerObject;
-
-    private float Interval = 3f;
     private static float TimeCount = 0;
 
+    [SerializeField] private float Interval = 3f;
     [SerializeField] private static float watchDistancs = 15f;
 
     /// <summary>
@@ -29,15 +28,29 @@ public class TargetManeger : MonoBehaviour
 
     private void Update()
     {
+        TimeScaleManagement();
+    }
+
+    private void TimeScaleManagement()
+    {
         if (Time.timeScale == 1f)
             return;
 
         TimeCount += Time.unscaledDeltaTime;
 
-        if(TimeCount > Interval)
+        if (TimeCount > Interval)
             Time.timeScale = 1f;
-         
     }
+
+    /// <summary>
+    /// 乗り移りの頭を投げる状態に一時的にtimeScaleを戻す
+    /// </summary>
+    public static void StartHeadChange()
+    {
+        TimeCount = 0;
+        Time.timeScale = 1f;
+    }
+
     /// <summary>
     /// 敵対対象の引数の確保
     /// </summary>
@@ -64,6 +77,9 @@ public class TargetManeger : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 一定の距離にあるEnemyのターゲット発見させる
+    /// </summary>
     public static void WatchTarget()
     {
         foreach (EnemyBaseClass baseClass in Enemy)

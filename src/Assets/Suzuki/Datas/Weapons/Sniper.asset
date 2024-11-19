@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca5a02060f406544935f645d9f5e346, type: 3}
   m_Name: Sniper
   m_EditorClassIdentifier: 
-  name: 
-  id: 0
-  bulletPrefab: {fileID: 0}
-  maxBullet: 0
-  bulletSettings: []
+  name: "\u30B9\u30CA\u30A4\u30D1\u30FC"
+  id: 4
+  bulletPrefab: {fileID: 2720097741136659255, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
+  maxBullet: 5
+  bulletSettings:
+  - diffusion: {x: 0, y: 0}
+    randomNess: 0
   weaponRole: 0
-  subWeapon: {fileID: 0}
+  subWeapon: {fileID: 3993766834917909290, guid: 03f82252fc4ff8340936cdb188a204da, type: 3}
