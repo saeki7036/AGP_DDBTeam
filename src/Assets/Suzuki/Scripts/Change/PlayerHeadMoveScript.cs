@@ -13,6 +13,8 @@ public class PlayerHeadMoveScript : MonoBehaviour
     float headDistance = 5.0f;
     float playerDistance = 0.3f;
 
+    PlayerDamageEffect damageEffect;
+
     void Start()
     {
         Debug.Log("Start");
@@ -28,6 +30,9 @@ public class PlayerHeadMoveScript : MonoBehaviour
     /// <returns></returns>
     public IEnumerator MoveHead(Vector3 start, Transform target, Vector3 headOffset, GameObject changeObj)
     {
+        damageEffect = GameObject.FindObjectOfType<PlayerDamageEffect>();
+        damageEffect.Reset();
+
         transform.LookAt(target);
         ChangeCameraTarget(transform, headDistance);
 
