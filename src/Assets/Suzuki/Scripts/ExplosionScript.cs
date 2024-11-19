@@ -46,7 +46,7 @@ public class ExplosionScript : MonoBehaviour
         {
             if(enemy.TryGetComponent<CharacterStatus>(out CharacterStatus character))
             {
-                character.TakeDamage(10000f);// ’v€ƒ_ƒ[ƒW‚ğ—^‚¦‚é
+                character.TakeDamage(10000f, true);// ’v€ƒ_ƒ[ƒW‚ğ—^‚¦‚é
             }
         }
     }
