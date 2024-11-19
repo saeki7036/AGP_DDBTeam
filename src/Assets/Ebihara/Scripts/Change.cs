@@ -144,7 +144,6 @@ public class Change : MonoBehaviour
         changing = true;
         yield return new WaitForSeconds(delaySeconds);
         PlayerHeadMoveScript playerHeadMoveScript = Instantiate(playerHead, transform.position, Quaternion.identity).GetComponent<PlayerHeadMoveScript>();// プレイヤーの頭の位置からの生成に変更予定
-        yield return StartCoroutine(playerHeadMoveScript.MoveHead(transform.position + new Vector3(0f, 1.3f, 0f),
-            characterStatus.transform.position + new Vector3(0f, 1.3f, 0f), changeObj));
+        yield return StartCoroutine(playerHeadMoveScript.MoveHead(transform.position, characterStatus.transform, new Vector3(0f, 1.3f, 0f), changeObj));
     }
 }

@@ -6,9 +6,10 @@ public class PlayerHeadManager : MonoBehaviour
 {
     [SerializeField] GameObject head;
     
-    public void OnHeadThrow()
+    public void OnHeadThrow()// animator‚©‚çŒÄ‚Ño‚³‚ê‚é
     {
         head.SetActive(false);
+        TargetManeger.StartHeadChange();
     }
 
     public void OnHeadLand()
