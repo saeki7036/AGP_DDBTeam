@@ -33,7 +33,7 @@ public class TargetManeger : MonoBehaviour
 
     private void TimeScaleManagement()
     {
-        if (Time.timeScale == 1f)
+        if (Time.timeScale == 1f || Time.timeScale == 0f)
             return;
 
         TimeCount += Time.unscaledDeltaTime;
