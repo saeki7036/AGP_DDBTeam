@@ -34,7 +34,7 @@ public class CharacterStatus : MonoBehaviour
 
     void Start()
     {
-        //damageTimer = 0f;
+        StartSetUp();
     }
 
     void FixedUpdate()
@@ -57,14 +57,14 @@ public class CharacterStatus : MonoBehaviour
     /// </summary>
     public void TakeDamage(float damage, bool launch = false)
     {
-        if (damageTimer >= 0f) return;// 無敵時間中はダメージをくらわない
+        if (damageTimer > 0f) return;// 無敵時間中はダメージをくらわない
         hp -= damage;
         if(hp <= 0f)
         {
             hp = 0f;
-            if(TryGetComponent<Rigidbody>(out Rigidbody rb))
+            if(launch && TryGetComponent<Rigidbody>(out Rigidbody rb))
             {
-                rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * 2f, ForceMode.Impulse);
             }
         }
 

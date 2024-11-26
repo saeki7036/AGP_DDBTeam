@@ -18,18 +18,24 @@ public class BulletBaseClass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Player = GameObject.FindWithTag("Player");
-        //rb = GetComponent<Rigidbody>();   
-        Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
+
         if (this.tag == "PlayerBullet")
         {
             Forward = transform.forward;
         }
+        else 
+        {
+            Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
+        }
+
         Forward.Normalize();
+
         Quaternion look = Quaternion.LookRotation(Forward);
         transform.rotation = look * Quaternion.Euler(90, 0, 0);
 
-        rb.AddForce(Forward * BulletPower, ForceMode.Impulse);
+        Forward *= BulletPower;
+        //rb.AddForce(Forward, ForceMode.Impulse);
+        //Debug.Log(Forward * BulletPower +""+""+ rb.velocity);
     }
 
     // Update is called once per frame
@@ -44,8 +50,9 @@ public class BulletBaseClass : MonoBehaviour
         }
 
         float deltaTime = tag == "PlayerBullet" ? Time.unscaledDeltaTime : Time.deltaTime;// プレイヤーの弾はスロー中でも飛び方を変えない
-        //transform.Translate(Forward * BulletPower * deltaTime);
-        
+                                                                                          //transform.Translate(Forward * BulletPower * deltaTime);
+        // オブジェクトの移動
+        transform.position += Forward * deltaTime;
     }
     private void OnTriggerEnter(Collider other)
     {
