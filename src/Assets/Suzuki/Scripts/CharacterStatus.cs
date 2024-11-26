@@ -22,9 +22,10 @@ public class CharacterStatus : MonoBehaviour
     {
         get { return hp <= 0; }
     }
+    bool possessed;
     public bool CanPossess// 乗り移れるかどうか
     {
-        get { return IsDead && remainPossessTime > 0; }
+        get { return IsDead || possessed; }
     }
     public string ObjectTag
     {
@@ -34,7 +35,8 @@ public class CharacterStatus : MonoBehaviour
 
     void Start()
     {
-        //damageTimer = 0f;
+        possessed = false;
+        StartSetUp();
     }
 
     void FixedUpdate()
@@ -50,6 +52,10 @@ public class CharacterStatus : MonoBehaviour
         SetHpMax();
         remainPossessTime = characterData.MaxPossessTime;
         damageTimer = 0f;
+        if(tag == "Player")
+        {
+            possessed = true;
+        }
     }
 
     /// <summary>
@@ -57,14 +63,14 @@ public class CharacterStatus : MonoBehaviour
     /// </summary>
     public void TakeDamage(float damage, bool launch = false)
     {
-        if (damageTimer >= 0f) return;// 無敵時間中はダメージをくらわない
+        if (damageTimer > 0f) return;// 無敵時間中はダメージをくらわない
         hp -= damage;
         if(hp <= 0f)
         {
             hp = 0f;
-            if(TryGetComponent<Rigidbody>(out Rigidbody rb))
+            if(launch && TryGetComponent<Rigidbody>(out Rigidbody rb))
             {
-                rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * 2f, ForceMode.Impulse);
             }
         }
 
@@ -88,7 +94,11 @@ public class CharacterStatus : MonoBehaviour
 
     public void OnPossess()// 取り憑き時の処理
     {
-        SetHpMax();
+        if(!possessed)// 初回取り憑きのとき
+        {
+            SetHpMax();
+            possessed = true;
+        }
     }
 
     void SetHpMax()

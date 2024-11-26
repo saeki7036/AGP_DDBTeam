@@ -90,11 +90,12 @@ public class PlayerRay : MonoBehaviour
 
             if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance) && raycastHit.collider.tag == "Enemy")
             {
+                if (!raycastHit.transform.GetComponent<CharacterStatus>().CanPossess) return;// 乗り移れるかどうか
                 game = raycastHit.collider.gameObject;
                 change.ChangeEnemy(game);
                 if (TargetManeger.getPlayerObj().TryGetComponent<Animator>(out playerAnimator))
                 {
-                    playerAnimator.SetTrigger("Change");
+                    playerAnimator.SetBool("Change", true);
                 }
             }
         }
