@@ -17,6 +17,8 @@ public class PlayerDamageEffect : MonoBehaviour
     {
         change= GameObject.FindObjectOfType<Change>();
         color = damageImage.GetComponent<Image>().color;
+        color.a = 0f;
+        damageImage.GetComponent<Image>().color = color;
         damage = 0;
         maxDamage = 3;
         damagesAlpha =new float[maxDamage];
