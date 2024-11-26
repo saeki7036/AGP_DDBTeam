@@ -25,6 +25,12 @@ public class Change : MonoBehaviour
     {
         get { return changed; }
     }
+
+    public bool Changing
+    {
+        get { return changing; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
