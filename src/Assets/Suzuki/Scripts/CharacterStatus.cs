@@ -22,9 +22,10 @@ public class CharacterStatus : MonoBehaviour
     {
         get { return hp <= 0; }
     }
+    bool possessed;
     public bool CanPossess// æ‚èˆÚ‚ê‚é‚©‚Ç‚¤‚©
     {
-        get { return IsDead && remainPossessTime > 0; }
+        get { return IsDead || possessed; }
     }
     public string ObjectTag
     {
@@ -34,6 +35,7 @@ public class CharacterStatus : MonoBehaviour
 
     void Start()
     {
+        possessed = false;
         StartSetUp();
     }
 
@@ -50,6 +52,10 @@ public class CharacterStatus : MonoBehaviour
         SetHpMax();
         remainPossessTime = characterData.MaxPossessTime;
         damageTimer = 0f;
+        if(tag == "Player")
+        {
+            possessed = true;
+        }
     }
 
     /// <summary>
@@ -88,7 +94,11 @@ public class CharacterStatus : MonoBehaviour
 
     public void OnPossess()// æ‚èœß‚«‚Ìˆ—
     {
-        SetHpMax();
+        if(!possessed)// ‰‰ñæ‚èœß‚«‚Ì‚Æ‚«
+        {
+            SetHpMax();
+            possessed = true;
+        }
     }
 
     void SetHpMax()
