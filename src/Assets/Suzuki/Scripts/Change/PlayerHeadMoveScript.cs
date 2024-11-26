@@ -14,7 +14,7 @@ public class PlayerHeadMoveScript : MonoBehaviour
     float playerDistance = 0.3f;
 
     PlayerDamageEffect damageEffect;
-
+    GameObject changeTarget;
     void Start()
     {
         Debug.Log("Start");
@@ -47,9 +47,20 @@ public class PlayerHeadMoveScript : MonoBehaviour
             transform.position = position + headOffset;
             yield return null;
         }
-        change.ChangeCameraTarget(changeObj);
+        changeTarget = changeObj;
+        change.ChangeCameraTarget(changeTarget);
         ChangeCameraTarget(change.gameObject.transform, playerDistance);
         Destroy(gameObject);
+    }
+
+    public void ReturnCameraTarget()
+    {
+        if (changeTarget != null)
+        {
+            change.ChangeCameraTarget(changeTarget);
+            ChangeCameraTarget(change.gameObject.transform, playerDistance);
+            Destroy(gameObject);
+        }
     }
 
     void ChangeCameraTarget(Transform target,float distance)
