@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     float moveZ;
     float moveX;
 
-    [SerializeField]float moveSpeed = 6f; //スピード
+    [SerializeField] float moveSpeed = 6f; //スピード
 
     Vector3 velocity = Vector3.zero; //向き
 
@@ -58,7 +58,7 @@ public class PlayerMove : MonoBehaviour
         playerParent = transform.parent.gameObject;
         playerRay = camera.GetComponent<PlayerRay>();
         SetGunObject();
-        isAiming= false;
+        isAiming = false;
 
         //isChangeMode= false;
 
@@ -80,7 +80,8 @@ public class PlayerMove : MonoBehaviour
         //左右
         moveX = input.x;
 
-        velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * Time.deltaTime;
+        float deltaTime = PauseManager.IsSlow ? Time.unscaledDeltaTime : Time.deltaTime;
+        velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * deltaTime;
         playerParent.transform.Translate(velocity.x, velocity.y, velocity.z);
 
     }
@@ -97,15 +98,18 @@ public class PlayerMove : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        playerParent.GetComponent<Rigidbody>().AddForce(0f, 1.4f, 0f, ForceMode.Impulse);
+        if (Physics.Raycast(playerParent.transform.position, Vector3.down, 0.5f, LayerMask.GetMask("Stage")))
+        {
+            playerParent.GetComponent<Rigidbody>().AddForce(0f, 1.4f, 0f, ForceMode.Impulse);
+        }
     }
     public void ChangeAim(InputAction.CallbackContext context)
     {
         //Vector3 angle = this.transform.parent.localEulerAngles;
 
-        if(isAiming==false)
+        if (isAiming == false)
         {
-            isAiming= true;
+            isAiming = true;
             //Debug.Log("before:" + aimCamera.transform.eulerAngles);     
             //aimCamera.transform.localEulerAngles = angle;
             //Debug.Log("after:" + aimCamera.transform.eulerAngles);
@@ -118,7 +122,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            isAiming= false;
+            isAiming = false;
             //Debug.Log("before:" + aimCamera.transform.eulerAngles);
             //lookCamera.transform.localEulerAngles = angle;
             //Debug.Log("after:" + aimCamera.transform.eulerAngles);
@@ -153,7 +157,7 @@ public class PlayerMove : MonoBehaviour
     {
         objParent = game;
 
-        if ( objParent != null)
+        if (objParent != null)
         {
             Debug.Log("�|�����G:" + objParent.name);
 
