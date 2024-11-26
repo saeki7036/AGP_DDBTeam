@@ -47,6 +47,8 @@ public class TankMovementTest_E : EnemyBaseClass
         TankCanon.transform.localRotation = Quaternion.Slerp(TankCanon.transform.localRotation, Quaternion.Euler(newRotation), Time.deltaTime * rotationSpeed);
 
         return;
+
+
         directionToTarget.y = 0;
         directionToTarget.z = 0;
 

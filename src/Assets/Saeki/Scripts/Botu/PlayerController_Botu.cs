@@ -82,16 +82,19 @@ public class PlayerController_Botu : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
         isAttack();
         isMovePlayer();
-        isMoveCamera();
+        //isMoveCamera();
     }
-
+    private void FixedUpdate()
+    {
+        Debug.Log("Time.timeScale = 999");
+    }
     void isMovePlayer()
     {
-        Vector3 velocity = new Vector3(lStick.x, 0, lStick.y).normalized * Speed * Time.deltaTime;
+        Vector3 velocity = new Vector3(lStick.x, 0, lStick.y).normalized * Speed * Time.unscaledDeltaTime;
         this.transform.Translate(velocity);
 
         //Vector3 rotate = new Vector3(rStick.x, rStick.y, 0) * rotaSpeed * Time.deltaTime;
@@ -125,10 +128,12 @@ public class PlayerController_Botu : MonoBehaviour
         if (bButton)
         {
             Attack = true;
+            Time.timeScale = 0;
         }
         else
         {
             Attack = false;
+            Time.timeScale = 1;
             Speed = 5f;
         }
     }
