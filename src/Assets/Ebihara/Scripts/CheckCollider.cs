@@ -20,7 +20,8 @@ public class CheckCollider : MonoBehaviour
     {
         if (other.gameObject.tag == "EnemyBullet")
         {
-            damageEffect.DamageEffect();
+            float i = 0.0f;
+            damageEffect.DamageEffect(i);
         }
     }
 }
