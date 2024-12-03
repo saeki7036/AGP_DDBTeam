@@ -1421,6 +1421,10 @@ PrefabInstance:
       propertyPath: lookCamera
       value: 
       objectReference: {fileID: 1320252682}
+    - target: {fileID: 822522077337011095, guid: 7371e24c411f0e141ae5cf9b4010a694, type: 3}
+      propertyPath: inputProvider
+      value: 
+      objectReference: {fileID: 1320252681}
     - target: {fileID: 5204290325177240887, guid: 7371e24c411f0e141ae5cf9b4010a694, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1466,6 +1470,18 @@ PrefabInstance:
       value: perspective
       objectReference: {fileID: 0}
     - target: {fileID: 7418620723331223224, guid: 7371e24c411f0e141ae5cf9b4010a694, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418620723331223224, guid: 7371e24c411f0e141ae5cf9b4010a694, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionId
+      value: 0307d9c0-bea0-46fe-8f3b-d7417d9a705a
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418620723331223224, guid: 7371e24c411f0e141ae5cf9b4010a694, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionName
+      value: Player/Jump[/Keyboard/space]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418620723331223224, guid: 7371e24c411f0e141ae5cf9b4010a694, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1853503461}
@@ -1479,7 +1495,7 @@ PrefabInstance:
       objectReference: {fileID: 1853503461}
     - target: {fileID: 7418620723331223224, guid: 7371e24c411f0e141ae5cf9b4010a694, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Fire
+      value: OnFire
       objectReference: {fileID: 0}
     - target: {fileID: 7418620723331223224, guid: 7371e24c411f0e141ae5cf9b4010a694, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -2088,7 +2104,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 4e98ee7e7af893e4f9ecb580bba91b85, type: 2}
   m_BuildHeightMesh: 0
@@ -2820,6 +2836,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   change: {fileID: 2004654458}
   distance: 50
+  gazeHitMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1853503462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3087,7 +3106,7 @@ Transform:
   m_GameObject: {fileID: 1945573347}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2711012, y: 2.3541453, z: 4.5}
+  m_LocalPosition: {x: 3.2685833, y: 2.3541453, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

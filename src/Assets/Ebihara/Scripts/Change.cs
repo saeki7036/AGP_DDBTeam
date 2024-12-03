@@ -31,11 +31,17 @@ public class Change : MonoBehaviour
         get { return changing; }
     }
 
+    public float CharacterStatusHp
+    {
+        get { return characterStatus.Hp; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         playerRay = camera.GetComponent<PlayerRay>();
         playerMove = this.GetComponent<PlayerMove>();
+        characterStatus = transform.root.gameObject.GetComponent<CharacterStatus>();
         changing = false;
     }
 
@@ -51,57 +57,18 @@ public class Change : MonoBehaviour
         //changeObj = playerRay.GetObj();
         characterStatus = changeObj.GetComponent<CharacterStatus>();
 
-        //乗り移り処理
-        if (characterStatus.IsDead == true)
+        //Debug.Log("乗り移る敵:" + changeObj.name);
+        Debug.Log("Change");
+
+        // 頭を飛ばしてからカメラ変更
+        if (!changing)
         {
-            //Debug.Log("乗り移る敵:" + changeObj.name);
-            Debug.Log("Change");
-
-            // 頭を飛ばしてからカメラ変更
-            if (!changing)
-            {
-                StartCoroutine(DelayInstantiateHeadAndShoot(0.8f, changeObj));
-            }
-
-            ////親をEnemyに
-            //transform.parent.gameObject.tag = "Enemy";
-
-            ////親の付け替え
-            //this.gameObject.transform.parent = changeObj.transform;
-            //playerMove.SetplayerParent(this.transform.parent.gameObject);
-
-            ////親をPlayerに
-            //this.transform.parent.gameObject.tag = "Player";
-
-            ////銃の変更
-            //playerMove.SetGunObject();
-
-            ////Playerの位置調整
-            //this.transform.position = changeObj.transform.position;
-            //Vector3 correction = new Vector3(0f, 1.5f, 0f);
-            //this.transform.position += correction;
-
-            //Vector3 angles = this.transform.localEulerAngles;
-            //angles.y = 0f;
-            //this.transform.localEulerAngles = angles;
-            //Debug.Log(this.transform.localEulerAngles.ToString());
-
-            //enemyManager.ResetSearch(playerMove.transform.position);
-            //changeObj = null;
-
-            ////if (targetManeger != null)
-            //TargetManeger.SetTarget(this.transform.parent.gameObject);
-
-            //if(!changed)
-            //{
-            //    StartCoroutine(SetChangedTrueForSeconds(0.2f));
-            //}
+            StartCoroutine(DelayInstantiateHeadAndShoot(0.8f, changeObj));
         }
     }
 
     public void ChangeCameraTarget(GameObject changeObj)
     {
-
         //親をEnemyに
         transform.parent.gameObject.tag = "Enemy";
 
@@ -115,10 +82,10 @@ public class Change : MonoBehaviour
         //銃の変更
         playerMove.SetGunObject();
 
-            //Playerの位置調整
-            this.transform.position = changeObj.transform.position;
-            Vector3 correction = new Vector3(0f, 1.41f, 0.47f);
-            this.transform.localPosition = correction;
+        //Playerの位置調整
+        this.transform.position = changeObj.transform.position;
+        Vector3 correction = new Vector3(0f, 1.41f, 0.47f);
+        this.transform.localPosition = correction;
 
         Vector3 angles = this.transform.localEulerAngles;
         angles.y = 0f;

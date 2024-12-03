@@ -10,7 +10,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: WeaponCategory
-    m_EventTreshold: 1
+    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Fire
     m_EventTreshold: 0
@@ -69,7 +69,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 7
     m_ConditionEvent: WeaponCategory
-    m_EventTreshold: 3
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7440850628934357555}
   m_Solo: 0
@@ -94,7 +94,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: WeaponCategory
-    m_EventTreshold: 4
+    m_EventTreshold: 3
   - m_ConditionMode: 1
     m_ConditionEvent: Fire
     m_EventTreshold: 0
@@ -304,7 +304,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Change Shotgun
+  m_Name: Change Sniper
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -318,7 +318,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: 0698d81441477e04e8725e6ba5c45e42, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -331,7 +331,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Change AssultRifle
+  m_Name: Change Shotgun
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -345,7 +345,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: dedb1df40875f5f4ba29e84fe096c46e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -383,7 +383,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Change SniperRifle
+  m_Name: Change Launcher
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -397,7 +397,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: 2e8766227d0e1734c84955d788d4baa3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -529,9 +529,6 @@ AnimatorStateMachine:
     m_State: {fileID: -5740655380361607735}
     m_Position: {x: 320, y: 120, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -2411802202727863586}
-    m_Position: {x: 320, y: 220, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 8157577663100524596}
     m_Position: {x: 570, y: 220, z: 0}
   m_ChildStateMachines: []
@@ -618,7 +615,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sniper Rifle Animation
+  m_Name: Sniper Animation
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2586096533596014946}
@@ -670,7 +667,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Assult Rifle Animation
+  m_Name: Rifle Animation
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 261430748853516015}
@@ -688,32 +685,6 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 7965805756360332121}
---- !u!1102 &-2411802202727863586
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Change
-  m_Speed: 3
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c7b841fab77c39945b53dee001769f1f, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &-2285189349834388151
 AnimatorState:
   serializedVersion: 6
@@ -776,7 +747,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: WeaponCategory
-    m_EventTreshold: 3
+    m_EventTreshold: 2
   - m_ConditionMode: 1
     m_ConditionEvent: Fire
     m_EventTreshold: 0
@@ -829,7 +800,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 7
     m_ConditionEvent: WeaponCategory
-    m_EventTreshold: 3
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1371591972841245840}
   m_Solo: 0
@@ -854,7 +825,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: WeaponCategory
-    m_EventTreshold: 3
+    m_EventTreshold: 2
   - m_ConditionMode: 1
     m_ConditionEvent: Fire
     m_EventTreshold: 0
@@ -994,7 +965,7 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: Change
-    m_Type: 9
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -1067,7 +1038,7 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Assult Rifle Animation
+    m_Name: Rifle Animation
     m_StateMachine: {fileID: -2414229138933885688}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -1091,7 +1062,7 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Sniper Rifle Animation
+    m_Name: Sniper Animation
     m_StateMachine: {fileID: -2600646449679160289}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -1353,7 +1324,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: None
+  m_Name: Change Pistol
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1367,7 +1338,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: 47c468ca1427e12418fb2c0b15bf1797, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1408,7 +1379,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: Change
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5740655380361607735}
   m_Solo: 0
@@ -1418,7 +1392,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.8125
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -1458,7 +1432,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Change HandGun
+  m_Name: Change Rifle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1472,7 +1446,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: d11db45d7b1fe2a4ca3b2e543e875184, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1488,7 +1462,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 7
     m_ConditionEvent: WeaponCategory
-    m_EventTreshold: 2
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7965805756360332121}
   m_Solo: 0
@@ -1513,7 +1487,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 7
     m_ConditionEvent: WeaponCategory
-    m_EventTreshold: 1
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3901967915045324246}
   m_Solo: 0
@@ -1879,7 +1853,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: WeaponCategory
-    m_EventTreshold: 2
+    m_EventTreshold: 1
   - m_ConditionMode: 1
     m_ConditionEvent: Fire
     m_EventTreshold: 0
@@ -2020,7 +1994,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 7
     m_ConditionEvent: WeaponCategory
-    m_EventTreshold: 4
+    m_EventTreshold: 3
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2586096533596014946}
   m_Solo: 0
