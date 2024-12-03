@@ -8,6 +8,7 @@ public class CharacterData : BaseData
 {
     [SerializeField] float maxHp;
     [SerializeField] float maxPossessTime;
+    [SerializeField] float immunityTime = 0f;
 
     // プロパティ
     public float MaxHp
@@ -17,5 +18,9 @@ public class CharacterData : BaseData
     public float MaxPossessTime
     {
         get { return maxPossessTime;}
+    }
+    public float ImmunityTime
+    {
+        get { return immunityTime;}
     }
 }

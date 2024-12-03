@@ -21,10 +21,16 @@ public class EnemyBaseClass : CharacterStatus
 
     [SerializeField] protected float lockonIntarval = 3f;
 
-    protected float remainingCount = 0,lockonCount = 0;
+    protected float remainingCount = 0, lockonCount = 0;
     protected bool remainingCheck = false, lockonCheck = false;
 
+    private float WatchCount = 0;
+    private bool isWatched = false ,isGetMesh = false;
     private MeshRenderer mesh;
+
+    public void Watch() { isWatched = true; WatchCount = 0; }
+
+
     public GameObject TargetSetting
     {
         get { return Target; }  //取得用
@@ -33,13 +39,13 @@ public class EnemyBaseClass : CharacterStatus
     /// <summary>
     /// 外部からのTargetの変更
     /// </summary>
-    public void ChengeTarget(GameObject Set) { TargetSetting = Set; }
+    public void ChangeTarget(GameObject Set) { TargetSetting = Set; }
 
     protected float GetDistanseForNavmesh()
     {
         if (Agent.pathPending)
             return float.MaxValue;
-        return 
+        return
             Agent.remainingDistance;
     }
 
@@ -47,9 +53,17 @@ public class EnemyBaseClass : CharacterStatus
     {
         Target = GameObject.FindWithTag("Player");
         Agent.speed = moveSpeed;
-        mesh = GetComponent<MeshRenderer>();
-        Agent.destination = GetTargetPos();       
+        if(this.TryGetComponent<MeshRenderer>(out MeshRenderer Mesh))
+        {
+            mesh = Mesh; isGetMesh = true;
+        }
+        Agent.destination = GetTargetPos();
         StartSetUp();//基底クラスの処理
+    }
+
+    protected virtual void SetUpOverride()
+    {
+        return;
     }
 
     public void LostHitPoint()
@@ -58,7 +72,7 @@ public class EnemyBaseClass : CharacterStatus
         rb.isKinematic = false;
 
         //仮死亡処理(3Dモデル実装後削除)
-        if (mesh.material != material)
+        if (isGetMesh && mesh.material != material)
         {
             mesh.material = material;
         }
@@ -69,13 +83,39 @@ public class EnemyBaseClass : CharacterStatus
         if (Agent.enabled && Agent.isOnNavMesh)
         {
             CorrectTargetPlayer();
+
             if (Agent.pathStatus == NavMeshPathStatus.PathInvalid)
-                Destroy(this.gameObject);
+            { 
+                this.gameObject.SetActive(false); 
+            }
             else
-                Agent.destination = GetTargetPos();
+            {
+                if (isWatched)
+                {
+                    WatchCount += Time.deltaTime;
+                    if(WatchCount > lockonIntarval)
+                    {
+                        isWatched = false;
+                    }
+                }
+
+                Agent.destination = GetPoison();
+            }        
         }
     }
-    protected virtual Vector3 GetTargetPos() { return this.transform.position; }
+
+
+    private Vector3 GetPoison()
+    {
+        if (isWatched)
+            return Target.transform.position;
+
+        return GetTargetPos(); 
+    }
+    protected virtual Vector3 GetTargetPos() 
+    {
+        return this.transform.position; 
+    }
     
     void CorrectTargetPlayer()
     {
@@ -84,15 +124,16 @@ public class EnemyBaseClass : CharacterStatus
             Target = GameObject.FindWithTag("Player");
         }
     }
+
     void OnFire()
     {
-        Debug.Log("FIRE!!");
         remainingCount = 0f;
         if(guns.Shoot(gunObject.transform.position, gunObject.transform.forward, this.tag, true))
         {
             remainingBullets--;
             if (!remainingCheck) remainingCheck = true;
-            Debug.Log("FIRE!!");
+            TargetManeger.WatchTarget();
+            //Debug.Log("FIRE!!");
         }
         //GameObject.Instantiate(Bullet, transform.position, Quaternion.identity);
     }
@@ -135,7 +176,7 @@ public class EnemyBaseClass : CharacterStatus
     public bool HealthCheck() 
     {
         //Debug.Log(Hp);
-        return this.gameObject.tag == "Enemy" && Hp > 0; 
+        return this.gameObject.tag == "Enemy" && !CanPossess; 
     }
 
     private bool ShotCheck()

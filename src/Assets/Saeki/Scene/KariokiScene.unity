@@ -356,7 +356,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eac1ee884e01de64d8526ac1cd127c48, type: 2}
+  - {fileID: 2100000, guid: 18d29b99dc1cf4d4b97cdeb5681d9b5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Input: {fileID: 1699127382}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 440437150}
   Speed: 3
 --- !u!54 &1699127388
 Rigidbody:
