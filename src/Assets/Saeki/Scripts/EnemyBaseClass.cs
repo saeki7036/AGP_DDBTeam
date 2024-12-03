@@ -176,7 +176,7 @@ public class EnemyBaseClass : CharacterStatus
     public bool HealthCheck() 
     {
         //Debug.Log(Hp);
-        return this.gameObject.tag == "Enemy" && !IsDead; 
+        return this.gameObject.tag == "Enemy" && !CanPossess; 
     }
 
     private bool ShotCheck()
