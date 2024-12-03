@@ -80,7 +80,8 @@ public class PlayerMove : MonoBehaviour
         //左右
         moveX = input.x;
 
-        velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * Time.deltaTime;
+        float deltaTime = PauseManager.IsSlow ? Time.unscaledDeltaTime : Time.deltaTime;
+        velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * deltaTime;
         playerParent.transform.Translate(velocity.x, velocity.y, velocity.z);
 
     }

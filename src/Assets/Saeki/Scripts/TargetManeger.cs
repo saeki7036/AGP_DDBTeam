@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -9,7 +10,7 @@ public class TargetManeger : MonoBehaviour
     private static GameObject playerObject;
     private static float TimeCount = 0;
 
-    [SerializeField] private float Interval = 3f;
+    [SerializeField] private static float Interval = 3f;
     [SerializeField] private static float watchDistancs = 15f;
 
     /// <summary>
@@ -17,6 +18,19 @@ public class TargetManeger : MonoBehaviour
     /// </summary>
     /// <returns>プレイヤーのオブジェクト</returns>
     public static GameObject getPlayerObj() { return playerObject; }
+
+    /// <summary>
+    /// staticで宣言されたGetメゾット
+    /// </summary>
+    /// <returns>残りのSlow状態を(下限)0~1(上限)までに変換したパラメータ</returns>
+    public static float GetSlowValue()
+    {
+        float value = TimeCount / Interval;
+        if (value < 0f) value = 0f;
+        else if (value > 1f) value = 1f;
+        return value; 
+    }
+    
     void Start()
     {
         playerObject = GameObject.FindWithTag("Player");

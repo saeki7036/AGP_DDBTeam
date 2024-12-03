@@ -18,6 +18,16 @@ public class GunStatus : MonoBehaviour
         get { return remainBullets; }
     }
 
+    public Sprite WeaponImage
+    {
+        get { return weaponData.WeaponImage; }
+    }
+
+    public bool IsSubWeapon
+    {
+        get { return weaponData.SubWeapon == null; }
+    }
+
     void Start()
     {
         FillBullet();

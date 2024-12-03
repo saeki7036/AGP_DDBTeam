@@ -47,7 +47,15 @@ public class PlayerHeadMoveScript : MonoBehaviour
             transform.position = position + headOffset;
             yield return null;
         }
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
+
+        if (TargetManeger.getPlayerObj().TryGetComponent<Animator>(out Animator playerAnimator))
+        {
+            playerAnimator.SetBool("Change", false);
+        }
         changeTarget = changeObj;
+        changeTarget.GetComponent<CharacterStatus>().OnPossess();
         change.ChangeCameraTarget(changeTarget);
         ChangeCameraTarget(change.gameObject.transform, playerDistance);
         Destroy(gameObject);
