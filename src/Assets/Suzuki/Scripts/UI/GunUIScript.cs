@@ -8,6 +8,7 @@ using TMPro;
 public class GunUIScript : MonoBehaviour
 {
     [Tooltip("残弾数のテキスト"),SerializeField] TMP_Text remainBulletText;
+    [Header("銃のアイコン"), SerializeField] Image gunIcon;
     [SerializeField] PlayerMove player;
     // Start is called before the first frame update
     void Start()
@@ -27,5 +28,7 @@ public class GunUIScript : MonoBehaviour
         {
             remainBulletText.color = Color.white;
         }
+
+        gunIcon.sprite = player.Gun.WeaponImage;
     }
 }
