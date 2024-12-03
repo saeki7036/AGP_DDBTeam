@@ -23,6 +23,11 @@ public class GunStatus : MonoBehaviour
         get { return weaponData.WeaponImage; }
     }
 
+    public bool IsSubWeapon
+    {
+        get { return weaponData.SubWeapon == null; }
+    }
+
     void Start()
     {
         FillBullet();
