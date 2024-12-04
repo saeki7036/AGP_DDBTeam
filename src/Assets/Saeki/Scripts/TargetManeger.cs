@@ -98,13 +98,30 @@ public class TargetManeger : MonoBehaviour
     {
         foreach (EnemyBaseClass baseClass in Enemy)
         {
-            if (distance_Square(baseClass.transform.position) < watchDistancs)    
+            if (distance_Square(playerObject.transform.position,baseClass.transform.position) < watchDistancs)    
                 baseClass.Watch();
         }
     }
+    /// <summary>
+    /// ある位置座標から一定の距離にあるEnemyを取得
+    /// </summary>
+    /// <param name="position">位置座標</param>
+    /// <param name="radius">位置座標からの距離</param>
+    /// <returns>一定の距離内にあるEnemyのList</returns>
+    public static List<EnemyBaseClass> TakeTarget(Vector3 position, float radius)
+    {
+        List<EnemyBaseClass> list = new();
+        foreach (EnemyBaseClass baseClass in Enemy)
+        {
+            if (distance_Square(position ,baseClass.transform.position) < radius)
+                list.Add(baseClass);
+        }
+        return list;
+    }
 
-    private static float distance_Square(Vector3 enemy) 
+
+    private static float distance_Square(Vector3 Target ,Vector3 enemy) 
     { 
-        return (playerObject.transform.position - enemy).sqrMagnitude; 
+        return (Target - enemy).sqrMagnitude; 
     }
 }
