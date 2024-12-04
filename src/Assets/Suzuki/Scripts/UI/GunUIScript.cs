@@ -29,6 +29,9 @@ public class GunUIScript : MonoBehaviour
             remainBulletText.color = Color.white;
         }
 
-        gunIcon.sprite = player.Gun.WeaponImage;
+        if (gunIcon != null)
+        {
+            gunIcon.sprite = player.Gun.WeaponImage;
+        }
     }
 }
