@@ -6,7 +6,6 @@ public class PlayerHeadMoveScript : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 10f;
 
-    Change change;
     CinemachineVirtualCamera virtualCamera;
 
     CinemachineFramingTransposer framingTransposer;
@@ -18,7 +17,6 @@ public class PlayerHeadMoveScript : MonoBehaviour
     void Start()
     {
         Debug.Log("Start");
-        change = GameObject.FindObjectOfType<Change>();
     }
 
     /// <summary>
@@ -28,7 +26,7 @@ public class PlayerHeadMoveScript : MonoBehaviour
     /// <param name="target">èÊÇËà⁄ÇÈëŒè€</param>
     /// <param name="headOffset">ì™ÇÃçÇÇ≥</param>
     /// <returns></returns>
-    public IEnumerator MoveHead(Vector3 start, Transform target, Vector3 headOffset, GameObject changeObj)
+    public IEnumerator MoveHead(Vector3 start, Transform target, Vector3 headOffset, GameObject changeObj, Change change)
     {
         damageEffect = GameObject.FindObjectOfType<PlayerDamageEffect>();
         damageEffect.Reset();
@@ -61,7 +59,7 @@ public class PlayerHeadMoveScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void ReturnCameraTarget()
+    public void ReturnCameraTarget(Change change)
     {
         if (changeTarget != null)
         {

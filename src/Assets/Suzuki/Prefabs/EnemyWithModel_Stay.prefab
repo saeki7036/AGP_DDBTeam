@@ -196,15 +196,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e0a7bffa31ffcef49bda578e3099bc74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.67
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0a7bffa31ffcef49bda578e3099bc74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6400001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0a7bffa31ffcef49bda578e3099bc74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.04115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0a7bffa31ffcef49bda578e3099bc74, type: 3}
       propertyPath: m_LocalRotation.w
@@ -236,7 +236,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e0a7bffa31ffcef49bda578e3099bc74, type: 3}
       propertyPath: m_Name
-      value: EnemyWithModel
+      value: EnemyWithModel_Stay
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0a7bffa31ffcef49bda578e3099bc74, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0a7bffa31ffcef49bda578e3099bc74, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -267,6 +275,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1142581701894985430}
   m_SourcePrefab: {fileID: 100100000, guid: e0a7bffa31ffcef49bda578e3099bc74, type: 3}
+--- !u!1 &694534675381886981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8504854735574410861, guid: e0a7bffa31ffcef49bda578e3099bc74, type: 3}
+  m_PrefabInstance: {fileID: 9197524484614129256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8315124958433852217 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e0a7bffa31ffcef49bda578e3099bc74, type: 3}
@@ -377,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb22615ac4892df479b67202a7bde2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 0}
+  head: {fileID: 694534675381886981}
 --- !u!114 &1142581701894985430
 MonoBehaviour:
   m_ObjectHideFlags: 0
