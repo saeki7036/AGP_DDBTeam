@@ -4474,7 +4474,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_Name
-      value: EnemyWithModel_ChaceDiscovery Variant (1)
+      value: EnemyWithModel_ChaseDiscovery Variant (2)
       objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4906,13 +4906,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1149117921}
     m_Modifications:
-    - target: {fileID: 2047314666303436268, guid: c847afde25ac2eb408370e8644888222, type: 3}
-      propertyPath: m_Speed
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_Name
-      value: EnemyWithModel_ChaceDiscovery Variant
+      value: EnemyWithModel_ChaseDiscovery Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12940,7 +12936,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_Name
-      value: EnemyWithModel_ChaceDiscovery Variant (2)
+      value: EnemyWithModel_ChaseDiscovery Variant (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15015,7 +15011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8910588420735777125, guid: 252bbfabd8f0b904f8cc136753f1950d, type: 3}
       propertyPath: m_Name
-      value: DiscoveryErea (1)
+      value: DiscoveryArea (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18429,7 +18425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8910588420735777125, guid: 252bbfabd8f0b904f8cc136753f1950d, type: 3}
       propertyPath: m_Name
-      value: DiscoveryErea
+      value: DiscoveryArea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

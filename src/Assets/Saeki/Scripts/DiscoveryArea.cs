@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EreaOfDiscovery : MonoBehaviour
+public class DiscoveryArea : MonoBehaviour
 {
     [SerializeField]
     EnemyDiscoveryController[] enemy;
