@@ -102,14 +102,12 @@ public class BulletBaseClass : MonoBehaviour
             return otherTag == "Player";
     }
 
-    private bool CheckHit(float deltaTime)
+    private void CheckHit(float deltaTime)
     {
         Ray moveCheckRay = new Ray(transform.position, Forward);
-        if (Physics.Raycast(moveCheckRay.origin, moveCheckRay.direction * deltaTime, out RaycastHit hit))
+        if (Physics.Raycast(moveCheckRay.origin, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime, hitLayerMask))
         {
             OnTriggerEnter(hit.collider);
-            return true;
         }
-        return false;
     }
 }
