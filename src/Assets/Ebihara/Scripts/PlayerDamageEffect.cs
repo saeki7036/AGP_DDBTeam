@@ -5,24 +5,30 @@ using UnityEngine.UI;
 
 public class PlayerDamageEffect : MonoBehaviour
 {
+    [SerializeField] int nowHP;
+    const int maxHP = 3;
+    Change change;
+
     [SerializeField] Image damageImage;
-    [SerializeField] int damage;
-    int maxDamage;
+    [SerializeField] Image[] hpsGreen = new Image[maxHP];
+
     float[] damagesAlpha;
     Color color;
-    Change change;
 
     // Start is called before the first frame update
     void Start()
     {
         change= GameObject.FindObjectOfType<Change>();
+        nowHP = maxHP;
         color = damageImage.GetComponent<Image>().color;
         color.a = 0f;
         damageImage.GetComponent<Image>().color = color;
-        damage = 0;
-        maxDamage = 3;
-        damagesAlpha =new float[maxDamage];
-        for (int i = 0; i < maxDamage; i++) { damagesAlpha[i] = 0.2f * (i + 1); }
+        damagesAlpha = new float[maxHP + 1];
+        for (int i = maxHP; i > 0; i--)
+        {
+            damagesAlpha[maxHP - i] = 1.0f - 0.3f * (maxHP - i);
+        }
+        damagesAlpha[maxHP] = 0.0f;
     }
 
     // Update is called once per frame
@@ -31,21 +37,43 @@ public class PlayerDamageEffect : MonoBehaviour
         
     }
 
-    public void DamageEffect()
+    public void DamageEffect(float hp)
     {
         if (change.Changing == false)
         {
-            Debug.Log("Hit:" + damage);
-            if (damage < maxDamage) { color.a = damagesAlpha[damage]; }
-            else { color.a = damagesAlpha[maxDamage - 1]; }
-            damage++;
+            for (int i = 0; i < maxHP; i++)
+            {
+                if (i < hp)
+                {
+                    hpsGreen[i].enabled = true;
+                }
+                else
+                {
+                    hpsGreen[i].enabled = false;
+                }
+            }
+            nowHP = (int)hp;
+            color.a = damagesAlpha[nowHP];
             damageImage.GetComponent<Image>().color = color;
+
+            //if (nowHP > 0)
+            //{
+            //    nowHP--;
+            //    hpsGreen[nowHP].enabled = false;
+            //    color.a = damagesAlpha[nowHP];
+            //    damageImage.GetComponent<Image>().color = color;
+            //}
+            Debug.Log("Hit:" + nowHP);
         }
     }
     public void Reset()
     {
-        damage= 0;
-        color.a = 0f;
+        nowHP = maxHP;
+        color.a = damagesAlpha[maxHP];
         damageImage.GetComponent<Image>().color = color;
+        for (int i = 0; i < hpsGreen.Length; i++)
+        {
+            hpsGreen[i].enabled = true;
+        }
     }
 }
