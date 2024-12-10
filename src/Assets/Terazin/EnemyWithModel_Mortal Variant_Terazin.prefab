@@ -20,10 +20,6 @@ PrefabInstance:
       propertyPath: defaultShotIntarval
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 7761278057829146909, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8315124958433852217, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_Name
       value: EnemyWithModel_Mortal Variant
