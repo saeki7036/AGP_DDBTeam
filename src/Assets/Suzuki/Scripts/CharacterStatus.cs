@@ -32,7 +32,7 @@ public class CharacterStatus : MonoBehaviour
         get { return gameObject.tag; }
     }
     float damageTimer;
-
+    UnityEngine.Animator animator;
     void Start()
     {
         possessed = false;
@@ -50,6 +50,7 @@ public class CharacterStatus : MonoBehaviour
     public void StartSetUp()
     {
         SetHpMax();
+        animator = GetComponent<UnityEngine.Animator>();
         remainPossessTime = characterData.MaxPossessTime;
         damageTimer = 0f;
         if(tag == "Player")
@@ -78,6 +79,8 @@ public class CharacterStatus : MonoBehaviour
         {
             damageTimer = characterData.ImmunityTime;
         }
+
+        animator.SetBool("Dead", IsDead);
     }
 
     /// <summary>
@@ -99,6 +102,8 @@ public class CharacterStatus : MonoBehaviour
             SetHpMax();
             possessed = true;
         }
+
+        animator.SetBool("Dead", IsDead);
     }
 
     void SetHpMax()

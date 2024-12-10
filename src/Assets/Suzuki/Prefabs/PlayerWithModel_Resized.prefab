@@ -390,8 +390,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a924e35f644a0b3419ff8f50894e29b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nowHP: 0
   damageImage: {fileID: 0}
-  damage: 0
+  hpsGreen:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &5406266281850979440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,7 +1220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6765eec97cfa7f8488e840ae7f1f6ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData: {fileID: 11400000, guid: 03539c3839b013742834995b8963811a, type: 2}
+  characterData: {fileID: 11400000, guid: 518ed09c6af62284b957d3ec477865cd, type: 2}
 --- !u!114 &5905866714485457636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,4 +1233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb22615ac4892df479b67202a7bde2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 0}
+  head: {fileID: 6619790313707721318}
+--- !u!1 &6619790313707721318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2511240423080479738, guid: bbb02b63ec66c5f49945aec3181cc2c3, type: 3}
+  m_PrefabInstance: {fileID: 502274591611250272}
+  m_PrefabAsset: {fileID: 0}

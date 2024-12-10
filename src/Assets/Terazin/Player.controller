@@ -992,7 +992,13 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: Change
-    m_Type: 9
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: Dead
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -1013,7 +1019,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Weapon Category Change
     m_StateMachine: {fileID: -3380708308455657607}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: f11bc41f559eb3e4c85dd17169eceaf0, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -1037,7 +1043,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Pistol Animation
     m_StateMachine: {fileID: 4880112818735413616}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: f11bc41f559eb3e4c85dd17169eceaf0, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -1049,7 +1055,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Assult Rifle Animation
     m_StateMachine: {fileID: -2414229138933885688}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: f11bc41f559eb3e4c85dd17169eceaf0, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -1061,7 +1067,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Shotgun Animation
     m_StateMachine: {fileID: 8024347836702942484}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: f11bc41f559eb3e4c85dd17169eceaf0, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -1073,7 +1079,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Sniper Rifle Animation
     m_StateMachine: {fileID: -2600646449679160289}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: f11bc41f559eb3e4c85dd17169eceaf0, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
