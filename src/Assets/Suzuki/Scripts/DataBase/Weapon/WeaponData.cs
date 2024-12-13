@@ -31,6 +31,7 @@ public class WeaponData : BaseData
     [SerializeField] int maxBullet;
     [SerializeField] List<BulletSettings> bulletSettings;
     [SerializeField] WeaponRole weaponRole;
+    [SerializeField] Sprite weaponImage;
     [SerializeField] GameObject subWeapon;
 
     // プロパティ
@@ -45,6 +46,10 @@ public class WeaponData : BaseData
     public List<BulletSettings> BulletSettings
     {
         get { return bulletSettings; }
+    }
+    public Sprite WeaponImage
+    {
+        get { return weaponImage; }
     }
     public WeaponRole Role
     {

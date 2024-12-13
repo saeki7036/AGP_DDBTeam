@@ -8,6 +8,7 @@ using TMPro;
 public class GunUIScript : MonoBehaviour
 {
     [Tooltip("残弾数のテキスト"),SerializeField] TMP_Text remainBulletText;
+    [Header("銃のアイコン"), SerializeField] Image gunIcon;
     [SerializeField] PlayerMove player;
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,11 @@ public class GunUIScript : MonoBehaviour
         else if(remainBulletText.color == Color.red)// 残弾が0から回復したとき（武器切り替え時や乗り移り時）
         {
             remainBulletText.color = Color.white;
+        }
+
+        if (gunIcon != null)
+        {
+            gunIcon.sprite = player.Gun.WeaponImage;
         }
     }
 }
