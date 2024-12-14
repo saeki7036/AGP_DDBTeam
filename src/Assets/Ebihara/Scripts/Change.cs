@@ -14,7 +14,7 @@ public class Change : MonoBehaviour
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
 
-　　[SerializeField] TargetManeger targetManeger;
+　　[SerializeField] MainGameGunsUI gunsUI;
     [SerializeField] EnemyManager enemyManager;
 
     [SerializeField] GameObject playerHead;
@@ -97,7 +97,7 @@ public class Change : MonoBehaviour
 
         //if (targetManeger != null)
         TargetManeger.SetTarget(this.transform.parent.gameObject);
-
+        gunsUI.AnimatorSetHead();
         if (!changed)
         {
             StartCoroutine(SetChangedTrueForSeconds(0.2f));
@@ -114,9 +114,10 @@ public class Change : MonoBehaviour
 
     IEnumerator DelayInstantiateHeadAndShoot(float delaySeconds,GameObject changeObj)
     {
+        gunsUI.AnimatorChangeHead();
         changing = true;
         yield return new WaitForSeconds(delaySeconds);
-        PlayerHeadMoveScript playerHeadMoveScript = Instantiate(playerHead, transform.position, Quaternion.identity).GetComponent<PlayerHeadMoveScript>();// プレイヤーの頭の位置からの生成に変更予定
-        yield return StartCoroutine(playerHeadMoveScript.MoveHead(transform.position, characterStatus.transform, new Vector3(0f, 1.3f, 0f), changeObj));
+        PlayerHeadMoveScript playerHeadMoveScript = Instantiate(playerHead, transform.position + new Vector3(0f, -10f, 0f), Quaternion.identity).GetComponent<PlayerHeadMoveScript>();// プレイヤーの頭の位置からの生成に変更予定
+        yield return StartCoroutine(playerHeadMoveScript.MoveHead(transform.position, characterStatus.transform, new Vector3(0f, 1.3f, 0f), changeObj, this));
     }
 }

@@ -23,7 +23,7 @@ public class BulletBaseClass : MonoBehaviour
         {
             Forward = transform.forward;
         }
-        else 
+        else
         {
             Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
         }
@@ -51,6 +51,7 @@ public class BulletBaseClass : MonoBehaviour
 
         float deltaTime = tag == "PlayerBullet" ? Time.unscaledDeltaTime : Time.deltaTime;// プレイヤーの弾はスロー中でも飛び方を変えない
                                                                                           //transform.Translate(Forward * BulletPower * deltaTime);
+        CheckHit(deltaTime);// 当たり判定の確認(transform.positionで動かしているため)
         // オブジェクトの移動
         transform.position += Forward * deltaTime;
     }
@@ -64,9 +65,9 @@ public class BulletBaseClass : MonoBehaviour
 
         //Debug.Log(CompareLayer(layerMask, other.gameObject.layer) + "layer:" + other.gameObject.layer);
         int otherLayer = other.gameObject.layer;
-        if (CompareLayer(hitLayerMask,otherLayer))// 衝突したとき
+        if (CompareLayer(hitLayerMask, otherLayer))// 衝突したとき
         {
-            if (CompareLayer(lapseLayerMask,otherLayer))
+            if (CompareLayer(lapseLayerMask, otherLayer))
                 Destroy(this.gameObject);
 
             if (other.TryGetComponent<CharacterStatus>(out CharacterStatus character))// キャラクターに当たったとき
@@ -83,7 +84,7 @@ public class BulletBaseClass : MonoBehaviour
                     }
                     Destroy(this.gameObject);
                 }
-            }          
+            }
         }
     }
 
@@ -97,7 +98,16 @@ public class BulletBaseClass : MonoBehaviour
     {
         if (this.tag == "PlayerBullet")
             return otherTag == "Enemy";
-        else 
+        else
             return otherTag == "Player";
+    }
+
+    private void CheckHit(float deltaTime)
+    {
+        Ray moveCheckRay = new Ray(transform.position, Forward);
+        if (Physics.Raycast(moveCheckRay.origin, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime, hitLayerMask))
+        {
+            OnTriggerEnter(hit.collider);
+        }
     }
 }
