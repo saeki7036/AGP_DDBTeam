@@ -80,7 +80,7 @@ public class BulletBaseClass : MonoBehaviour
                     }
                     else
                     {
-                        character.TakeDamage(bulletData.AttackPower);
+                        character.TakeDamage(bulletData.AttackPower, true);
                     }
                     Destroy(this.gameObject);
                 }
