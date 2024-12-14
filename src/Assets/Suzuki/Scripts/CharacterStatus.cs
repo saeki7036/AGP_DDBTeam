@@ -71,7 +71,7 @@ public class CharacterStatus : MonoBehaviour
             hp = 0f;
             if(launch && TryGetComponent<Rigidbody>(out Rigidbody rb))
             {
-                rb.AddForce(Vector3.up * 2f, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * 15f, ForceMode.Impulse);
             }
         }
 
