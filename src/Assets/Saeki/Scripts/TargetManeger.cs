@@ -47,7 +47,7 @@ public class TargetManeger : MonoBehaviour
 
     private void TimeScaleManagement()
     {
-        if (Time.timeScale == 1f || Time.timeScale == 0f)
+        if (Time.timeScale == 1f || Time.timeScale == 0f || Time.timeScale == 0.1f)
             return;
 
         TimeCount += Time.unscaledDeltaTime;
@@ -62,7 +62,7 @@ public class TargetManeger : MonoBehaviour
     public static void StartHeadChange()
     {
         TimeCount = 0;
-        Time.timeScale = 1f;
+        Time.timeScale = 0.1f;
     }
 
     /// <summary>

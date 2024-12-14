@@ -37,16 +37,16 @@ public class PlayerHeadMoveScript : MonoBehaviour
         float totalTime = Vector3.Distance(start, target.position) / moveSpeed;
         float timer = 0f;
 
-        while(timer < totalTime)
+        while(timer < totalTime && !PauseManager.IsPaused)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
 
             Vector3 position = Vector3.Lerp(start, target.position, timer / totalTime);
             transform.position = position + headOffset;
             yield return null;
         }
         gameObject.GetComponent<MeshRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         if (TargetManeger.getPlayerObj().TryGetComponent<Animator>(out Animator playerAnimator))
         {
