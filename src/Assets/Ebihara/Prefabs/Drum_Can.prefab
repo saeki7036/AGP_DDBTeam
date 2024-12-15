@@ -153,5 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b083247156e92cc4e8c51c28e6bde3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterData: {fileID: 11400000, guid: 62621ca3ee7bff8448c5081b0bb4025f, type: 2}
   explosiveRadius: 7
   explosionprefab: {fileID: 1458589230454212747, guid: 4839472538563474a9bc111b3970d203, type: 3}

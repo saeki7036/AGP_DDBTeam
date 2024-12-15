@@ -14,6 +14,10 @@ public class TargetManeger : MonoBehaviour
     [SerializeField] private static float Interval = 3f;
     [SerializeField] private static float watchDistancs = 15f;
 
+
+
+    public static List<EnemyBaseClass > EnemyList => Enemy;
+
     /// <summary>
     /// static‚ÅéŒ¾‚³‚ê‚½Getƒƒ]ƒbƒg
     /// </summary>
