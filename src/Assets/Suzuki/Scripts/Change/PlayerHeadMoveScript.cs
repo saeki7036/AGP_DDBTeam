@@ -13,7 +13,7 @@ public class PlayerHeadMoveScript : MonoBehaviour
     float playerDistance = 0.3f;
 
     PlayerDamageEffect damageEffect;
-    GameObject changeTarget;
+    //GameObject changeTarget;
     void Start()
     {
         Debug.Log("Start");
@@ -45,29 +45,34 @@ public class PlayerHeadMoveScript : MonoBehaviour
             transform.position = position + headOffset;
             yield return null;
         }
+
         gameObject.GetComponent<MeshRenderer>().enabled = false;
+        CharacterStatus targetStatus = changeObj.GetComponent<CharacterStatus>();
+        targetStatus.OnPossess();
+        TargetManeger.PlayerStatus.CharacterAnimator.updateMode = AnimatorUpdateMode.Normal;
+
         yield return new WaitForSecondsRealtime(0.5f);
 
-        if (TargetManeger.getPlayerObj().TryGetComponent<Animator>(out Animator playerAnimator))
-        {
-            playerAnimator.SetBool("Change", false);
-        }
-        changeTarget = changeObj;
-        changeTarget.GetComponent<CharacterStatus>().OnPossess();
-        change.ChangeCameraTarget(changeTarget);
+        //if (TargetManeger.getPlayerObj().TryGetComponent<Animator>(out Animator playerAnimator))
+        //{
+        //    playerAnimator.SetBool("Change", false);
+        //}
+        //changeTarget = changeObj;
+        TargetManeger.PlayerStatus.CharacterAnimator.SetBool("Change", false);
+        change.ChangeCameraTarget(changeObj);
         ChangeCameraTarget(change.gameObject.transform, playerDistance);
         Destroy(gameObject);
     }
 
-    public void ReturnCameraTarget(Change change)
-    {
-        if (changeTarget != null)
-        {
-            change.ChangeCameraTarget(changeTarget);
-            ChangeCameraTarget(change.gameObject.transform, playerDistance);
-            Destroy(gameObject);
-        }
-    }
+    //public void ReturnCameraTarget(Change change)
+    //{
+    //    if (changeTarget != null)
+    //    {
+    //        change.ChangeCameraTarget(changeTarget);
+    //        ChangeCameraTarget(change.gameObject.transform, playerDistance);
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     void ChangeCameraTarget(Transform target,float distance)
     {
