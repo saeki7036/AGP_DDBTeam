@@ -9835,6 +9835,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 711098348}
     m_Modifications:
+    - target: {fileID: 4561215641984167454, guid: 243adae03bda2d14da4753db664e102f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641908402375843961, guid: 243adae03bda2d14da4753db664e102f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4841972491624748646, guid: 243adae03bda2d14da4753db664e102f, type: 3}
       propertyPath: player
       value: 
@@ -27017,14 +27025,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlowSlider
       objectReference: {fileID: 0}
-    - target: {fileID: 5174669193864077929, guid: b9d3b0405f73226468dad1f2b6e37827, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417208700700060458, guid: b9d3b0405f73226468dad1f2b6e37827, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 5605969598868296922, guid: b9d3b0405f73226468dad1f2b6e37827, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -27104,10 +27104,6 @@ PrefabInstance:
     - target: {fileID: 5605969598868296922, guid: b9d3b0405f73226468dad1f2b6e37827, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216047940396990162, guid: b9d3b0405f73226468dad1f2b6e37827, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
