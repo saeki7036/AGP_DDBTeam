@@ -92,7 +92,7 @@ public class PlayerRay : MonoBehaviour
 
             if (Physics.Raycast(rayStartPosition, rayDirection, out raycastHit, distance)/* && raycastHit.collider.tag == "Enemy"*/)
             {
-                if (!raycastHit.transform.TryGetComponent<CharacterStatus>(out CharacterStatus status) && status.CanPossess) return;// 乗り移れるかどうか
+                if (!raycastHit.transform.TryGetComponent<CharacterStatus>(out CharacterStatus status)) return; if (!status.CanPossess) return;// 乗り移れるかどうか
                 game = raycastHit.collider.gameObject;
                 change.ChangeEnemy(game);
 
