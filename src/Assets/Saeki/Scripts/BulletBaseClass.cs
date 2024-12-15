@@ -11,6 +11,7 @@ public class BulletBaseClass : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
     [SerializeField] private BulletData bulletData;
+    [Header("ヒット時のエフェクト"), SerializeField] private ParticleSystem particle;
     [Header("弾が衝突するレイヤー"), SerializeField] private LayerMask hitLayerMask;
     [Header("弾が消滅するレイヤー"), SerializeField] private LayerMask lapseLayerMask;
 
@@ -82,6 +83,7 @@ public class BulletBaseClass : MonoBehaviour
                     {
                         character.TakeDamage(bulletData.AttackPower, true);
                     }
+                    Instantiate(particle, transform.position, Quaternion.identity);
                     Destroy(this.gameObject);
                 }
             }
