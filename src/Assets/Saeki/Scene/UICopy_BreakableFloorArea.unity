@@ -981,6 +981,8 @@ MonoBehaviour:
   gunObject: {fileID: 141302753}
   remainingBullets: 9999
   lockonIntarval: 3
+  enemyAliveController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &41836470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5634,6 +5636,8 @@ MonoBehaviour:
   gunObject: {fileID: 1167107036}
   remainingBullets: 9999
   lockonIntarval: 3
+  enemyAliveController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &209225166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13788,6 +13792,8 @@ MonoBehaviour:
   gunObject: {fileID: 832574327}
   remainingBullets: 9999
   lockonIntarval: 3
+  enemyAliveController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &413810207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16204,6 +16210,8 @@ MonoBehaviour:
   gunObject: {fileID: 1146461696}
   remainingBullets: 9999
   lockonIntarval: 3
+  enemyAliveController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &480937904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25226,6 +25234,7 @@ RectTransform:
   - {fileID: 73005280}
   - {fileID: 1877273344}
   - {fileID: 1206362457}
+  - {fileID: 1590601836}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -28796,6 +28805,8 @@ MonoBehaviour:
   gunObject: {fileID: 438392385}
   remainingBullets: 9999
   lockonIntarval: 3
+  enemyAliveController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &818048531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31248,6 +31259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 1212016853}
+  enemyHead: {fileID: 0}
+  playerHead: {fileID: 0}
 --- !u!114 &884455652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33301,6 +33314,8 @@ MonoBehaviour:
   gunObject: {fileID: 916138371}
   remainingBullets: 9999
   lockonIntarval: 3
+  enemyAliveController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &947487670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33314,6 +33329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 1080735834}
+  enemyHead: {fileID: 0}
+  playerHead: {fileID: 0}
 --- !u!95 &947487672
 Animator:
   serializedVersion: 5
@@ -49446,6 +49463,8 @@ MonoBehaviour:
   gunObject: {fileID: 1358255435}
   remainingBullets: 9999
   lockonIntarval: 3
+  enemyAliveController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &1364500144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53329,6 +53348,8 @@ MonoBehaviour:
   gunObject: {fileID: 137003437}
   remainingBullets: 9999
   lockonIntarval: 3
+  enemyAliveController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &1482001249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57679,6 +57700,108 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589032645}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1590601835
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 711098348}
+    m_Modifications:
+    - target: {fileID: 2176502684587436218, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_Name
+      value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+--- !u!224 &1590601836 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9175355266034643719, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+  m_PrefabInstance: {fileID: 1590601835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1594162108
 GameObject:
   m_ObjectHideFlags: 0
@@ -58232,6 +58355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 1212016853}
+  enemyHead: {fileID: 0}
+  playerHead: {fileID: 0}
 --- !u!95 &1609516506
 Animator:
   serializedVersion: 5
@@ -72966,6 +73091,8 @@ MonoBehaviour:
   gunObject: {fileID: 2051537626}
   remainingBullets: 9999
   lockonIntarval: 3
+  enemyAliveController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &2032420376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75300,6 +75427,8 @@ MonoBehaviour:
   gunObject: {fileID: 415699013}
   remainingBullets: 9999
   lockonIntarval: 3
+  enemyAliveController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &2105465180
 MonoBehaviour:
   m_ObjectHideFlags: 0
