@@ -5,12 +5,14 @@ using UnityEngine;
 public class CharacterStatus : MonoBehaviour
 {
     [SerializeField] CharacterData characterData;
+    [Header("プレイヤーが乗り移った際に使用するデータ"), SerializeField] CharacterData playerData;
 
     float hp;
     float remainPossessTime;
     float damageTimer;
     Animator animator;
     bool possessed;
+    bool deadFirstTime;
     public float Hp
     {
         get { return hp; }
@@ -38,6 +40,7 @@ public class CharacterStatus : MonoBehaviour
     void Start()
     {
         possessed = false;
+        deadFirstTime = false;
         StartSetUp();
     }
 
@@ -103,6 +106,7 @@ public class CharacterStatus : MonoBehaviour
     {
         if(!possessed)// 初回取り憑きのとき
         {
+            characterData = playerData;
             SetHpMax();
             possessed = true;
         }
