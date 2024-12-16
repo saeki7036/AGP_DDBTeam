@@ -20,11 +20,8 @@ public class ClearFlag : MonoBehaviour
     void FixedUpdate()
     {
         //Œã‚©‚ç’Ç‰Á‚É‚Í–¢‘Î‰ž
-        if (!clearCheck && Check(TargetManeger.EnemyList))
-        {
-            Time.timeScale = 0f;
+        if(!clearCheck && Check(TargetManeger.EnemyList))
             PlayTimeline();
-        }
     }
     bool Check(List<EnemyBaseClass> enemys)
     {

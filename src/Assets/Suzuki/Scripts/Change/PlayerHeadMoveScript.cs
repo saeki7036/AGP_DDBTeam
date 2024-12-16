@@ -32,7 +32,7 @@ public class PlayerHeadMoveScript : MonoBehaviour
         damageEffect.Reset();
 
         transform.LookAt(target);
-        SetCameraTarget(transform, headDistance);
+        ChangeCameraTarget(transform, headDistance);
 
         float totalTime = Vector3.Distance(start, target.position) / moveSpeed;
         float timer = 0f;
@@ -60,7 +60,7 @@ public class PlayerHeadMoveScript : MonoBehaviour
         //changeTarget = changeObj;
         TargetManeger.PlayerStatus.CharacterAnimator.SetBool("Change", false);
         change.ChangeCameraTarget(changeObj);
-        SetCameraTarget(change.gameObject.transform, playerDistance);
+        ChangeCameraTarget(change.gameObject.transform, playerDistance);
         Destroy(gameObject);
     }
 
@@ -74,7 +74,7 @@ public class PlayerHeadMoveScript : MonoBehaviour
     //    }
     //}
 
-    void SetCameraTarget(Transform target,float distance)
+    void ChangeCameraTarget(Transform target,float distance)
     {
         Debug.Log("target:" + target.name);
 

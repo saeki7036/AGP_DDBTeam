@@ -347,7 +347,6 @@ MonoBehaviour:
   inputProvider: {fileID: 0}
   look: {fileID: 4293749442301454819, guid: 7261909591a1b7549b1dc279cefcc10c, type: 3}
   aim: {fileID: -6063233619249004855, guid: 7261909591a1b7549b1dc279cefcc10c, type: 3}
-  walkSound: {fileID: 8300000, guid: 3de089be6ce68e6449fff71e6c2cd592, type: 3}
   camera: {fileID: 0}
 --- !u!114 &4298569082051658761
 MonoBehaviour:
@@ -1318,8 +1317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 518ed09c6af62284b957d3ec477865cd, type: 2}
-  playerData: {fileID: 11400000, guid: 518ed09c6af62284b957d3ec477865cd, type: 2}
-  deadSound: {fileID: 8300000, guid: 7c2de6ee61d98a74396fcd71bd7bd53d, type: 3}
 --- !u!114 &5905866714485457636
 MonoBehaviour:
   m_ObjectHideFlags: 0

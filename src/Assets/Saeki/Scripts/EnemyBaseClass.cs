@@ -20,7 +20,6 @@ public class EnemyBaseClass : CharacterStatus
     [SerializeField] private int remainingBullets;
 
     [SerializeField] protected float lockonIntarval = 3f;
-    [SerializeField] AudioClip deadSound;
 
     [Header("敵が使用するコントローラー"), SerializeField] RuntimeAnimatorController enemyAliveController;
     [Header("プレイヤーが乗り移ったときに使用するコントローラー"), SerializeField] RuntimeAnimatorController playerController;
@@ -29,7 +28,7 @@ public class EnemyBaseClass : CharacterStatus
     protected bool remainingCheck = false, lockonCheck = false;
 
     private float WatchCount = 0;
-    private bool isWatched = false ,isGetMesh = false, isFire = false, isDead = false;
+    private bool isWatched = false ,isGetMesh = false, isFire = false;
     private float fireTimer = 0f, fireTimerMax = 0.2f;
     private MeshRenderer mesh;
 
@@ -56,7 +55,6 @@ public class EnemyBaseClass : CharacterStatus
 
     void Start()
     {
-        isDead = false;
         Target = GameObject.FindWithTag("Player");
         Agent.speed = moveSpeed;
         if(this.TryGetComponent<MeshRenderer>(out MeshRenderer Mesh))
@@ -237,10 +235,5 @@ public class EnemyBaseClass : CharacterStatus
     void Update()
     {
         MoveEnemy();
-        if(isDead && !isDead)
-        {
-            SR_SoundController.instance.PlaySEOnce(deadSound);
-            isDead = true;
-        }
     }
 }

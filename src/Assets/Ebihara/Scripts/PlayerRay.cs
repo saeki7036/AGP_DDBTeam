@@ -103,7 +103,6 @@ public class PlayerRay : MonoBehaviour
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        if (PauseManager.IsPaused) return;
         if (context.phase == InputActionPhase.Performed)
         {
             // PlayerMoveに飛ばして弾を出す
