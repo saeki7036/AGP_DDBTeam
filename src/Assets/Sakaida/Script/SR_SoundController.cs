@@ -18,23 +18,30 @@ public class SR_SoundController : MonoBehaviour
         {
             Destroy(this);
         }
-        else 
-        { 
-        instance = this;
+        else
+        {
+            instance = this;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void isPlaySE(AudioClip Clip) 
-    { 
-    GameObject CL_SoundPrefab = GameObject.Instantiate(SoundPrefab);
+    /// <summary>
+    /// 指定したオーディオクリップを一度だけ鳴らす
+    /// </summary>
+    public void PlaySEOnce(AudioClip Clip, Transform PlayPositionTransform = null)
+    {
+        GameObject CL_SoundPrefab = GameObject.Instantiate(SoundPrefab);
+        if(PlayPositionTransform != null)
+        {
+            CL_SoundPrefab.transform.position = PlayPositionTransform.position;
+        }
         SR_SoundPlay CL_SR_SoundPlay = CL_SoundPrefab.GetComponent<SR_SoundPlay>();
         CL_SR_SoundPlay.Clip = Clip;
-        CL_SR_SoundPlay.Volume = 1*AllSeVolume;
+        CL_SR_SoundPlay.Volume = 1 * AllSeVolume;
     }
 }

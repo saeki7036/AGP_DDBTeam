@@ -81,7 +81,7 @@ public class BulletBaseClass : MonoBehaviour
                     }
                     else
                     {
-                        character.TakeDamage(bulletData.AttackPower, true);
+                        character.TakeDamage(bulletData.AttackPower, false);
                     }
                     Instantiate(particle, transform.position, Quaternion.identity);
                     Destroy(this.gameObject);
@@ -106,8 +106,8 @@ public class BulletBaseClass : MonoBehaviour
 
     private void CheckHit(float deltaTime)
     {
-        Ray moveCheckRay = new Ray(transform.position, Forward);
-        if (Physics.Raycast(moveCheckRay.origin, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime, hitLayerMask))
+        Ray moveCheckRay = new Ray(transform.position - Forward.normalized * 0.5f, Forward);
+        if (Physics.SphereCast(moveCheckRay.origin, 0.5f, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime + Forward.normalized.magnitude * 0.5f, hitLayerMask))
         {
             OnTriggerEnter(hit.collider);
         }

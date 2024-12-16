@@ -52,7 +52,7 @@ public class SR_GameStarMovieManager : MonoBehaviour
             if (!EndSe)
             {
                 EndSe = true;
-                SoundController.isPlaySE(EndSE);
+                SoundController.PlaySEOnce(EndSE);
             }
         }
 
@@ -61,7 +61,7 @@ public class SR_GameStarMovieManager : MonoBehaviour
         if (!StartSe) 
         {
             StartSe = true;
-            SoundController.isPlaySE(StartSE);
+            SoundController.PlaySEOnce(StartSE);
         }
         
         Timer += Time.deltaTime;
