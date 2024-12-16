@@ -212,8 +212,11 @@ public class PlayerMove : MonoBehaviour
         walkSoundTimer -= Time.unscaledDeltaTime;
         if (walkSoundTimer <= 0f)
         {
-            SR_SoundController.instance.PlaySEOnce(walkSound, transform);
-            walkSoundTimer = walkSoundTimerMax;
+            if (Physics.Raycast(playerParent.transform.position, Vector3.down, 0.5f, LayerMask.GetMask("Stage")))
+            {
+                SR_SoundController.instance.PlaySEOnce(walkSound, transform);
+                walkSoundTimer = walkSoundTimerMax;
+            }
         }
     }
 }
