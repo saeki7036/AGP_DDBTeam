@@ -10,13 +10,16 @@ public class Explosion : CharacterStatus
     string pBullet = "PlayerBullet";
     string enemyTag = "Enemy";
     string playerTag = "Player";
+    SR_SoundController soundController;
     [SerializeField] float explosiveRadius;
     [SerializeField] GameObject explosionprefab;
+    [SerializeField] AudioClip explosionSound;
 
     // Start is called before the first frame update
     void Start()
     {
         isExplosion = false;
+        soundController = GameObject.FindObjectOfType<SR_SoundController>();
         StartSetUp();
     }
 
@@ -72,6 +75,7 @@ public class Explosion : CharacterStatus
         if (isExplosion == false)
         {
             isExplosion = true;
+            soundController.PlaySEOnce(explosionSound, transform);
             GameObject explosionObj = Instantiate(explosionprefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
 
