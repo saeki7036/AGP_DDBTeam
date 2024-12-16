@@ -17,3 +17,4 @@ MonoBehaviour:
   maxHp: 1
   maxPossessTime: 99999
   immunityTime: 0.1
+  deadSound: {fileID: 8300000, guid: 314ed23347329a14586004506e8ff4fa, type: 3}
