@@ -40,6 +40,7 @@ public class WeaponData : BaseData
     [SerializeField] List<BulletSettings> bulletSettings;
     [SerializeField] WeaponRole weaponRole;
     [SerializeField] WeaponType weaponType;
+    [Header("e‚Ì”­ŽËSE"), SerializeField] AudioClip shotSound;
     [SerializeField] Sprite weaponImage;
     [SerializeField] GameObject subWeapon;
 
@@ -68,6 +69,7 @@ public class WeaponData : BaseData
     {
         get { return weaponType; }
     }
+    public AudioClip ShotSound => shotSound;
     public GameObject SubWeapon
     {
         get { return subWeapon; }

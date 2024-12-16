@@ -11,7 +11,7 @@ public class TargetManeger : MonoBehaviour
     private static CharacterStatus playerStatus;
     private static float TimeCount = 0;
 
-    [SerializeField] private static float Interval = 3f;
+    [SerializeField] private static float Interval = 4.5f;// ƒXƒ[ŠÔ
     [SerializeField] private static float watchDistancs = 15f;
 
 
