@@ -107,7 +107,7 @@ public class BulletBaseClass : MonoBehaviour
     private void CheckHit(float deltaTime)
     {
         Ray moveCheckRay = new Ray(transform.position - Forward.normalized * 0.5f, Forward);
-        if (Physics.SphereCast(moveCheckRay.origin, 0.5f, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime + Forward.normalized.magnitude * 0.5f, hitLayerMask))
+        if (Physics.SphereCast(moveCheckRay.origin, 0.6f, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime + Forward.normalized.magnitude * 0.5f, hitLayerMask))
         {
             OnTriggerEnter(hit.collider);
         }

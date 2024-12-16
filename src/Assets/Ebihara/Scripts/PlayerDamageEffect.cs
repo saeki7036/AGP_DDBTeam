@@ -26,7 +26,7 @@ public class PlayerDamageEffect : MonoBehaviour
         damagesAlpha = new float[maxHP + 1];
         for (int i = maxHP; i > 0; i--)
         {
-            damagesAlpha[maxHP - i] = 1.0f - 0.3f * (maxHP - i);
+            damagesAlpha[maxHP - i] = 1.0f - 0.4f * (maxHP - i) - 0.1f;
         }
         damagesAlpha[maxHP] = 0.0f;
     }

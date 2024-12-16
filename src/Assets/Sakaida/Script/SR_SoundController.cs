@@ -8,7 +8,7 @@ public class SR_SoundController : MonoBehaviour
 
     [SerializeField] GameObject SoundPrefab;
 
-    public float AllSeVolume = 1;
+    public float AllSeVolume = 1;// «—ˆ“I‚Éİ’è‚Å‰¹—Ê‚ğİ’è‚µAStart‚ÉJSON“™‚ğ“Ç‚İ‚ñ‚Åİ’è‚·‚é
 
     public static SR_SoundController instance;
 
