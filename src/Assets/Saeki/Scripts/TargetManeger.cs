@@ -11,8 +11,12 @@ public class TargetManeger : MonoBehaviour
     private static CharacterStatus playerStatus;
     private static float TimeCount = 0;
 
-    [SerializeField] private static float Interval = 3f;
+    [SerializeField] private static float Interval = 4.5f;// スロー時間
     [SerializeField] private static float watchDistancs = 15f;
+
+
+
+    public static List<EnemyBaseClass > EnemyList => Enemy;
 
     /// <summary>
     /// staticで宣言されたGetメゾット

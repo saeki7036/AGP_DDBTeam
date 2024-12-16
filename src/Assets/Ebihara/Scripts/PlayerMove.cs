@@ -36,6 +36,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
     GameObject objParent;
+    Change change;
 
     //親
     public GameObject PlayerParent
@@ -57,6 +58,7 @@ public class PlayerMove : MonoBehaviour
     {
         playerParent = transform.parent.gameObject;
         playerRay = camera.GetComponent<PlayerRay>();
+        change = GetComponent<Change>();
         SetGunObject();
         isAiming = false;
 
@@ -68,21 +70,24 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //カメラの方向に向く
-        Vector3 direction = camera.transform.position - this.transform.position;
+        if (!change.Changing)
+        {
+            //カメラの方向に向く
+            Vector3 direction = camera.transform.position - this.transform.position;
 
-        Vector3 lookdirection = new Vector3(direction.x * -1.0f, 0.0f, direction.z * -1.0f);
+            Vector3 lookdirection = new Vector3(direction.x * -1.0f, 0.0f, direction.z * -1.0f);
 
-        playerParent.transform.rotation = Quaternion.LookRotation(lookdirection);
+            playerParent.transform.rotation = Quaternion.LookRotation(lookdirection);
 
-        //前後
-        moveZ = input.y;
-        //左右
-        moveX = input.x;
+            //前後
+            moveZ = input.y;
+            //左右
+            moveX = input.x;
 
-        float deltaTime = PauseManager.IsSlow ? Time.unscaledDeltaTime : Time.deltaTime;
-        velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * deltaTime;
-        playerParent.transform.Translate(velocity.x, velocity.y, velocity.z);
+            float deltaTime = PauseManager.IsSlow ? Time.unscaledDeltaTime : Time.deltaTime;
+            velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * deltaTime;
+            playerParent.transform.Translate(velocity.x, velocity.y, velocity.z);
+        }
 
     }
 
