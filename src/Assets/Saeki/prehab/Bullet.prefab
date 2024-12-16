@@ -155,7 +155,7 @@ MonoBehaviour:
   particle: {fileID: 1000996106448251057, guid: a0d91cd8f9652374cb239e0fdabe2725, type: 3}
   hitLayerMask:
     serializedVersion: 2
-    m_Bits: 200
+    m_Bits: 712
   lapseLayerMask:
     serializedVersion: 2
     m_Bits: 64

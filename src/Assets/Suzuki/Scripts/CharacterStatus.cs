@@ -74,7 +74,7 @@ public class CharacterStatus : MonoBehaviour
             hp = 0f;
             if(launch && TryGetComponent<Rigidbody>(out Rigidbody rb))
             {
-                rb.AddForce(Vector3.up * 15f, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * 18f, ForceMode.Impulse);
             }
         }
 
@@ -83,6 +83,7 @@ public class CharacterStatus : MonoBehaviour
             damageTimer = characterData.ImmunityTime;
         }
 
+        if (tag == "Player" && !IsDead) return;// æ‚èˆÚ‚Á‚½‚ ‚Æ‚Éƒhƒ‰ƒ€ŠÊ‚Ì”š”­‚É“–‚½‚é‚Æ—§‚¿ã‚ª‚Á‚Ä‚µ‚Ü‚¤‚½‚ß
         animator.SetBool("Dead", IsDead);
     }
 
