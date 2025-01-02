@@ -90,7 +90,7 @@ public class TargetManeger : MonoBehaviour
         playerObject = player;
         playerStatus = playerObject.GetComponent<CharacterStatus>();
         TimeCount = 0;
-        Time.timeScale = 0.2f;
+        Time.timeScale = 0.5f;
         ChangeTarget();
     }
    

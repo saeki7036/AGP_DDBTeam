@@ -8,6 +8,7 @@ public class PlayerHeadManager : MonoBehaviour
     [Header("敵の頭、敵のみ設定"), SerializeField] MeshRenderer enemyHead;
     [Header("プレイヤーの頭、敵のみ設定"), SerializeField] MeshRenderer playerHead;
     
+    public MeshRenderer EnemyHead => enemyHead;
     public void OnHeadThrow()// animatorから呼び出される
     {
         head.SetActive(false);
