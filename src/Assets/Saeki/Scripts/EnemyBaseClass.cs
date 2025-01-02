@@ -21,6 +21,7 @@ public class EnemyBaseClass : CharacterStatus
 
     [SerializeField] protected float lockonIntarval = 3f;
     [SerializeField] AudioClip deadSound;
+    [SerializeField] EnemyHeadBlowScript deadHead;
 
     [Header("敵が使用するコントローラー"), SerializeField] RuntimeAnimatorController enemyAliveController;
     [Header("プレイヤーが乗り移ったときに使用するコントローラー"), SerializeField] RuntimeAnimatorController playerController;
@@ -214,6 +215,12 @@ public class EnemyBaseClass : CharacterStatus
             {
                 GetComponent<Animator>().runtimeAnimatorController = playerController;
                 CharacterAnimator.SetBool("Dead", true);
+
+                PlayerHeadManager headManager = GetComponent<PlayerHeadManager>();
+                headManager.EnemyHead.enabled = false;
+
+                EnemyHeadBlowScript enemyHeadBlowScript = Instantiate(deadHead, transform.position, transform.rotation);
+                enemyHeadBlowScript.BlowOff(TargetManeger.getPlayerObj().transform.position);
             }
         }
     }

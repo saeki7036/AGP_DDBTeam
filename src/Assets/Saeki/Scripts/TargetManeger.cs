@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TargetManeger : MonoBehaviour
 {
-    private static List<EnemyBaseClass> Enemy = new List<EnemyBaseClass>();
+    private static List<EnemyBaseClass> Enemy;
     private static GameObject playerObject;
     private static CharacterStatus playerStatus;
     private static float TimeCount = 0;
@@ -44,6 +44,8 @@ public class TargetManeger : MonoBehaviour
         playerStatus = playerObject.GetComponent<CharacterStatus>();
         GameObject[] onFieldEnemy = GameObject.FindGameObjectsWithTag("Enemy");
         TimeCount = 0;
+
+        Enemy = new List<EnemyBaseClass>();
         foreach (GameObject g in onFieldEnemy)
             AddEnemyBaseClass(g);
     }
@@ -88,7 +90,7 @@ public class TargetManeger : MonoBehaviour
         playerObject = player;
         playerStatus = playerObject.GetComponent<CharacterStatus>();
         TimeCount = 0;
-        Time.timeScale = 0.2f;
+        Time.timeScale = 0.5f;
         ChangeTarget();
     }
    

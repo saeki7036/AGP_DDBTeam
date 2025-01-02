@@ -1187,7 +1187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 03539c3839b013742834995b8963811a, type: 2}
   playerData: {fileID: 11400000, guid: 518ed09c6af62284b957d3ec477865cd, type: 2}
-  deadSound: {fileID: 8300000, guid: 7c2de6ee61d98a74396fcd71bd7bd53d, type: 3}
   Target: {fileID: 0}
   collScript: {fileID: 2627844457466459226}
   rb: {fileID: 6208163848339247001}
@@ -1199,6 +1198,8 @@ MonoBehaviour:
   gunObject: {fileID: 5149767378947466330}
   remainingBullets: 9999
   lockonIntarval: 3
+  deadSound: {fileID: 8300000, guid: 7c2de6ee61d98a74396fcd71bd7bd53d, type: 3}
+  deadHead: {fileID: 171173287117512765, guid: 52cfac5a2b4af664ca07c04d8909b154, type: 3}
   enemyAliveController: {fileID: 9100000, guid: 4f881c0e429454c44941ee5b6bc2f519, type: 2}
   playerController: {fileID: 9100000, guid: 475a30724a729de48a5b7c2701800169, type: 2}
 --- !u!4 &8660020438373458307 stripped
