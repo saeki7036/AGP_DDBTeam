@@ -28,7 +28,7 @@ public class BulletBaseClass : MonoBehaviour
         {
             Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
         }
-
+        Forward = transform.forward;
         Forward.Normalize();
 
         Quaternion look = Quaternion.LookRotation(Forward);

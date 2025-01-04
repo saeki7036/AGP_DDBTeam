@@ -124,7 +124,7 @@ public class TargetManeger : MonoBehaviour
         List<EnemyBaseClass> list = new();
         foreach (EnemyBaseClass baseClass in Enemy)
         {
-            if (distance_Square(position ,baseClass.transform.position) < radius)
+            if (distance_Square(position ,baseClass.transform.position) < radius * radius)
                 list.Add(baseClass);
         }
         return list;
