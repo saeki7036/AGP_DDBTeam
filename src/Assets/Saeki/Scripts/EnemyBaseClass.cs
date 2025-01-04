@@ -135,6 +135,7 @@ public class EnemyBaseClass : CharacterStatus
     void OnFire()
     {
         remainingCount = 0f;
+        gunObject.transform.LookAt(TargetManeger.getPlayerObj().transform.position + Vector3.up * 0.4f);
         if(guns.Shoot(gunObject.transform.position, gunObject.transform.forward, this.tag, true))
         {
             remainingBullets--;

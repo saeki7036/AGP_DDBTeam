@@ -17,19 +17,20 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2720097741136659255, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
   maxBullet: 2
   bulletSettings:
-  - diffusion: {x: 0.6, y: 0}
+  - diffusion: {x: 2.4, y: 0}
     randomNess: 0
-  - diffusion: {x: -0.6, y: 0}
+  - diffusion: {x: -2.4, y: 0}
     randomNess: 0
-  - diffusion: {x: -0.4, y: 0.6}
+  - diffusion: {x: -1.6, y: 2.4}
     randomNess: 0
-  - diffusion: {x: 0.4, y: 0.6}
+  - diffusion: {x: 1.6, y: 2.4}
     randomNess: 0
-  - diffusion: {x: -0.4, y: -0.6}
+  - diffusion: {x: -1.6, y: -2.4}
     randomNess: 0
-  - diffusion: {x: 0.4, y: -0.6}
+  - diffusion: {x: 1.6, y: -2.4}
     randomNess: 0
   weaponRole: 0
   weaponType: 2
+  shotSound: {fileID: 0}
   weaponImage: {fileID: 21300000, guid: bc3ab62b61c6c3d4a9046ba246881487, type: 3}
   subWeapon: {fileID: 3993766834917909290, guid: 03f82252fc4ff8340936cdb188a204da, type: 3}
