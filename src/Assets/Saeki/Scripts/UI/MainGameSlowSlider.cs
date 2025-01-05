@@ -13,7 +13,7 @@ public class MainGameSrowSlider : MonoBehaviour
     void FixedUpdate()
     {
         float SlowValue = TargetManeger.GetSlowValue();
-        Debug.Log(SlowValue);
+        //Debug.Log(SlowValue);
 
         animator.SetBool("SliderDirected", SlowValue != 0f);
 

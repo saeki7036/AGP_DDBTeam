@@ -1314,6 +1314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.209785
@@ -2089,6 +2093,10 @@ PrefabInstance:
     - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3416,6 +3424,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.903812
@@ -3962,6 +3974,10 @@ PrefabInstance:
     - target: {fileID: 8315124958433852217, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_Name
       value: EnemyWithModel_Stay (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315124958433852217, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8660020438373458307, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4761,6 +4777,10 @@ PrefabInstance:
     - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6105,6 +6125,10 @@ PrefabInstance:
       value: SlowImage
       objectReference: {fileID: 0}
     - target: {fileID: 8444713567092974640, guid: 6d718d893fbce7841a1102d3256efa5a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d634500a735abf48b89a97c9420af31, type: 3}
+    - target: {fileID: 8444713567092974640, guid: 6d718d893fbce7841a1102d3256efa5a, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -7227,6 +7251,10 @@ PrefabInstance:
     - target: {fileID: 4892768049093411300, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SceneChangeTitle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182098741968397208, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
+      propertyPath: InputResponseValue
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6767963645267847549, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: m_Name
@@ -8982,6 +9010,10 @@ PrefabInstance:
     - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13189,6 +13221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.811829
@@ -14342,6 +14378,10 @@ PrefabInstance:
     - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
       propertyPath: m_Name
       value: Drum_Can (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15690,6 +15730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47.55
@@ -16283,6 +16327,10 @@ PrefabInstance:
     - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20853,6 +20901,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47.658337
@@ -21131,6 +21183,10 @@ PrefabInstance:
     - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
       propertyPath: m_Name
       value: Drum_Can (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22729,6 +22785,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.83
@@ -23847,6 +23907,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.42
@@ -24241,8 +24305,8 @@ RectTransform:
   - {fileID: 742972360}
   - {fileID: 1351444562}
   - {fileID: 1794393500}
-  - {fileID: 1099599659}
   - {fileID: 1487678147}
+  - {fileID: 1099599659}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -28393,6 +28457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_Stay (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8315124958433852217, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8660020438373458307, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.77
@@ -29337,7 +29405,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -35549,6 +35617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.0373774
@@ -38148,6 +38220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drum_Can (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38521,6 +38597,10 @@ PrefabInstance:
     - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
       propertyPath: m_Name
       value: Drum_Can
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45185,6 +45265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.324385
@@ -50299,6 +50383,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DiscoveryErea (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8910588420735777125, guid: 252bbfabd8f0b904f8cc136753f1950d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -50447,6 +50535,10 @@ PrefabInstance:
     - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51211,6 +51303,10 @@ PrefabInstance:
     - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
       propertyPath: m_Name
       value: Drum_Can (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -57538,6 +57634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.357468
@@ -59053,6 +59153,10 @@ PrefabInstance:
     - target: {fileID: 8315124958433852217, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_Name
       value: EnemyWithModel_Stay
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315124958433852217, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8660020438373458307, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -62027,6 +62131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drum_Can (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -63574,6 +63682,10 @@ PrefabInstance:
     - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
@@ -65515,6 +65627,10 @@ PrefabInstance:
     - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
       propertyPath: m_Name
       value: Drum_Can (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -70066,7 +70182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.17551434, g: 0.93962264, b: 0.6326772, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -73817,6 +73933,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DiscoveryArea
       objectReference: {fileID: 0}
+    - target: {fileID: 8910588420735777125, guid: 252bbfabd8f0b904f8cc136753f1950d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -76322,7 +76442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3993874898521936235, guid: a1109d7b82d361b45ba5c07bc89d5d4c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4536794738322937510, guid: a1109d7b82d361b45ba5c07bc89d5d4c, type: 3}
       propertyPath: m_Pivot.x
@@ -80910,6 +81030,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.11
@@ -84444,6 +84568,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DiscoveryArea (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8910588420735777125, guid: 252bbfabd8f0b904f8cc136753f1950d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -86026,6 +86154,10 @@ PrefabInstance:
     - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
       propertyPath: m_Name
       value: Drum_Can (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -92081,6 +92213,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drum_Can (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -93106,6 +93242,10 @@ PrefabInstance:
     - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
       propertyPath: m_Name
       value: Drum_Can (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256031633595211463, guid: 86980faf3b84ece46964adcc53bd1f53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -96348,6 +96488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.272606
@@ -96810,6 +96954,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 711098348}
     m_Modifications:
+    - target: {fileID: 1849111879195525983, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d634500a735abf48b89a97c9420af31, type: 3}
     - target: {fileID: 2176502684587436218, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
       propertyPath: m_Name
       value: PlayerUI
