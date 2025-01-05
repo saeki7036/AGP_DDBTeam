@@ -16,4 +16,4 @@ MonoBehaviour:
   id: 0
   maxHp: 3
   maxPossessTime: 10
-  immunityTime: 1.5
+  immunityTime: 0.5
