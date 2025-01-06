@@ -242,8 +242,9 @@ public class EnemyBaseClass : CharacterStatus
     }
 
     // Update is called once per frame
-    void Update()
+    override protected void Update()
     {
+        base.Update();// Œp³Œ³‚ÌUpdate‚ğŒÄ‚Ño‚·
         MoveEnemy();
         if(isDead && !isDead)
         {
