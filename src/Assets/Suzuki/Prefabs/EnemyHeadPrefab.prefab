@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_distance
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3498756881917369898, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3665695019412927850, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_Center.y
       value: 1.43
@@ -23,6 +27,10 @@ PrefabInstance:
     - target: {fileID: 4808303077093223850, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208163848339247001, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949672294580822145, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_Controller
@@ -34,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8315124958433852217, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8315124958433852217, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_TagString
