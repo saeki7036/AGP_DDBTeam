@@ -44,7 +44,7 @@ public class CharacterStatus : MonoBehaviour
         StartSetUp();
     }
 
-    void Update()
+    virtual protected void Update()
     {
         SearchAnimator();
         if(damageTimer > 0f)
