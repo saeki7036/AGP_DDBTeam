@@ -18,7 +18,7 @@ public class SceneButtonSelect : MonoBehaviour
         audioSE.PlayOneShot(audioSE.clip);
         SceneManager.LoadSceneAsync(SceneName);
     }
-    public void SceneChangeMainGameWithNoSE(string SceneName)
+    public void SceneChangeMainGameNoSE(string SceneName)
     {
         SceneManager.LoadScene(SceneName);
     }
