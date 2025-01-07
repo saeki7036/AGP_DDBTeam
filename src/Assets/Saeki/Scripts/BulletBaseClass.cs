@@ -99,9 +99,9 @@ public class BulletBaseClass : MonoBehaviour
     private bool HitTagCheck(string otherTag)
     {
         if (this.tag == "PlayerBullet")
-            return otherTag == "Enemy";
+            return otherTag != "Player";
         else
-            return otherTag == "Player";
+            return otherTag != "Enemy";
     }
 
     private void CheckHit(float deltaTime)
