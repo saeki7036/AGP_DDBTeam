@@ -20,7 +20,7 @@ public class GameOverFlag : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //�ォ��ǉ��ɂ͖��Ή�
+        //Œã‚©‚ç’Ç‰Á‚É‚Í–¢‘Î‰ž
         if (!clearCheck && !change.Changing && PlayerHP <= 0)
         {
             Time.timeScale = 0f;
