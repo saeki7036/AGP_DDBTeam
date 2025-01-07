@@ -5,12 +5,12 @@ using UnityEngine.Playables;
 
 public class GameOverFlag : MonoBehaviour
 {
-    [SerializeField] private Change chenge;
+    [SerializeField] private Change change;
     [SerializeField] private PlayableDirector playableDirector;
     private bool clearCheck;
     public bool IsClearFlag => clearCheck;
 
-    float PlayerHP => chenge.CharacterStatusHp;
+    float PlayerHP => change.CharacterStatusHp;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class GameOverFlag : MonoBehaviour
     void FixedUpdate()
     {
         //Œã‚©‚ç’Ç‰Á‚É‚Í–¢‘Î‰ž
-        if (!clearCheck && PlayerHP <= 0)
+        if (!clearCheck && !change.Changing && PlayerHP <= 0)
         {
             Time.timeScale = 0f;
             PlayTimeline();
