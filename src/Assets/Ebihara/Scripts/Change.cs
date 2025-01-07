@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class Change : MonoBehaviour
 {
@@ -116,6 +117,11 @@ public class Change : MonoBehaviour
     {
         gunsUI.AnimatorChangeHead();
         changing = true;
+
+        CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        CinemachineFramingTransposer flamingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        flamingTransposer.m_CameraDistance = 5f;
+
         yield return new WaitForSecondsRealtime(delaySeconds);
         PlayerHeadMoveScript playerHeadMoveScript = Instantiate(playerHead, transform.position + new Vector3(0f, -10f, 0f), Quaternion.identity).GetComponent<PlayerHeadMoveScript>();// プレイヤーの頭の位置からの生成に変更予定
         yield return StartCoroutine(playerHeadMoveScript.MoveHead(transform.position, characterStatus.transform, new Vector3(0f, 1.3f, 0f), changeObj, this));

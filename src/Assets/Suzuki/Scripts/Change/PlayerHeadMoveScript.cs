@@ -11,6 +11,7 @@ public class PlayerHeadMoveScript : MonoBehaviour
     CinemachineFramingTransposer framingTransposer;
     float headDistance = 5.0f;
     float playerDistance = 0.3f;
+    uint spinCount = 5;// “ª‚ª’…‚­‚Ü‚Å‚É‰ñ“]‚·‚é‰ñ”
 
     PlayerDamageEffect damageEffect;
     //GameObject changeTarget;
@@ -35,6 +36,7 @@ public class PlayerHeadMoveScript : MonoBehaviour
         SetCameraTarget(transform, headDistance);
 
         float totalTime = Vector3.Distance(start, target.position) / moveSpeed;
+        float rotate = 360 * spinCount / totalTime;
         float timer = 0f;
 
         while(timer < totalTime && !PauseManager.IsPaused)
@@ -43,6 +45,7 @@ public class PlayerHeadMoveScript : MonoBehaviour
 
             Vector3 position = Vector3.Lerp(start, target.position, timer / totalTime);
             transform.position = position + headOffset;
+            transform.Rotate(new Vector3(0f, 1f, 0f) * rotate * Time.unscaledDeltaTime, Space.World);
             yield return null;
         }
 

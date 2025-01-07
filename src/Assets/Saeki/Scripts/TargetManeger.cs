@@ -90,7 +90,7 @@ public class TargetManeger : MonoBehaviour
         playerObject = player;
         playerStatus = playerObject.GetComponent<CharacterStatus>();
         TimeCount = 0;
-        Time.timeScale = 0.2f;
+        Time.timeScale = 0.5f;
         ChangeTarget();
     }
    
@@ -124,7 +124,7 @@ public class TargetManeger : MonoBehaviour
         List<EnemyBaseClass> list = new();
         foreach (EnemyBaseClass baseClass in Enemy)
         {
-            if (distance_Square(position ,baseClass.transform.position) < radius)
+            if (distance_Square(position ,baseClass.transform.position) < radius * radius)
                 list.Add(baseClass);
         }
         return list;

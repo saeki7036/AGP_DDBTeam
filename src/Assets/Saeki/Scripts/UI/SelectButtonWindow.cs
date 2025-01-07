@@ -3,43 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.InputSystem;
 
 public class SelectButtonWindow : MonoBehaviour
 {
     [SerializeField] protected Button[] Buttons;
     [SerializeField] protected GameObject cursol;
     [SerializeField] protected AudioSource audioSE;
-    [SerializeField] private input_or input = input_or.Vertical;
-
+    [SerializeField] protected input_or input = input_or.Vertical;
+    [SerializeField] protected int currentButtonIndex = 0;
+    [SerializeField] float InputResponseValue = 0.3f;
+    [SerializeField] float InputRetryValue = 0.1f;
     protected enum ButtonType
     {
         Normal,
         Up,
         Down
     }
-    private enum input_or
+    protected enum input_or
     {
         Vertical,
         Horizontal
     }
 
     protected ButtonType buttonType = ButtonType.Normal;
-    protected int currentButtonIndex = 0;
+   
 
     public virtual void PushOnlyButtonEvent(int buttonPos)
     {
         if (buttonPos < 0 || buttonPos >= Buttons.Length) return;
         if (buttonPos == currentButtonIndex) return;
+
+        audioSE?.PlayOneShot(audioSE.clip);
+
+        if (currentButtonIndex == buttonPos)
+        {
+            ButtonInvoke();
+                return;
+        }
+
         currentButtonIndex = buttonPos;
         cursol.transform.localPosition = Buttons[currentButtonIndex].transform.localPosition;
-        audioSE?.PlayOneShot(audioSE.clip);
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        float inputValue = GetInputAxis();
+        float inputValue = GetInputAxis();Debug.Log(inputValue);
         int NextSelect = GetNextSelect(inputValue);
         SetNextSelect(NextSelect);
         buttonType = ResetButtonType(inputValue);
@@ -48,12 +59,12 @@ public class SelectButtonWindow : MonoBehaviour
 
     float GetInputAxis()
     {
-        return input == input_or.Vertical ? Input.GetAxis("Vertical") : -Input.GetAxis("Horizontal");
+        return input == input_or.Vertical ? Input.GetAxisRaw("Vertical") : -Input.GetAxisRaw("Horizontal");
     }
 
     int GetNextSelect(float value)
     {
-        if (Math.Abs(value) < 0.7) return 0;
+        if (Math.Abs(value) < InputResponseValue) return 0;
         if (buttonType != ButtonType.Normal) return 0;
 
         int NextButtonIndex = value < 0 ? 1 : -1;
@@ -76,7 +87,7 @@ public class SelectButtonWindow : MonoBehaviour
 
     ButtonType ResetButtonType(float value)
     {
-        if (Math.Abs(value) < 0.3)
+        if (Math.Abs(value) < InputRetryValue)
             if (buttonType != ButtonType.Normal)
                 return ButtonType.Normal;
 
@@ -87,7 +98,12 @@ public class SelectButtonWindow : MonoBehaviour
     {
         if (Input.GetKeyDown("joystick button 0") || Input.GetKeyDown("space"))
         {
-            Buttons[currentButtonIndex].onClick.Invoke();
+            ButtonInvoke();
         }
+    }
+
+    protected void ButtonInvoke()
+    {
+        Buttons[currentButtonIndex].onClick.Invoke();
     }
 }
