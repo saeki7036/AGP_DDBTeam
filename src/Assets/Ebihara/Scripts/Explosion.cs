@@ -32,12 +32,13 @@ public class Explosion : CharacterStatus
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         Debug.Log(other.gameObject.name);
         if (isExplosion == false && other.CompareTag(pBullet) == true)
         {
             isExplosion = true;
+            soundController.PlaySEOnce(explosionSound, transform);
             GameObject explosionObj = Instantiate(explosionprefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
 
