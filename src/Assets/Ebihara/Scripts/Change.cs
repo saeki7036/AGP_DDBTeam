@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class Change : MonoBehaviour
 {
@@ -63,14 +64,14 @@ public class Change : MonoBehaviour
         // 頭を飛ばしてからカメラ変更
         if (!changing)
         {
-            StartCoroutine(DelayInstantiateHeadAndShoot(0.8f, changeObj));
+            StartCoroutine(DelayInstantiateHeadAndShoot(0.3f, changeObj));
         }
     }
 
     public void ChangeCameraTarget(GameObject changeObj)
     {
         //親をEnemyに
-        transform.parent.gameObject.tag = "Enemy";
+        //transform.parent.gameObject.tag = "Enemy";
 
         //親の付け替え
         this.gameObject.transform.parent = changeObj.transform;
@@ -116,7 +117,12 @@ public class Change : MonoBehaviour
     {
         gunsUI.AnimatorChangeHead();
         changing = true;
-        yield return new WaitForSeconds(delaySeconds);
+
+        CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        CinemachineFramingTransposer flamingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        flamingTransposer.m_CameraDistance = 5f;
+
+        yield return new WaitForSecondsRealtime(delaySeconds);
         PlayerHeadMoveScript playerHeadMoveScript = Instantiate(playerHead, transform.position + new Vector3(0f, -10f, 0f), Quaternion.identity).GetComponent<PlayerHeadMoveScript>();// プレイヤーの頭の位置からの生成に変更予定
         yield return StartCoroutine(playerHeadMoveScript.MoveHead(transform.position, characterStatus.transform, new Vector3(0f, 1.3f, 0f), changeObj, this));
     }

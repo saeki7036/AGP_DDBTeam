@@ -23,14 +23,24 @@ public class WeaponData : BaseData
 {
     public enum WeaponRole
     {
-        main,
-        sub
+        Main,
+        Sub
+    }
+    public enum WeaponType
+    {
+        Pistol = 0,
+        Rifle = 1,
+        Shotgun = 2,
+        Sniper = 3,
+        Mortar = 4
     }
 
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] int maxBullet;
     [SerializeField] List<BulletSettings> bulletSettings;
     [SerializeField] WeaponRole weaponRole;
+    [SerializeField] WeaponType weaponType;
+    [Header("e‚Ì”­ŽËSE"), SerializeField] AudioClip shotSound;
     [SerializeField] Sprite weaponImage;
     [SerializeField] GameObject subWeapon;
 
@@ -55,6 +65,11 @@ public class WeaponData : BaseData
     {
         get { return weaponRole; }
     }
+    public WeaponType Type
+    {
+        get { return weaponType; }
+    }
+    public AudioClip ShotSound => shotSound;
     public GameObject SubWeapon
     {
         get { return subWeapon; }

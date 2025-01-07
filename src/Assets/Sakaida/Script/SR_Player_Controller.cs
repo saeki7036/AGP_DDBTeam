@@ -76,13 +76,13 @@ public class SR_Player_Controller : MonoBehaviour
             if (sR_Wall.wallType == SR_Wall.WallType.NomalWall) 
             {
                 Speed = AttackSpeed;
-                soundController.isPlaySE(Clip);
+                soundController.PlaySEOnce(Clip);
                 sR_Wall.wallType = SR_Wall.WallType.None;
             }
             if (sR_Wall.wallType == SR_Wall.WallType.SturdyWall)
             {
                 Speed = NoAttackSpeed;
-                soundController.isPlaySE(Clip2);
+                soundController.PlaySEOnce(Clip2);
             }
         }
     }

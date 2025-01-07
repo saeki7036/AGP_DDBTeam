@@ -17,6 +17,6 @@ public class PlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        damageEffect.DamageEffect(change.CharacterStatusHp);
+        damageEffect.DamageEffect(change.CharacterStatusHp);Debug.Log(change.CharacterStatusHp);
     }
 }

@@ -20,9 +20,9 @@ TagManager:
   - Stage
   - Enemy
   - BulletThroughLayer
-  - 
-  - 
-  - 
+  - Destructive
+  - HeadRagdoll
+  - Icon
   - 
   - 
   - 

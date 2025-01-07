@@ -23,8 +23,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] CinemachineInputProvider inputProvider;
     [SerializeField] InputActionReference look;
     [SerializeField] InputActionReference aim;
+    [SerializeField] AudioClip walkSound;
     bool isAiming;
-
+    bool isWalking;
+    float walkSoundTimer = 0f;
+    float walkSoundTimerMax = 0.5f;
     //bool isChangeMode;
 
     //CinemachineFramingTransposer transposer;
@@ -36,6 +39,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
     GameObject objParent;
+    Change change;
 
     //親
     public GameObject PlayerParent
@@ -57,6 +61,7 @@ public class PlayerMove : MonoBehaviour
     {
         playerParent = transform.parent.gameObject;
         playerRay = camera.GetComponent<PlayerRay>();
+        change = GetComponent<Change>();
         SetGunObject();
         isAiming = false;
 
@@ -68,22 +73,28 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //カメラの方向に向く
-        Vector3 direction = camera.transform.position - this.transform.position;
+        if (!change.Changing && !PauseManager.IsPaused)
+        {
+            //カメラの方向に向く
+            Vector3 direction = camera.transform.position - this.transform.position;
 
-        Vector3 lookdirection = new Vector3(direction.x * -1.0f, 0.0f, direction.z * -1.0f);
+            Vector3 lookdirection = new Vector3(direction.x * -1.0f, 0.0f, direction.z * -1.0f);
 
-        playerParent.transform.rotation = Quaternion.LookRotation(lookdirection);
+            playerParent.transform.rotation = Quaternion.LookRotation(lookdirection);
 
-        //前後
-        moveZ = input.y;
-        //左右
-        moveX = input.x;
+            //前後
+            moveZ = input.y;
+            //左右
+            moveX = input.x;
 
-        float deltaTime = PauseManager.IsSlow ? Time.unscaledDeltaTime : Time.deltaTime;
-        velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * deltaTime;
-        playerParent.transform.Translate(velocity.x, velocity.y, velocity.z);
-
+            float deltaTime = PauseManager.IsSlow ? Time.unscaledDeltaTime : Time.deltaTime;
+            velocity = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * deltaTime;
+            playerParent.transform.Translate(velocity.x, velocity.y, velocity.z);
+        }
+        if(isWalking)
+        {
+            PlayWalkSound();
+        }
     }
 
     public void SetplayerParent(GameObject gameObject)
@@ -93,11 +104,16 @@ public class PlayerMove : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (PauseManager.IsPaused) return;
         input = context.ReadValue<Vector2>();
+
+        if (context.phase == InputActionPhase.Started) isWalking = true;
+        if (context.phase == InputActionPhase.Canceled) isWalking = false;
         //Debug.Log(input);
     }
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (PauseManager.IsPaused) return;
         if (Physics.Raycast(playerParent.transform.position, Vector3.down, 0.5f, LayerMask.GetMask("Stage")))
         {
             playerParent.GetComponent<Rigidbody>().AddForce(0f, 1.4f, 0f, ForceMode.Impulse);
@@ -149,6 +165,7 @@ public class PlayerMove : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        if(PauseManager.IsPaused) return;
         inputR = context.ReadValue<Vector2>();
         //Debug.Log("Look");
     }
@@ -188,5 +205,18 @@ public class PlayerMove : MonoBehaviour
     public void SetGunObject()
     {
         gun = playerParent.GetComponentInChildren<GunStatus>();
+    }
+
+    void PlayWalkSound()
+    {
+        walkSoundTimer -= Time.unscaledDeltaTime;
+        if (walkSoundTimer <= 0f)
+        {
+            if (Physics.Raycast(playerParent.transform.position, Vector3.down, 0.5f, LayerMask.GetMask("Stage")))
+            {
+                SR_SoundController.instance.PlaySEOnce(walkSound, transform);
+                walkSoundTimer = walkSoundTimerMax;
+            }
+        }
     }
 }

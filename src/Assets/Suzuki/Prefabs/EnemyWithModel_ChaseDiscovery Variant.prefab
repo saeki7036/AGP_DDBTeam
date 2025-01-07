@@ -19,7 +19,7 @@ PrefabInstance:
     - target: {fileID: 7949672294580822145, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 32369cb3e30a54f41a28090b7f90e77d, type: 2}
+      objectReference: {fileID: 9100000, guid: 4f881c0e429454c44941ee5b6bc2f519, type: 2}
     - target: {fileID: 8315124958433852217, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant
@@ -31,6 +31,10 @@ PrefabInstance:
     - target: {fileID: 8315124958433852217, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518722469280026008, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8660020438373458307, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -136,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 03539c3839b013742834995b8963811a, type: 2}
+  playerData: {fileID: 11400000, guid: 518ed09c6af62284b957d3ec477865cd, type: 2}
   Target: {fileID: 0}
   collScript: {fileID: 3816821624835693958}
   rb: {fileID: 5091387236486145605}
@@ -147,3 +152,7 @@ MonoBehaviour:
   gunObject: {fileID: 6338904103209848198}
   remainingBullets: 9999
   lockonIntarval: 3
+  deadSound: {fileID: 8300000, guid: 7c2de6ee61d98a74396fcd71bd7bd53d, type: 3}
+  deadHead: {fileID: 171173287117512765, guid: 52cfac5a2b4af664ca07c04d8909b154, type: 3}
+  enemyAliveController: {fileID: 9100000, guid: 4f881c0e429454c44941ee5b6bc2f519, type: 2}
+  playerController: {fileID: 9100000, guid: 475a30724a729de48a5b7c2701800169, type: 2}
