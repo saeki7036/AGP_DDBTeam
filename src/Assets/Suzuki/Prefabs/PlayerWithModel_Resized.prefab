@@ -578,6 +578,18 @@ PrefabInstance:
       value: -94.312614
       objectReference: {fileID: 0}
     - target: {fileID: -5569452004520804535, guid: bbb02b63ec66c5f49945aec3181cc2c3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.000000002886073
+      objectReference: {fileID: 0}
+    - target: {fileID: -5569452004520804535, guid: bbb02b63ec66c5f49945aec3181cc2c3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000009924436
+      objectReference: {fileID: 0}
+    - target: {fileID: -5569452004520804535, guid: bbb02b63ec66c5f49945aec3181cc2c3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.00029080472
+      objectReference: {fileID: 0}
+    - target: {fileID: -5569452004520804535, guid: bbb02b63ec66c5f49945aec3181cc2c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 26.768
       objectReference: {fileID: 0}
@@ -1319,7 +1331,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 518ed09c6af62284b957d3ec477865cd, type: 2}
   playerData: {fileID: 11400000, guid: 518ed09c6af62284b957d3ec477865cd, type: 2}
-  deadSound: {fileID: 8300000, guid: 7c2de6ee61d98a74396fcd71bd7bd53d, type: 3}
 --- !u!114 &5905866714485457636
 MonoBehaviour:
   m_ObjectHideFlags: 0
