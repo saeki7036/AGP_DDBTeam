@@ -39,13 +39,16 @@ public class PlayerHeadMoveScript : MonoBehaviour
         float rotate = 360 * spinCount / totalTime;
         float timer = 0f;
 
-        while(timer < totalTime && !PauseManager.IsPaused)
+        while(timer < totalTime)
         {
-            timer += Time.unscaledDeltaTime;
+            if (!PauseManager.IsPaused)
+            {
+                timer += Time.unscaledDeltaTime;
 
-            Vector3 position = Vector3.Lerp(start, target.position, timer / totalTime);
-            transform.position = position + headOffset;
-            transform.Rotate(new Vector3(0f, 1f, 0f) * rotate * Time.unscaledDeltaTime, Space.World);
+                Vector3 position = Vector3.Lerp(start, target.position, timer / totalTime);
+                transform.position = position + headOffset;
+                transform.Rotate(new Vector3(0f, 1f, 0f) * rotate * Time.unscaledDeltaTime, Space.World);
+            }
             yield return null;
         }
 
