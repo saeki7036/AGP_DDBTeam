@@ -87,7 +87,10 @@ public class CharacterStatus : MonoBehaviour
         }
 
         if (tag == "Player" && !IsDead) return;// æ‚èˆÚ‚Á‚½‚ ‚Æ‚Éƒhƒ‰ƒ€ŠÊ‚Ì”š”­‚É“–‚½‚é‚Æ—§‚¿ã‚ª‚Á‚Ä‚µ‚Ü‚¤‚½‚ß
-        animator.SetBool("Dead", IsDead);
+        if (animator != null)
+        {
+            animator.SetBool("Dead", IsDead);
+        }
     }
 
     /// <summary>
