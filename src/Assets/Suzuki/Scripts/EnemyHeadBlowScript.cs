@@ -13,5 +13,12 @@ public class EnemyHeadBlowScript : MonoBehaviour
         direction.Normalize();
 
         rigidbody.AddForce(direction * power, ForceMode.Impulse);
+        StartCoroutine(DestroyAfterSeconds(1.5f));
+    }
+
+    IEnumerator DestroyAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Destroy(gameObject);
     }
 }
