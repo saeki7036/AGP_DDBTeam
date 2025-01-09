@@ -6,6 +6,7 @@ public class EnemyHeadBlowScript : MonoBehaviour
 {
     [SerializeField] float power;
     [SerializeField] Rigidbody rigidbody;
+    [Header("ì™Ç™è¡Ç¶ÇÈÇ‹Ç≈ÇÃéûä‘"), SerializeField] float destroySeconds = 1f;
 
     public void BlowOff(Vector3 basePosition)
     {
@@ -13,5 +14,12 @@ public class EnemyHeadBlowScript : MonoBehaviour
         direction.Normalize();
 
         rigidbody.AddForce(direction * power, ForceMode.Impulse);
+        StartCoroutine(DestroyAfterSeconds(destroySeconds));
+    }
+
+    IEnumerator DestroyAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Destroy(gameObject);
     }
 }

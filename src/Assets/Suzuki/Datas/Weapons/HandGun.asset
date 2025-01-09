@@ -22,5 +22,5 @@ MonoBehaviour:
   weaponRole: 1
   weaponType: 0
   shotSound: {fileID: 8300000, guid: 5ff5bd936a30a904da907f35c8dd382e, type: 3}
-  weaponImage: {fileID: 21300000, guid: bc3ab62b61c6c3d4a9046ba246881487, type: 3}
+  weaponImage: {fileID: 21300000, guid: 0b6bc94617e966647a160eeb2175b59b, type: 3}
   subWeapon: {fileID: 0}

@@ -61,6 +61,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7286970610789034506}
   m_SourcePrefab: {fileID: 100100000, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
+--- !u!1 &1088599607354044010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 33742405098481024, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
+  m_PrefabInstance: {fileID: 1111433746830363626}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3085846872221255901 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2720097741136659255, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
@@ -82,6 +87,9 @@ MonoBehaviour:
   BulletPower: 80
   rb: {fileID: 5896891930781576254}
   bulletData: {fileID: 11400000, guid: eee7d5ba61c5f9849a157a03244435c1, type: 2}
+  playerBulletMaterial: {fileID: 2100000, guid: 7606aa5c6a5150a4fa26fc7216edb2c8, type: 2}
+  enemyBulletMaterial: {fileID: 2100000, guid: 5a3cc222d685f1b47aa7f79c9a1553d5, type: 2}
+  EffectObject: {fileID: 1088599607354044010}
   particle: {fileID: 1000996106448251057, guid: a0d91cd8f9652374cb239e0fdabe2725, type: 3}
   hitLayerMask:
     serializedVersion: 2
