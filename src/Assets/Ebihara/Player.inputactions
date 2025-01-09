@@ -302,7 +302,7 @@
                 {
                     "name": "",
                     "id": "6e8ddfee-15c4-4697-bc4d-0863340ea47e",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

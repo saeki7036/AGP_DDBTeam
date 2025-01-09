@@ -101,6 +101,7 @@ PrefabInstance:
     - {fileID: 5134935008249159788, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
     - {fileID: 1546918347221059946, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
     - {fileID: 4274744048814302227, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
+    - {fileID: 4416859315215779957, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8315124958433852217, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}
@@ -162,3 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 10
   rigidbody: {fileID: 6720919629539694843}
+  destroySeconds: 1

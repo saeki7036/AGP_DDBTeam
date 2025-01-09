@@ -15,7 +15,7 @@ MonoBehaviour:
   name: HandGun
   id: 1
   bulletPrefab: {fileID: 3547323159388976272, guid: 579ede23f6967db4faa38fda85d94aa4, type: 3}
-  maxBullet: 10
+  maxBullet: 999
   bulletSettings:
   - diffusion: {x: 0, y: 0}
     randomNess: 0
