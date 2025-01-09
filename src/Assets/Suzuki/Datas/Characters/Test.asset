@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: TestEnemy
   id: 0
-  maxHp: 3
+  maxHp: 1
   maxPossessTime: 10
   immunityTime: 0

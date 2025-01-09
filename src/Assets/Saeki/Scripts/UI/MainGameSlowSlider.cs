@@ -8,12 +8,15 @@ public class MainGameSrowSlider : MonoBehaviour
 {
     [SerializeField] private Image SliderUIImage;
     [SerializeField] private RectTransform SliderValueTransform;
-
+    [SerializeField] private Animator animator;
     // Update is called once per frame
     void FixedUpdate()
     {
         float SlowValue = TargetManeger.GetSlowValue();
-        Debug.Log(SlowValue);
+        //Debug.Log(SlowValue);
+
+        animator.SetBool("SliderDirected", SlowValue != 0f);
+
         SetSliderValue(SlowValue);
         SetSliderColor(SlowValue);
     }
@@ -29,7 +32,17 @@ public class MainGameSrowSlider : MonoBehaviour
     private void SetSliderValue(float Value)
     {
         Vector3 TransformScale = Vector3.one;
-        TransformScale.x = 1f - Value > 0f ? 1f - Value : 0f;
+
+        if(1f - Value > 0f)
+        {
+            TransformScale.x = 1f - Value;
+        }
+        else
+        {
+            TransformScale.x = 0f;
+            animator.SetBool("SliderDirected", false);
+        }
+       
         SliderValueTransform.localScale = TransformScale;
     }
 }

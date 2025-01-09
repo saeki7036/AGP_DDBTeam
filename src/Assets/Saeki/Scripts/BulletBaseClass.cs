@@ -11,6 +11,7 @@ public class BulletBaseClass : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
     [SerializeField] private BulletData bulletData;
+    [Header("ヒット時のエフェクト"), SerializeField] private ParticleSystem particle;
     [Header("弾が衝突するレイヤー"), SerializeField] private LayerMask hitLayerMask;
     [Header("弾が消滅するレイヤー"), SerializeField] private LayerMask lapseLayerMask;
 
@@ -27,7 +28,7 @@ public class BulletBaseClass : MonoBehaviour
         {
             Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
         }
-
+        Forward = transform.forward;
         Forward.Normalize();
 
         Quaternion look = Quaternion.LookRotation(Forward);
@@ -80,8 +81,9 @@ public class BulletBaseClass : MonoBehaviour
                     }
                     else
                     {
-                        character.TakeDamage(bulletData.AttackPower);
+                        character.TakeDamage(bulletData.AttackPower, false);
                     }
+                    Instantiate(particle, transform.position, Quaternion.identity);
                     Destroy(this.gameObject);
                 }
             }
@@ -97,15 +99,15 @@ public class BulletBaseClass : MonoBehaviour
     private bool HitTagCheck(string otherTag)
     {
         if (this.tag == "PlayerBullet")
-            return otherTag == "Enemy";
+            return otherTag != "Player";
         else
-            return otherTag == "Player";
+            return otherTag != "Enemy";
     }
 
     private void CheckHit(float deltaTime)
     {
-        Ray moveCheckRay = new Ray(transform.position, Forward);
-        if (Physics.Raycast(moveCheckRay.origin, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime, hitLayerMask))
+        Ray moveCheckRay = new Ray(transform.position - Forward.normalized * 0.5f, Forward);
+        if (Physics.SphereCast(moveCheckRay.origin, 0.6f, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime + Forward.normalized.magnitude * 0.5f, hitLayerMask))
         {
             OnTriggerEnter(hit.collider);
         }

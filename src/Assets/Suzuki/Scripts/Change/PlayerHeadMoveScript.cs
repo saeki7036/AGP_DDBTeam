@@ -11,9 +11,10 @@ public class PlayerHeadMoveScript : MonoBehaviour
     CinemachineFramingTransposer framingTransposer;
     float headDistance = 5.0f;
     float playerDistance = 0.3f;
+    uint spinCount = 5;// ì™Ç™íÖÇ≠Ç‹Ç≈Ç…âÒì]Ç∑ÇÈâÒêî
 
     PlayerDamageEffect damageEffect;
-    GameObject changeTarget;
+    //GameObject changeTarget;
     void Start()
     {
         Debug.Log("Start");
@@ -32,44 +33,54 @@ public class PlayerHeadMoveScript : MonoBehaviour
         damageEffect.Reset();
 
         transform.LookAt(target);
-        ChangeCameraTarget(transform, headDistance);
+        SetCameraTarget(transform, headDistance);
 
         float totalTime = Vector3.Distance(start, target.position) / moveSpeed;
+        float rotate = 360 * spinCount / totalTime;
         float timer = 0f;
 
         while(timer < totalTime)
         {
-            timer += Time.deltaTime;
+            if (!PauseManager.IsPaused)
+            {
+                timer += Time.unscaledDeltaTime;
 
-            Vector3 position = Vector3.Lerp(start, target.position, timer / totalTime);
-            transform.position = position + headOffset;
+                Vector3 position = Vector3.Lerp(start, target.position, timer / totalTime);
+                transform.position = position + headOffset;
+                transform.Rotate(new Vector3(0f, 1f, 0f) * rotate * Time.unscaledDeltaTime, Space.World);
+            }
             yield return null;
         }
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.5f);
 
-        if (TargetManeger.getPlayerObj().TryGetComponent<Animator>(out Animator playerAnimator))
-        {
-            playerAnimator.SetBool("Change", false);
-        }
-        changeTarget = changeObj;
-        changeTarget.GetComponent<CharacterStatus>().OnPossess();
-        change.ChangeCameraTarget(changeTarget);
-        ChangeCameraTarget(change.gameObject.transform, playerDistance);
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        CharacterStatus targetStatus = changeObj.GetComponent<CharacterStatus>();
+        targetStatus.OnPossess();
+        TargetManeger.PlayerStatus.CharacterAnimator.updateMode = AnimatorUpdateMode.Normal;
+
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        //if (TargetManeger.getPlayerObj().TryGetComponent<Animator>(out Animator playerAnimator))
+        //{
+        //    playerAnimator.SetBool("Change", false);
+        //}
+        //changeTarget = changeObj;
+        TargetManeger.PlayerStatus.CharacterAnimator.SetBool("Change", false);
+        change.ChangeCameraTarget(changeObj);
+        SetCameraTarget(change.gameObject.transform, playerDistance);
         Destroy(gameObject);
     }
 
-    public void ReturnCameraTarget(Change change)
-    {
-        if (changeTarget != null)
-        {
-            change.ChangeCameraTarget(changeTarget);
-            ChangeCameraTarget(change.gameObject.transform, playerDistance);
-            Destroy(gameObject);
-        }
-    }
+    //public void ReturnCameraTarget(Change change)
+    //{
+    //    if (changeTarget != null)
+    //    {
+    //        change.ChangeCameraTarget(changeTarget);
+    //        ChangeCameraTarget(change.gameObject.transform, playerDistance);
+    //        Destroy(gameObject);
+    //    }
+    //}
 
-    void ChangeCameraTarget(Transform target,float distance)
+    void SetCameraTarget(Transform target,float distance)
     {
         Debug.Log("target:" + target.name);
 
