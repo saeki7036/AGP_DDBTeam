@@ -33,6 +33,7 @@ public class EnemyBaseClass : CharacterStatus
     private bool isWatched = false ,isGetMesh = false, isFire = false, isDead = false;
     private float fireTimer = 0f, fireTimerMax = 0.2f;
     private MeshRenderer mesh;
+    private int deadEnemyLayer = 12;
 
     public void Watch() { isWatched = true; WatchCount = 0; }
 
@@ -246,10 +247,11 @@ public class EnemyBaseClass : CharacterStatus
     {
         base.Update();// Œp³Œ³‚ÌUpdate‚ğŒÄ‚Ño‚·
         MoveEnemy();
-        if(isDead && !isDead)
+        if(IsDead && !isDead)
         {
             SR_SoundController.instance.PlaySEOnce(deadSound);
             isDead = true;
+            this.gameObject.layer = deadEnemyLayer;
         }
     }
 }

@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 804716329433298731, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_angle
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 804716329433298731, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_distance
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_Name
       value: EnemyWithModel_ChaseDiscovery Variant Variant
