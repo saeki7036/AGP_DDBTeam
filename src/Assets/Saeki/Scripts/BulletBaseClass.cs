@@ -11,6 +11,9 @@ public class BulletBaseClass : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
     [SerializeField] private BulletData bulletData;
+    [SerializeField] private Material playerBulletMaterial;
+    [SerializeField] private Material enemyBulletMaterial;
+    [SerializeField] private GameObject EffectObject;
     [Header("ヒット時のエフェクト"), SerializeField] private ParticleSystem particle;
     [Header("弾が衝突するレイヤー"), SerializeField] private LayerMask hitLayerMask;
     [Header("弾が消滅するレイヤー"), SerializeField] private LayerMask lapseLayerMask;
@@ -19,14 +22,18 @@ public class BulletBaseClass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
 
         if (this.tag == "PlayerBullet")
         {
             Forward = transform.forward;
+            GetComponent<MeshRenderer>().material = playerBulletMaterial;
         }
         else
         {
             Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
+            GetComponent<MeshRenderer>().material = enemyBulletMaterial;
+            EffectObject.SetActive(true);
         }
         Forward = transform.forward;
         Forward.Normalize();
