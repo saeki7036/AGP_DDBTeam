@@ -9747,11 +9747,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
       propertyPath: m_angle
-      value: 0.01
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
       propertyPath: m_distance
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14824,6 +14824,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShotGunWithModel_ChaseDiscovery Variant Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
+      propertyPath: m_angle
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
+      propertyPath: m_distance
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15404,8 +15412,8 @@ RectTransform:
   - {fileID: 1249312773}
   - {fileID: 1406153985}
   - {fileID: 1071577424}
-  - {fileID: 333530256}
   - {fileID: 523432907}
+  - {fileID: 333530256}
   - {fileID: 802478823}
   - {fileID: 1288336148}
   - {fileID: 974152450}
@@ -57982,11 +57990,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
       propertyPath: m_angle
-      value: 0.01
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
       propertyPath: m_distance
-      value: 0.1
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -58344,6 +58352,7 @@ GameObject:
   - component: {fileID: 1217848254}
   - component: {fileID: 1217848253}
   - component: {fileID: 1217848252}
+  - component: {fileID: 1217848257}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -58476,6 +58485,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1217848257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217848251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ed75dc97872cc4a9a05a5feb080093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1220386393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65450,11 +65471,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4892768049093411300, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4892768049093411300, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SceneChangeTitle
+      value: SceneChangeMainGame
       objectReference: {fileID: 0}
     - target: {fileID: 5182098741968397208, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: InputResponseValue
@@ -65551,6 +65572,18 @@ PrefabInstance:
     - target: {fileID: 7213480219534312325, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585249840021888463, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585249840021888463, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SceneChangeMainGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585249840021888463, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: SR_Map1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -75384,6 +75417,10 @@ PrefabInstance:
       value: Change
       objectReference: {fileID: 0}
     - target: {fileID: 4298569082051658761, guid: 8f508918a1c71c645b2a892130e21364, type: 3}
+      propertyPath: barUI
+      value: 
+      objectReference: {fileID: 1887754551}
+    - target: {fileID: 4298569082051658761, guid: 8f508918a1c71c645b2a892130e21364, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 1217848251}
@@ -75817,7 +75854,13 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 2
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: 5074256661986393783, guid: a3e832f4e1e32924b964a1b6ab83c2fa, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 887627611765501053, guid: a3e832f4e1e32924b964a1b6ab83c2fa, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7410615237003442943, guid: a3e832f4e1e32924b964a1b6ab83c2fa, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1665390535
@@ -84549,10 +84592,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlowImage
       objectReference: {fileID: 0}
-    - target: {fileID: 8444713567092974640, guid: 6d718d893fbce7841a1102d3256efa5a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -84945,6 +84984,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 434699914}
     m_Modifications:
+    - target: {fileID: 1849111879195525983, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71efc580b40b0b440b59bb3b83db6bdc, type: 3}
     - target: {fileID: 2176502684587436218, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
       propertyPath: m_Name
       value: PlayerUI
@@ -85053,6 +85096,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 333530257}
   m_SourcePrefab: {fileID: 100100000, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+--- !u!114 &1887754551 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1541310096477069792, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
+  m_PrefabInstance: {fileID: 1887754550}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333530255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a8b1773e27624468099ae6059579c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1888564518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8302538188173661949, guid: ff0fc4e521e273241ab97a4ba12a825f, type: 3}
