@@ -26748,8 +26748,8 @@ RectTransform:
   - {fileID: 1200778155}
   - {fileID: 1574885200}
   - {fileID: 1682562814}
-  - {fileID: 742972360}
   - {fileID: 1547043450}
+  - {fileID: 742972360}
   - {fileID: 1351444562}
   - {fileID: 1086173664}
   - {fileID: 1794393500}
@@ -49195,10 +49195,6 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Change
       objectReference: {fileID: 0}
-    - target: {fileID: 4298569082051658761, guid: 8f508918a1c71c645b2a892130e21364, type: 3}
-      propertyPath: barUI
-      value: 
-      objectReference: {fileID: 2102037629}
     - target: {fileID: 4298569082051658761, guid: 8f508918a1c71c645b2a892130e21364, type: 3}
       propertyPath: camera
       value: 
@@ -103383,17 +103379,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1547043453}
   m_SourcePrefab: {fileID: 100100000, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
---- !u!114 &2102037629 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1541310096477069792, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
-  m_PrefabInstance: {fileID: 2102037628}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001043319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71a8b1773e27624468099ae6059579c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2104803383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8660020438373458307, guid: db01b1c9c15768b40baef75dd599d3ad, type: 3}

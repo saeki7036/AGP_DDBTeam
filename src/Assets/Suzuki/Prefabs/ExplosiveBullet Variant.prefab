@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256ed5e637bbace468c51a75d9ac44fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyIntarval: 10
+  DestroyIntarval: 5
   BulletPower: 80
   rb: {fileID: 5896891930781576254}
   bulletData: {fileID: 11400000, guid: eee7d5ba61c5f9849a157a03244435c1, type: 2}
