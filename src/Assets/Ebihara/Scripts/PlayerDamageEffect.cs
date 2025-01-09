@@ -12,9 +12,7 @@ public class PlayerDamageEffect : MonoBehaviour
     [SerializeField] Image damageImage;
     [SerializeField] Image[] hpsGreen = new Image[maxHP];
     float[] damagesAlpha;
-    [SerializeField] Animator animator;
     
-
     // Start is called before the first frame update
     void Start()
     {
