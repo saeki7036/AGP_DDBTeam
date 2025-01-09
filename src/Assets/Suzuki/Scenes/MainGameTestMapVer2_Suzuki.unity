@@ -18449,6 +18449,7 @@ MonoBehaviour:
   gazeHitMask:
     serializedVersion: 2
     m_Bits: 64
+  changeableRadius: 0.8
 --- !u!114 &491024532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33189,7 +33190,7 @@ GameObject:
   - component: {fileID: 982569048}
   m_Layer: 0
   m_Name: IconCamera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
