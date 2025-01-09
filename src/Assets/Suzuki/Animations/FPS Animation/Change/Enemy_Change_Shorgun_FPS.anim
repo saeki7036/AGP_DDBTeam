@@ -2668,7 +2668,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2519582360
+      path: 3803359401
       attribute: 2
       script: {fileID: 0}
       typeID: 4
@@ -2677,7 +2677,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3803359401
+      path: 2519582360
       attribute: 2
       script: {fileID: 0}
       typeID: 4

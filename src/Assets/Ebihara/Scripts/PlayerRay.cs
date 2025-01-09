@@ -90,7 +90,7 @@ public class PlayerRay : MonoBehaviour
 
             Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
 
-            if (Physics.SphereCast(rayStartPosition, 1.5f, rayDirection, out raycastHit, distance)/* && raycastHit.collider.tag == "Enemy"*/)
+            if (Physics.SphereCast(rayStartPosition, 0.4f, rayDirection, out raycastHit, distance)/* && raycastHit.collider.tag == "Enemy"*/)
             {
                 if (!raycastHit.transform.TryGetComponent<CharacterStatus>(out CharacterStatus status)) return; if (!status.CanPossess) return;// 乗り移れるかどうか
                 game = raycastHit.collider.gameObject;
