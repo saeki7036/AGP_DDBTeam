@@ -148,9 +148,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.16406733
-  m_TransitionOffset: 0.16916157
-  m_ExitTime: 0.8458078
+  m_TransitionDuration: 0.1640673
+  m_TransitionOffset: 0.04246607
+  m_ExitTime: 0.8458079
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -208,7 +208,7 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.16198935
-  m_TransitionOffset: 0.16924636
+  m_TransitionOffset: 0.08987814
   m_ExitTime: 0.84623194
   m_HasExitTime: 0
   m_HasFixedDuration: 1
@@ -254,7 +254,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: EnterBar
-  m_Speed: 5
+  m_Speed: 10
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -298610510755080377}

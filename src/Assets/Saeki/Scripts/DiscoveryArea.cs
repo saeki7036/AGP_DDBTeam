@@ -11,11 +11,12 @@ public class DiscoveryArea : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            this.gameObject.SetActive(false);
             foreach (EnemyDiscoveryController enemies in enemy)
             {
-                enemies.IsDiscobery();
+                if(enemies != null)
+                    enemies.IsDiscobery();
             }
-            this.gameObject.SetActive(false);
         }
     }
 }
