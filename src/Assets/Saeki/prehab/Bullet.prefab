@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b60a22640db6824f9dd682f32905333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyIntarval: 10
+  DestroyIntarval: 5
   BulletPower: 80
   rb: {fileID: -2397765559653570604}
   bulletData: {fileID: 11400000, guid: eee7d5ba61c5f9849a157a03244435c1, type: 2}

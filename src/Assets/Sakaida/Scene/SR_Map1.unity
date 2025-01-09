@@ -341,10 +341,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShotGunWithModel_ChaseDiscovery Variant Variant (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
-      propertyPath: m_distance
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -688,7 +684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8123065976417004970, guid: 2c803ea89dee0c94c9886f1a6ad75e07, type: 3}
       propertyPath: m_distance
-      value: 10
+      value: 26.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13431,17 +13427,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &333530258 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1541310096477069792, guid: fd352e5a0a8620047b7dd27633aa67aa, type: 3}
-  m_PrefabInstance: {fileID: 1887754550}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333530255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71a8b1773e27624468099ae6059579c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &336016480
 GameObject:
   m_ObjectHideFlags: 0
@@ -13774,10 +13759,6 @@ PrefabInstance:
     - target: {fileID: 915290093407329165, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
       propertyPath: m_Name
       value: EnemyShotGunWithModel_ChaseDiscovery Variant Variant (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
-      propertyPath: m_distance
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20495,8 +20476,8 @@ RectTransform:
   - {fileID: 1249312773}
   - {fileID: 1406153985}
   - {fileID: 1071577424}
-  - {fileID: 523432907}
   - {fileID: 333530256}
+  - {fileID: 523432907}
   - {fileID: 1479146467}
   - {fileID: 802478823}
   - {fileID: 1288336148}
@@ -30219,10 +30200,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShotGunWithModel_ChaseDiscovery Variant Variant (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
-      propertyPath: m_distance
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31586,7 +31563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8123065976417004970, guid: 2c803ea89dee0c94c9886f1a6ad75e07, type: 3}
       propertyPath: m_distance
-      value: 10
+      value: 26.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45562,10 +45539,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShotGunWithModel_ChaseDiscovery Variant Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
-      propertyPath: m_distance
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -45809,17 +45782,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 1183140139196888049, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
   m_PrefabInstance: {fileID: 1391047662}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &854777440 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4892768049093411300, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-  m_PrefabInstance: {fileID: 1391047662}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 854777436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &855676287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47867,6 +47829,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 362326796}
     m_Modifications:
+    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.91
+      objectReference: {fileID: 0}
     - target: {fileID: 1262734166282809596, guid: 01612f71ae3de434d83483938d3a4eb7, type: 3}
       propertyPath: m_Name
       value: kanban1_b (6)
@@ -47906,14 +47876,6 @@ PrefabInstance:
     - target: {fileID: 1931466602100386374, guid: 01612f71ae3de434d83483938d3a4eb7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7539442642854561887, guid: c847afde25ac2eb408370e8644888222, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 22.91
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53395,17 +53357,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 4771181131067372139, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
   m_PrefabInstance: {fileID: 1391047662}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1030239114 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5854469908750817451, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-  m_PrefabInstance: {fileID: 1391047662}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030239110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1031801652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61151,7 +61102,6 @@ GameObject:
   - component: {fileID: 1217848254}
   - component: {fileID: 1217848253}
   - component: {fileID: 1217848252}
-  - component: {fileID: 1217848257}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -61284,18 +61234,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1217848257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217848251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6ed75dc97872cc4a9a05a5feb080093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1220732349 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5632464871832317353, guid: 627be492ae00f5444ac46704b49b8f87, type: 3}
@@ -63395,10 +63333,6 @@ PrefabInstance:
     - target: {fileID: 915290093407329165, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
       propertyPath: m_Name
       value: EnemyShotGunWithModel_ChaseDiscovery Variant Variant (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
-      propertyPath: m_distance
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67735,14 +67669,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 434699914}
     m_Modifications:
-    - target: {fileID: 210178394718083832, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 603222229765873431, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 80
-      objectReference: {fileID: 0}
     - target: {fileID: 860563707313728579, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -67751,45 +67677,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1288276867105546123, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -36
-      objectReference: {fileID: 0}
-    - target: {fileID: 2443685028236444995, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -80
-      objectReference: {fileID: 0}
     - target: {fileID: 2545429714325972590, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3674974384390088495, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-      propertyPath: Buttons.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3674974384390088495, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-      propertyPath: Buttons.Array.data[0]
-      value: 
-      objectReference: {fileID: 1030239114}
-    - target: {fileID: 3674974384390088495, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-      propertyPath: Buttons.Array.data[1]
-      value: 
-      objectReference: {fileID: 854777440}
     - target: {fileID: 4892768049093411300, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4892768049093411300, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SceneChangeMainGame
+      value: SceneChangeTitle
       objectReference: {fileID: 0}
     - target: {fileID: 5182098741968397208, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: InputResponseValue
       value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5835246127611009022, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6767963645267847549, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: m_Name
@@ -67881,18 +67783,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7213480219534312325, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7585249840021888463, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7585249840021888463, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SceneChangeTitle
-      objectReference: {fileID: 0}
-    - target: {fileID: 7941212879516845764, guid: eba9ebefda56ac246b0f71c4f0313d17, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -71137,10 +71027,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyAssaltWithModel_ChaseDiscovery Variant Variant (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 8123065976417004970, guid: 2c803ea89dee0c94c9886f1a6ad75e07, type: 3}
-      propertyPath: m_angle
-      value: 12.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -71438,11 +71324,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6576984588405761222, guid: b497aab86556506499e1957d2a535570, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 6576984588405761222, guid: b497aab86556506499e1957d2a535570, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 6576984588405761222, guid: b497aab86556506499e1957d2a535570, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -75043,10 +74929,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5453790881454267722, guid: c43d419b2bda0d145ad48e32db5e2ffc, type: 3}
-      propertyPath: m_distance
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -76515,10 +76397,6 @@ PrefabInstance:
     - target: {fileID: 915290093407329165, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
       propertyPath: m_Name
       value: EnemyShotGunWithModel_ChaseDiscovery Variant Variant (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
-      propertyPath: m_distance
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -78023,10 +77901,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShotGunWithModel_ChaseDiscovery Variant Variant (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
-      propertyPath: m_distance
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -78527,10 +78401,6 @@ PrefabInstance:
       value: Change
       objectReference: {fileID: 0}
     - target: {fileID: 4298569082051658761, guid: 8f508918a1c71c645b2a892130e21364, type: 3}
-      propertyPath: barUI
-      value: 
-      objectReference: {fileID: 333530258}
-    - target: {fileID: 4298569082051658761, guid: 8f508918a1c71c645b2a892130e21364, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 1217848251}
@@ -78937,13 +78807,7 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 2
   m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 5074256661986393783, guid: a3e832f4e1e32924b964a1b6ab83c2fa, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 887627611765501053, guid: a3e832f4e1e32924b964a1b6ab83c2fa, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -7410615237003442943, guid: a3e832f4e1e32924b964a1b6ab83c2fa, type: 2}
-    value: {fileID: 0}
+  m_SceneBindings: []
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1665390535
@@ -96692,10 +96556,6 @@ PrefabInstance:
     - target: {fileID: 915290093407329165, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
       propertyPath: m_Name
       value: EnemyShotGunWithModel_ChaseDiscovery Variant Variant (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7238276148782612035, guid: 580bf9b5891809543a0a9f5b087d99bb, type: 3}
-      propertyPath: m_distance
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
