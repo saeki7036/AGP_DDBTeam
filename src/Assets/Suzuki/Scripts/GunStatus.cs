@@ -56,9 +56,9 @@ public class GunStatus : MonoBehaviour
             bullet.tag = tag == "Player" ? "PlayerBullet" : "EnemyBullet";
             bullet.transform.forward = forward;
             bullet.transform.Rotate(diffusion);
-            SR_SoundController.instance.PlaySEOnce(weaponData.ShotSound, transform);// èeê∫Çñ¬ÇÁÇ∑
         }
-        if(remainBullets == 0 && weaponData.Role == WeaponData.WeaponRole.Main)
+        SR_SoundController.instance.PlaySEOnce(weaponData.ShotSound, transform);// èeê∫Çñ¬ÇÁÇ∑
+        if (remainBullets == 0 && weaponData.Role == WeaponData.WeaponRole.Main)
         {
             ChangeWeapon();
         }
