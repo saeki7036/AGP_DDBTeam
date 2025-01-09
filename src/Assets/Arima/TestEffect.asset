@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bca5a02060f406544935f645d9f5e346, type: 3}
-  m_Name: HandGun
+  m_Name: TestEffect
   m_EditorClassIdentifier: 
   name: HandGun
-  id: 1
-  bulletPrefab: {fileID: 2720097741136659255, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
-  maxBullet: 60
+  id: 99
+  bulletPrefab: {fileID: 2720097741136659255, guid: 1b9eeae5ed92d8140814431d45eb1c01, type: 3}
+  maxBullet: 99999
   bulletSettings:
   - diffusion: {x: 0, y: 0}
     randomNess: 0
-  weaponRole: 1
-  weaponType: 0
-  shotSound: {fileID: 8300000, guid: 5ff5bd936a30a904da907f35c8dd382e, type: 3}
-  weaponImage: {fileID: 21300000, guid: 0b6bc94617e966647a160eeb2175b59b, type: 3}
-  subWeapon: {fileID: 0}
+  weaponRole: 0
+  weaponType: 3
+  shotSound: {fileID: 8300000, guid: 5dbc74a65da58144aa0a20190bcd4909, type: 3}
+  weaponImage: {fileID: 21300000, guid: bc3ab62b61c6c3d4a9046ba246881487, type: 3}
+  subWeapon: {fileID: 3993766834917909290, guid: 03f82252fc4ff8340936cdb188a204da, type: 3}
