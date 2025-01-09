@@ -34,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 842a16901c4928e4eb2c6eee89daf8fb, type: 2}
     - target: {fileID: 5070606513049012299, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: firstShotIntarval
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5070606513049012299, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: defaultShotIntarval
-      value: 0.1
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 7199755588353856229, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_Name
