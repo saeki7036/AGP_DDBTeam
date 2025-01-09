@@ -8,21 +8,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 664742783493289353, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 664742783493289353, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.171
+      objectReference: {fileID: 0}
+    - target: {fileID: 664742783493289353, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.44
+      objectReference: {fileID: 0}
     - target: {fileID: 804716329433298731, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_angle
-      value: 12
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 804716329433298731, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: m_distance
-      value: 30
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5070606513049012299, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: weaponData
       value: 
-      objectReference: {fileID: 11400000, guid: 35f2ee39b40fd964bbdc3b1b423a789b, type: 2}
+      objectReference: {fileID: 11400000, guid: 842a16901c4928e4eb2c6eee89daf8fb, type: 2}
     - target: {fileID: 5070606513049012299, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: firstShotIntarval
-      value: 3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5070606513049012299, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: defaultShotIntarval
@@ -73,8 +85,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8827271648042758507, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827271648042758507, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: rotationSpeed
-      value: 1
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827271648042758507, guid: c847afde25ac2eb408370e8644888222, type: 3}
+      propertyPath: lockonIntarval
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
