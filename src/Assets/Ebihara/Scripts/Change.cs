@@ -22,6 +22,9 @@ public class Change : MonoBehaviour
     bool changing;
     bool changed;
 
+    int playerLayer = 3;
+    int deadEnemyLayer = 12;
+
     public bool Changed
     {
         get { return changed; }
@@ -72,6 +75,7 @@ public class Change : MonoBehaviour
     {
         //親をEnemyに
         //transform.parent.gameObject.tag = "Enemy";
+        transform.parent.gameObject.layer = deadEnemyLayer;
 
         //親の付け替え
         this.gameObject.transform.parent = changeObj.transform;
@@ -79,6 +83,7 @@ public class Change : MonoBehaviour
 
         //親をPlayerに
         this.transform.parent.gameObject.tag = "Player";
+        this.transform.parent.gameObject.layer = playerLayer;
 
         //銃の変更
         playerMove.SetGunObject();
