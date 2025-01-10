@@ -182,3 +182,4 @@ MonoBehaviour:
   explosiveRadius: 7
   explosionprefab: {fileID: 1458589230454212747, guid: 4839472538563474a9bc111b3970d203, type: 3}
   explosionSound: {fileID: 8300000, guid: 314ed23347329a14586004506e8ff4fa, type: 3}
+  PlayerDamageClip: {fileID: 8300000, guid: df3c1ccbdcbb31646a600f86613b42b2, type: 3}

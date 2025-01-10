@@ -365,6 +365,7 @@ MonoBehaviour:
   gunsUI: {fileID: 0}
   enemyManager: {fileID: 0}
   playerHead: {fileID: 803069257547464494, guid: 06eb8197c10e2b5489cce32b0c6c113d, type: 3}
+  PlayerDamageClip: {fileID: 8300000, guid: 562a473ed80f9c341b7f36baec022268, type: 3}
 --- !u!114 &7798916664690224374
 MonoBehaviour:
   m_ObjectHideFlags: 0
