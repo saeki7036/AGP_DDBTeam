@@ -87,17 +87,32 @@ public class PlayerRay : MonoBehaviour
 
             //Hitしたオブジェクト格納
             RaycastHit raycastHit;
+            RaycastHit[] hits = Physics.SphereCastAll(rayStartPosition, 0.4f, rayDirection, distance);
 
             Debug.DrawRay(rayStartPosition, rayDirection * distance, Color.red);
 
-            if (Physics.SphereCast(rayStartPosition, 0.4f, rayDirection, out raycastHit, distance)/* && raycastHit.collider.tag == "Enemy"*/)
+            foreach(RaycastHit hit in hits)
             {
-                if (!raycastHit.transform.TryGetComponent<CharacterStatus>(out CharacterStatus status)) return; if (!status.CanPossess) return;// 乗り移れるかどうか
-                game = raycastHit.collider.gameObject;
-                change.ChangeEnemy(game);
+                // 操作中のキャラクターでなくて視点の通る、HPが0のキャラクター
+                if(TargetManeger.getPlayerObj() != hit.transform.gameObject && !Physics.Raycast(rayStartPosition, hit.transform.position + Vector3.up * 0.5f - rayStartPosition, Vector3.Distance(hit.transform.position, rayStartPosition), LayerMask.GetMask("Stage", "Destructive")) 
+                    && hit.transform.TryGetComponent<CharacterStatus>(out CharacterStatus status) && status.CanPossess)
+                {
+                    game = hit.collider.gameObject;
+                    change.ChangeEnemy(game);
 
-                TargetManeger.PlayerStatus.CharacterAnimator.SetBool("Change", true);
+                    TargetManeger.PlayerStatus.CharacterAnimator.SetBool("Change", true);
+                    break;
+                }
             }
+
+            //if (Physics.SphereCast(rayStartPosition, 0.4f, rayDirection, out raycastHit, distance)/* && raycastHit.collider.tag == "Enemy"*/)
+            //{
+            //    if (!raycastHit.transform.TryGetComponent<CharacterStatus>(out CharacterStatus status)) return; if (!status.CanPossess) return;// 乗り移れるかどうか
+            //    game = raycastHit.collider.gameObject;
+            //    change.ChangeEnemy(game);
+
+            //    TargetManeger.PlayerStatus.CharacterAnimator.SetBool("Change", true);
+            //}
         }
     }
 
