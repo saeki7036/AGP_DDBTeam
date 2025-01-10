@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class CursorController : MonoBehaviour
 {
-    [SerializeField] private bool isCursorOn;
+    [SerializeField] private bool isCursorOn = false;
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        isCursorOn = false;
+        CursorSwich(isCursorOn);
     }
 
     // Update is called once per frame
@@ -18,23 +16,23 @@ public class CursorController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.C))
         {
-            CursorSwich();
+            CursorSwich(isCursorOn);
         }
     }
 
-    void CursorSwich()
+    void CursorSwich(bool isCursor)
     {
-        if(isCursorOn==false)
+        if (isCursor)     
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            isCursorOn = true;
+            isCursorOn = false;
         }
         else
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            isCursorOn = false;
+            isCursorOn = true;
         }
     }
 }
