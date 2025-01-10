@@ -31,6 +31,6 @@ MonoBehaviour:
     randomNess: 0
   weaponRole: 0
   weaponType: 2
-  shotSound: {fileID: 0}
-  weaponImage: {fileID: 21300000, guid: bc3ab62b61c6c3d4a9046ba246881487, type: 3}
+  shotSound: {fileID: 8300000, guid: d7855509c2faf464fa1cc6fdf3a8211f, type: 3}
+  weaponImage: {fileID: 21300000, guid: 2bf48fd21c0416541b26bbc862e6673a, type: 3}
   subWeapon: {fileID: 3993766834917909290, guid: 03f82252fc4ff8340936cdb188a204da, type: 3}

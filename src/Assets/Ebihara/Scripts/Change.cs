@@ -15,7 +15,8 @@ public class Change : MonoBehaviour
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
 
-　　[SerializeField] MainGameGunsUI gunsUI;
+    [SerializeField] MainGameHPBar barUI;
+    [SerializeField] MainGameGunsUI gunsUI;
     [SerializeField] EnemyManager enemyManager;
 
     [SerializeField] GameObject playerHead;
@@ -104,6 +105,7 @@ public class Change : MonoBehaviour
 
         //if (targetManeger != null)
         TargetManeger.SetTarget(this.transform.parent.gameObject);
+        barUI.AnimatorHPBarRemove();
         gunsUI.AnimatorSetHead();
         if (!changed)
         {
@@ -121,7 +123,9 @@ public class Change : MonoBehaviour
 
     IEnumerator DelayInstantiateHeadAndShoot(float delaySeconds,GameObject changeObj)
     {
+
         sound.PlaySEOnce(PlayerDamageClip);
+        barUI.AnimatorHPBarEnter();
         gunsUI.AnimatorChangeHead();
         changing = true;
 
