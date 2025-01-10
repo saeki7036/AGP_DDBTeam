@@ -8,13 +8,11 @@ public class PlayerDamageEffect : MonoBehaviour
     [SerializeField] int nowHP;
     const int maxHP = 3;
     Change change;
-
+    Color color;
     [SerializeField] Image damageImage;
     [SerializeField] Image[] hpsGreen = new Image[maxHP];
-
     float[] damagesAlpha;
-    Color color;
-
+    
     // Start is called before the first frame update
     void Start()
     {

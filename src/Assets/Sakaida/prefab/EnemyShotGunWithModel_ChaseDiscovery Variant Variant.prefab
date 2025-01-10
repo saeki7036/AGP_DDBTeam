@@ -59,10 +59,10 @@ PrefabInstance:
     - target: {fileID: 5070606513049012299, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: weaponData
       value: 
-      objectReference: {fileID: 11400000, guid: f6231f3848afadb4bad2a094441b2c13, type: 2}
+      objectReference: {fileID: 11400000, guid: 1248fa7e6e94f7642a32c76c7c14df9e, type: 2}
     - target: {fileID: 5070606513049012299, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: firstShotIntarval
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5070606513049012299, guid: c847afde25ac2eb408370e8644888222, type: 3}
       propertyPath: defaultShotIntarval

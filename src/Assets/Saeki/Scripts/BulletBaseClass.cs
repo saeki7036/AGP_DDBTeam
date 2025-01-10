@@ -11,6 +11,9 @@ public class BulletBaseClass : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
     [SerializeField] private BulletData bulletData;
+    [SerializeField] private Material playerBulletMaterial;
+    [SerializeField] private Material enemyBulletMaterial;
+    [SerializeField] private GameObject EffectObject;
     [Header("ヒット時のエフェクト"), SerializeField] private ParticleSystem particle;
     [Header("弾が衝突するレイヤー"), SerializeField] private LayerMask hitLayerMask;
     [Header("弾が消滅するレイヤー"), SerializeField] private LayerMask lapseLayerMask;
@@ -19,14 +22,18 @@ public class BulletBaseClass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
 
         if (this.tag == "PlayerBullet")
         {
             Forward = transform.forward;
+            GetComponent<MeshRenderer>().material = playerBulletMaterial;
         }
         else
         {
             Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
+            GetComponent<MeshRenderer>().material = enemyBulletMaterial;
+            EffectObject.SetActive(true);
         }
         Forward = transform.forward;
         Forward.Normalize();
@@ -106,10 +113,28 @@ public class BulletBaseClass : MonoBehaviour
 
     private void CheckHit(float deltaTime)
     {
-        Ray moveCheckRay = new Ray(transform.position - Forward.normalized * 0.5f, Forward);
-        if (Physics.SphereCast(moveCheckRay.origin, 0.6f, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime + Forward.normalized.magnitude * 0.5f, hitLayerMask))
+        Ray moveCheckRay = new Ray(transform.position/* - Forward.normalized * 0.5f*/, Forward);
+        RaycastHit[] hits = Physics.SphereCastAll(moveCheckRay.origin, 0.3f, moveCheckRay.direction, moveCheckRay.direction.magnitude * deltaTime/* + Forward.normalized.magnitude * 0.5f*/, hitLayerMask);
+        List<RaycastHit> hitCharacterList = new List<RaycastHit>();
+        foreach(RaycastHit raycastHit in hits)
+        {
+            if(CompareLayer(LayerMask.GetMask("Enemy", "Player", "Destructive"), raycastHit.transform.gameObject.layer))
+            {
+                hitCharacterList.Add(raycastHit);
+            }
+        }
+        foreach(RaycastHit hitCharacter in hitCharacterList)
+        {
+            OnTriggerEnter(hitCharacter.collider);
+        }
+
+        foreach (RaycastHit hit in hits)
         {
             OnTriggerEnter(hit.collider);
         }
+        //if (Physics.SphereCast(moveCheckRay.origin, 0.6f, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime + Forward.normalized.magnitude * 0.5f, hitLayerMask))
+        //{
+        //    OnTriggerEnter(hit.collider);
+        //}
     }
 }

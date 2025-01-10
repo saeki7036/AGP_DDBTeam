@@ -14,12 +14,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2896952001539416241, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
       propertyPath: BulletPower
-      value: 9
+      value: 22.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2896952001539416241, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
+      propertyPath: EffectObject
+      value: 
+      objectReference: {fileID: 1509485894009967143}
     - target: {fileID: 2896952001539416241, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
       propertyPath: DestroyIntarval
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 2896952001539416241, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
+      propertyPath: playerBulletMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 7606aa5c6a5150a4fa26fc7216edb2c8, type: 2}
     - target: {fileID: 3278088209553115426, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
@@ -77,3 +85,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
+--- !u!1 &1509485894009967143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 33742405098481024, guid: 20defe61a7a48ba46a8e020f56a05f9c, type: 3}
+  m_PrefabInstance: {fileID: 1478629721027540903}
+  m_PrefabAsset: {fileID: 0}
