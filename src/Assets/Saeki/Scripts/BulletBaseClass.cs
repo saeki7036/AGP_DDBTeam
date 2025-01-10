@@ -113,10 +113,28 @@ public class BulletBaseClass : MonoBehaviour
 
     private void CheckHit(float deltaTime)
     {
-        Ray moveCheckRay = new Ray(transform.position - Forward.normalized * 0.5f, Forward);
-        if (Physics.SphereCast(moveCheckRay.origin, 0.6f, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime + Forward.normalized.magnitude * 0.5f, hitLayerMask))
+        Ray moveCheckRay = new Ray(transform.position/* - Forward.normalized * 0.5f*/, Forward);
+        RaycastHit[] hits = Physics.SphereCastAll(moveCheckRay.origin, 0.3f, moveCheckRay.direction, moveCheckRay.direction.magnitude * deltaTime/* + Forward.normalized.magnitude * 0.5f*/, hitLayerMask);
+        List<RaycastHit> hitCharacterList = new List<RaycastHit>();
+        foreach(RaycastHit raycastHit in hits)
+        {
+            if(CompareLayer(LayerMask.GetMask("Enemy", "Player", "Destructive"), raycastHit.transform.gameObject.layer))
+            {
+                hitCharacterList.Add(raycastHit);
+            }
+        }
+        foreach(RaycastHit hitCharacter in hitCharacterList)
+        {
+            OnTriggerEnter(hitCharacter.collider);
+        }
+
+        foreach (RaycastHit hit in hits)
         {
             OnTriggerEnter(hit.collider);
         }
+        //if (Physics.SphereCast(moveCheckRay.origin, 0.6f, moveCheckRay.direction, out RaycastHit hit, moveCheckRay.direction.magnitude * deltaTime + Forward.normalized.magnitude * 0.5f, hitLayerMask))
+        //{
+        //    OnTriggerEnter(hit.collider);
+        //}
     }
 }
