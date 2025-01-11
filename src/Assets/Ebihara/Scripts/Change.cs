@@ -10,7 +10,7 @@ public class Change : MonoBehaviour
 
     PlayerMove playerMove;
     CharacterStatus characterStatus;
-
+    SR_SoundController sound => SR_SoundController.instance;
 
     [SerializeField] GameObject camera;
     PlayerRay playerRay;
@@ -20,6 +20,7 @@ public class Change : MonoBehaviour
     [SerializeField] EnemyManager enemyManager;
 
     [SerializeField] GameObject playerHead;
+    [SerializeField] AudioClip PlayerDamageClip;
     bool changing;
     bool changed;
 
@@ -122,6 +123,8 @@ public class Change : MonoBehaviour
 
     IEnumerator DelayInstantiateHeadAndShoot(float delaySeconds,GameObject changeObj)
     {
+
+        sound.PlaySEOnce(PlayerDamageClip);
         barUI.AnimatorHPBarEnter();
         gunsUI.AnimatorChangeHead();
         changing = true;

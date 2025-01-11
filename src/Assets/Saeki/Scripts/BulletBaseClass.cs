@@ -7,6 +7,7 @@ public class BulletBaseClass : MonoBehaviour
     //[SerializeField] private GameObject Player;
     [SerializeField] private float DestroyIntarval = 10f;
     [SerializeField] private float BulletPower = 60;
+    [SerializeField] AudioClip PlayerDamageClip;
     private float DestroyTime = 0;
     [SerializeField]
     private Rigidbody rb;
@@ -17,6 +18,8 @@ public class BulletBaseClass : MonoBehaviour
     [Header("ヒット時のエフェクト"), SerializeField] private ParticleSystem particle;
     [Header("弾が衝突するレイヤー"), SerializeField] private LayerMask hitLayerMask;
     [Header("弾が消滅するレイヤー"), SerializeField] private LayerMask lapseLayerMask;
+
+    SR_SoundController sound => SR_SoundController.instance;
 
     Vector3 Forward;
     // Start is called before the first frame update
@@ -84,6 +87,7 @@ public class BulletBaseClass : MonoBehaviour
                 {
                     if (character.ObjectTag == "Player")
                     {
+                        sound.PlaySEOnce(PlayerDamageClip);
                         character.TakeDamage(1f);// 将来ダメージ種ごとでダメージの値を変えるかも
                     }
                     else

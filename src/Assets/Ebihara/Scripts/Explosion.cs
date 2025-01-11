@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Explosion : CharacterStatus
@@ -13,6 +14,10 @@ public class Explosion : CharacterStatus
     [SerializeField] float explosiveRadius;
     [SerializeField] GameObject explosionprefab;
     [SerializeField] AudioClip explosionSound;
+
+    [SerializeField] AudioClip PlayerDamageClip;
+
+    SR_SoundController sound => SR_SoundController.instance;
 
     // Start is called before the first frame update
     void Start()
@@ -105,6 +110,7 @@ public class Explosion : CharacterStatus
                     {
                         if (hits[i].collider.gameObject == TargetManeger.getPlayerObj())
                         {
+                            sound.PlaySEOnce(PlayerDamageClip);
                             Debug.Log("プレイヤー検出:" + hits[i].collider.name);
                             status.TakeDamage(1f);
                         }
