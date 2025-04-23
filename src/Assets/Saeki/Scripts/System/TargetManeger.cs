@@ -9,14 +9,18 @@ public class TargetManeger : MonoBehaviour
     private static List<EnemyBaseClass> Enemy;
     private static GameObject playerObject;
     private static CharacterStatus playerStatus;
-    private static float TimeCount = 0;
 
-    [SerializeField] private static float Interval = 4.5f;// スロー時間
-    [SerializeField] private static float watchDistancs = 15f;
+    private static float SlowTimeCount = 0;//Slow中の計算カウント
 
+    [SerializeField] private static float Interval = 4.5f;// スロー時間のインターバル
+    [SerializeField] private static float watchDistancs = 15f;//EnemyがPlayerを発見する判定距離
 
+    [SerializeField] private static float slowTimeScaleValue = 0.5f;// スロー時間のTimeScale
 
-    public static List<EnemyBaseClass > EnemyList => Enemy;
+    /// <summary>
+    /// Enemyのlist取得
+    /// </summary>
+    public static List<EnemyBaseClass> EnemyList => Enemy;
 
     /// <summary>
     /// staticで宣言されたGetメゾット
@@ -24,6 +28,9 @@ public class TargetManeger : MonoBehaviour
     /// <returns>プレイヤーのオブジェクト</returns>
     public static GameObject getPlayerObj() { return playerObject; }
 
+    /// <summary>
+    /// Playerのステータスの取得
+    /// </summary>
     public static CharacterStatus PlayerStatus { get { return playerStatus; } }
 
     /// <summary>
@@ -32,37 +39,51 @@ public class TargetManeger : MonoBehaviour
     /// <returns>残りのSlow状態を(下限)0~1(上限)までに変換したパラメータ</returns>
     public static float GetSlowValue()
     {
-        float value = TimeCount / Interval;
+        //0 <= value <=1の範囲
+        float value = SlowTimeCount / Interval;
+        //下限処理
         if (value < 0f) value = 0f;
+        //上限処理
         else if (value > 1f) value = 1f;
+        //計算結果返却
         return value; 
     }
     
     void Start()
     {
+        //Playerのオブジェクトの取得
         playerObject = GameObject.FindWithTag("Player");
+        //Playerのステータス取得
         playerStatus = playerObject.GetComponent<CharacterStatus>();
+        //Enemyをすべて取得
         GameObject[] onFieldEnemy = GameObject.FindGameObjectsWithTag("Enemy");
-        TimeCount = 0;
-
+        //初期化
+        SlowTimeCount = 0;
+        //Enemyのlistを初期化
         Enemy = new List<EnemyBaseClass>();
+        //Enemyのlistに追加
         foreach (GameObject g in onFieldEnemy)
             AddEnemyBaseClass(g);
     }
 
     private void Update()
     {
+        //timeScaleを管理する
         TimeScaleManagement();
     }
 
+    /// <summary>
+    /// timeScaleを管理
+    /// </summary>
     private void TimeScaleManagement()
     {
-        if (Time.timeScale == 1f || Time.timeScale == 0f || Time.timeScale == 0.1f)
+        //timeScaleがSlow状態でなければ以下の処理は走らない
+        if (Time.timeScale != slowTimeScaleValue)
             return;
-
-        TimeCount += Time.unscaledDeltaTime;
-
-        if (TimeCount > Interval)
+        //TimeCountにDeltaTimeではなくunscaledで加算
+        SlowTimeCount += Time.unscaledDeltaTime;
+        //TimeCountがIntervalを超えたら元のtimeScaleに戻す
+        if (SlowTimeCount > Interval)
             Time.timeScale = 1f;
     }
 
@@ -71,8 +92,8 @@ public class TargetManeger : MonoBehaviour
     /// </summary>
     public static void StartHeadChange()
     {
-        TimeCount = 0;
-        Time.timeScale = 0.1f;
+        SlowTimeCount = 0;
+        Time.timeScale = 1f;
     }
 
     /// <summary>
@@ -87,17 +108,26 @@ public class TargetManeger : MonoBehaviour
     /// </summary>
     public static void SetTarget(GameObject player)
     {
+        //対象オブジェクトの更新
         playerObject = player;
+        //対象ステータスの更新
         playerStatus = playerObject.GetComponent<CharacterStatus>();
-        TimeCount = 0;
-        Time.timeScale = 0.5f;
+        //時間カウント初期化
+        SlowTimeCount = 0;
+        //timeScaleをSlow状態に
+        Time.timeScale = slowTimeScaleValue;
+        //Enemyの攻撃対象変更
         ChangeTarget();
     }
-   
+
+    /// <summary>
+    /// Enemyのターゲットを更新させる
+    /// </summary>
     private static void ChangeTarget()
     {
         foreach (EnemyBaseClass baseClass in Enemy)
         {
+            //Enemyの攻撃対象をSetする
             baseClass.ChangeTarget(playerObject);
         }
     }
@@ -109,6 +139,8 @@ public class TargetManeger : MonoBehaviour
     {
         foreach (EnemyBaseClass baseClass in Enemy)
         {
+            //距離を計算してwatchDistancs以下なら発見処理
+            //平方根よりも2乗計算の方がコスト軽い
             if (distance_Square(playerObject.transform.position,baseClass.transform.position) < watchDistancs)    
                 baseClass.Watch();
         }
@@ -122,15 +154,24 @@ public class TargetManeger : MonoBehaviour
     public static List<EnemyBaseClass> TakeTarget(Vector3 position, float radius)
     {
         List<EnemyBaseClass> list = new();
+        //敵の位置を調べる
         foreach (EnemyBaseClass baseClass in Enemy)
         {
+            //一定の距離以下ならlistに追加
+            //平方根よりも2乗計算の方がコスト軽い
             if (distance_Square(position ,baseClass.transform.position) < radius * radius)
                 list.Add(baseClass);
         }
+        //listで返却
         return list;
     }
 
-
+    /// <summary>
+    /// 指定された2つの位置（Vector3）間の距離の二乗を計算
+    /// </summary>
+    /// <param name="Target">ターゲットの位置</param>
+    /// <param name="enemy">敵の位置</param>
+    /// <returns>2点間の3次元の距離（平方根を取らない）</returns>
     private static float distance_Square(Vector3 Target ,Vector3 enemy) 
     { 
         return (Target - enemy).sqrMagnitude; 

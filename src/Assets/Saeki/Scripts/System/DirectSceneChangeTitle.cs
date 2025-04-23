@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class DirectSceneChangeTitle : MonoBehaviour
 {
-    bool InputCheck = false;
+    bool InputCheck = false;//入力フラグ
 
     void Start()
     {
-        InputCheck = false;
+        InputCheck = false;//Startで初期化
     }
     void Update()
     {
@@ -22,9 +22,10 @@ public class DirectSceneChangeTitle : MonoBehaviour
 
     void SceneChangeTitle()
     {
+        //二度押されてないか判定
         if (InputCheck == false)
             SceneManager.LoadSceneAsync("Title");
-
+        //1度押されて変更
         InputCheck = true;
     }
 }

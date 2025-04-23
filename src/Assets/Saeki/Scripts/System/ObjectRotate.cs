@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectRotate : MonoBehaviour
 {
-    [SerializeField] Transform obj;
+    [SerializeField] Transform obj;//回転させたいオブジェクト
     [SerializeField] float speed;
 
     void Start()

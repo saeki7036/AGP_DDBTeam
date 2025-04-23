@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class MainGameHPBar: MonoBehaviour
 {
-    [SerializeField] Animator animator;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] Animator animator;//HPBar‚ÌAnimator
+
     /// <summary>
     /// HP‚ª‰æ–ÊŠO‚ÉˆÚ“®‚·‚éUI‘JˆÚ
     /// </summary>

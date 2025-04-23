@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneButtonSelect : MonoBehaviour
 {
+    //ボタンを押した時の音声
     [SerializeField] private AudioSource audioSE;
     /// <summary>
     /// タイトルシーンに遷移

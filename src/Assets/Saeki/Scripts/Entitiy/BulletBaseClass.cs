@@ -4,46 +4,58 @@ using UnityEngine;
 
 public class BulletBaseClass : MonoBehaviour
 {
-    //[SerializeField] private GameObject Player;
-    [SerializeField] private float DestroyIntarval = 10f;
-    [SerializeField] private float BulletPower = 60;
-    [SerializeField] AudioClip PlayerDamageClip;
-    private float DestroyTime = 0;
-    [SerializeField]
-    private Rigidbody rb;
-    [SerializeField] private BulletData bulletData;
-    [SerializeField] private Material playerBulletMaterial;
-    [SerializeField] private Material enemyBulletMaterial;
-    [SerializeField] private GameObject EffectObject;
+    [SerializeField] private float DestroyIntarval = 10f;//破壊されるまでの時間
+    [SerializeField] private float BulletPower = 60;//弾の飛ぶ強さ
+    [SerializeField] private AudioClip PlayerDamageClip;//プレイヤーがダメージ受けた音声データ
+    
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private BulletData bulletData;//弾丸のデータ
+
+    [SerializeField] private Material playerBulletMaterial;//プレイヤーの発射する弾の色
+    [SerializeField] private Material enemyBulletMaterial;//敵の発射する弾の色
+
+    [SerializeField] private GameObject EffectObject;//エフェクト再生するオブジェクト
+
     [Header("ヒット時のエフェクト"), SerializeField] private ParticleSystem particle;
     [Header("弾が衝突するレイヤー"), SerializeField] private LayerMask hitLayerMask;
     [Header("弾が消滅するレイヤー"), SerializeField] private LayerMask lapseLayerMask;
 
+    private float destroyTimeCount = 0;//弾の消えるまでのタイマー
+    private Vector3 translateForward;//弾の飛ばす方向
+
     SR_SoundController sound => SR_SoundController.instance;
 
-    Vector3 Forward;
     // Start is called before the first frame update
     void Start()
     {      
+        //Tagで処理を分岐
         if (this.tag == "PlayerBullet")
         {
-            Forward = transform.forward;
+            //Forward = transform.forward;
+
+            //materialを変更
             GetComponent<MeshRenderer>().material = playerBulletMaterial;
         }
+        //TagがEnemyBulletの時
         else
         {
-            Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
+            //Forward = TargetManeger.getPlayerObj().transform.position - transform.position + Vector3.up * 0.5f;
+
+            //materialを変更
             GetComponent<MeshRenderer>().material = enemyBulletMaterial;
             //敵だけエフェクト起動
             EffectObject.SetActive(true);
         }
-        Forward = transform.forward;
-        Forward.Normalize();
+        //Forwardを共通処理に変更
+        translateForward = transform.forward;
+        translateForward.Normalize();
         //弾丸を回転
-        Quaternion look = Quaternion.LookRotation(Forward);
+        Quaternion look = Quaternion.LookRotation(translateForward);
         transform.rotation = look * Quaternion.Euler(90, 0, 0);
+        //正規化された値にBulletPowerを乗算
+        translateForward *= BulletPower;
 
-        Forward *= BulletPower;
+        //以下Debug用
         //rb.AddForce(Forward, ForceMode.Impulse);
         //Debug.Log(Forward * BulletPower +""+""+ rb.velocity);
     }
@@ -52,11 +64,11 @@ public class BulletBaseClass : MonoBehaviour
     void Update()
     {
         //Timescaleが0でも動くようにUpdateを使用
-        DestroyTime += Time.deltaTime;
+        destroyTimeCount += Time.deltaTime;
         //時間経過で消滅
-        if (DestroyTime > DestroyIntarval)
+        if (destroyTimeCount > DestroyIntarval)
         {
-            DestroyTime = 0f;
+            destroyTimeCount = 0f;
             Destroy(this.gameObject);
         }
         // プレイヤーの弾はスロー中でも飛び方を変えないためTime.unscaledDeltaTimeを使用
@@ -64,7 +76,7 @@ public class BulletBaseClass : MonoBehaviour
         // 当たり判定の確認(transform.positionで動かしているため)                                                                   
         CheckHit(deltaTime);
         // オブジェクトの移動
-        transform.position += Forward * deltaTime;
+        transform.position += translateForward * deltaTime;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -89,6 +101,7 @@ public class BulletBaseClass : MonoBehaviour
                         sound.PlaySEOnce(PlayerDamageClip);
                         character.TakeDamage(1f);
                     }
+                    //EnemyのTagを持っている敵のみ
                     else
                     {
                         //敵ににダメージ
@@ -118,11 +131,13 @@ public class BulletBaseClass : MonoBehaviour
     /// Tagの違いによっての衝突を確認
     /// </summary>
     /// <param name="otherTag">タグ名前</param>
-    /// <returns>プレイヤーの弾が敵に、敵の弾がプレイヤーの時true</returns>
+    /// <returns>プレイヤーの弾が敵に、敵の弾がプレイヤーの時にtrue</returns>
     private bool HitTagCheck(string otherTag)
     {
+        //PlayerBulletならEnemyと判定
         if (this.tag == "PlayerBullet")
             return otherTag != "Player";
+        //EnemyBulletならPlayerと判定
         else
             return otherTag != "Enemy";
     }
@@ -134,30 +149,29 @@ public class BulletBaseClass : MonoBehaviour
     private void CheckHit(float deltaTime)
     {
         //Rayを飛ばす
-        Ray moveCheckRay = new Ray(transform.position/* - Forward.normalized * 0.5f*/, Forward);
+        Ray moveCheckRay = new Ray(transform.position/* - Forward.normalized * 0.5f*/, translateForward);
         //Hitした情報を格納
         RaycastHit[] hits = Physics.SphereCastAll(moveCheckRay.origin, 0.3f, moveCheckRay.direction, moveCheckRay.direction.magnitude * deltaTime/* + Forward.normalized.magnitude * 0.5f*/, hitLayerMask);
         List<RaycastHit> hitCharacterList = new List<RaycastHit>();
-
         //キャラクターのHit判定
         foreach (RaycastHit raycastHit in hits)
         {
             //Characterに指定されたTagであるか
             if (CompareLayer(LayerMask.GetMask("Enemy", "Player", "Destructive"), raycastHit.transform.gameObject.layer))
             {
+                //一度判定を格納しておく
                 hitCharacterList.Add(raycastHit);
             }
         }
-
         //Characterの判定をOntriggerに飛ばす
         foreach (RaycastHit hitCharacter in hitCharacterList)
         {
             OnTriggerEnter(hitCharacter.collider);
         }
-
         //全体の判定をOntriggerに飛ばす
         foreach (RaycastHit hit in hits)
         {
+            //Layの処理からOntriggerEnterに判定処理
             OnTriggerEnter(hit.collider);
         }
     }
