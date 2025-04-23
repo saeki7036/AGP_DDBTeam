@@ -7,11 +7,15 @@ public class StartFlag : MonoBehaviour
 {
     [SerializeField] Animator anim;
     [SerializeField] string animText;
+
     private bool startCheck;
+
     // Start is called before the first frame update
     void Start()
     {
+        //timeScaleを0にしてFixedUpdeteを止める
         Time.timeScale = 0;
+        //初期化
         startCheck = false;
     }
    
@@ -19,25 +23,32 @@ public class StartFlag : MonoBehaviour
     void Update()
     {
         //左クリックと四方向の移動を取得
+        bool MouseLeft = Input.GetMouseButton(0);
         float inputVertical = Input.GetAxisRaw("Vertical");
         float inputHorizontal = Input.GetAxisRaw("Horizontal");
-        bool MouseLeft = Input.GetMouseButton(0);
+       
         //左クリックと四方向の入力を判定
         if (!startCheck && (inputVertical != 0 || inputHorizontal != 0 || MouseLeft))
         {
             //animationを起動
             AnimationOnePlay();
-            StartCounting();
-            Time.timeScale = 1;           
+            //timeScaleを1にしてFixedUpdeteを動かす
+            Time.timeScale = 1;
+
+            //TimeLine使用のためお役御免
+            //StartCounting();
         }
     }
 
-
     void AnimationOnePlay()
     {
+        //アニメーション起動
         anim.Play(animText, 0, 1f);
     }
 
+    //TimeLine使用のためお役御免
+
+    /*
     /// <summary>
     /// 一定時間後に非表示に設定
     /// </summary>
@@ -60,5 +71,5 @@ public class StartFlag : MonoBehaviour
         }
 
         this.gameObject.SetActive(false);
-    }
+    }*/
 }

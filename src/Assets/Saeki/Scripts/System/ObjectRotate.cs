@@ -13,6 +13,7 @@ public class ObjectRotate : MonoBehaviour
         if (Time.timeScale == 0)
             Time.timeScale = 1;
     }
+
     void FixedUpdate()
     {
         //オブジェクトを回転

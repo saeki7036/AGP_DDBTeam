@@ -7,14 +7,11 @@ public class ClearFlag : MonoBehaviour
 {
     //Enemy“o˜^‚·‚élist
     private List<EnemyBaseClass> Enemys = new List<EnemyBaseClass>();
+
     private bool clearCheck;
 
     [SerializeField] private PlayableDirector playableDirector;
 
-    /// <summary>
-    /// ƒNƒŠƒA‚µ‚½‚çtrue•Ô‚·
-    /// </summary>
-    public bool IsClearFlag => clearCheck;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +32,7 @@ public class ClearFlag : MonoBehaviour
             PlayTimeline();
         }
     }
+
     //‘S–Å”»’è
     bool DeadCheck(List<EnemyBaseClass> enemys)
     {

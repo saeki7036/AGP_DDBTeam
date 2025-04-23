@@ -7,23 +7,29 @@ public class GameOverFlag : MonoBehaviour
 {
     [SerializeField] private Change change;
     [SerializeField] private PlayableDirector playableDirector;
-    private bool clearCheck;
-    public bool IsClearFlag => clearCheck;
 
+    private bool gameOverCheck;
+   
     float PlayerHP => change.CharacterStatusHp;
+
     // Start is called before the first frame update
     void Start()
     {
-        clearCheck = false;
+        //初期化
+        gameOverCheck = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //ゲームオーバーしているか判定
+        //頭をチェンジ中か判定
         //PlayerのHPが全損しているか判定
-        if (!clearCheck && !change.Changing && PlayerHP <= 0)
+        if (!gameOverCheck && !change.Changing && PlayerHP <= 0)
         {
+            //timeScaleを停止
             Time.timeScale = 0f;
+            //演出再生
             PlayTimeline();
         }
     }
@@ -32,6 +38,6 @@ public class GameOverFlag : MonoBehaviour
     {
         //TimeLine起動
         playableDirector.Play();
-        clearCheck = true;
+        gameOverCheck = true;
     }
 }
