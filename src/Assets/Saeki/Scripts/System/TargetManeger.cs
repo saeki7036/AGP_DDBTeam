@@ -103,6 +103,7 @@ public class TargetManeger : MonoBehaviour
     {
         Enemy.Add(enemy.GetComponentInParent<EnemyBaseClass>());
     }
+
     /// <summary>
     /// “G‘Î‚·‚é‘ÎÛ‚ğ•ÏX‚·‚é
     /// </summary>
@@ -145,6 +146,7 @@ public class TargetManeger : MonoBehaviour
                 baseClass.Watch();
         }
     }
+
     /// <summary>
     /// ‚ ‚éˆÊ’uÀ•W‚©‚çˆê’è‚Ì‹——£‚É‚ ‚éEnemy‚ğæ“¾
     /// </summary>

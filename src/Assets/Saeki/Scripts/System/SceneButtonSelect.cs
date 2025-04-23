@@ -7,6 +7,7 @@ public class SceneButtonSelect : MonoBehaviour
 {
     //ボタンを押した時の音声
     [SerializeField] private AudioSource audioSE;
+
     /// <summary>
     /// タイトルシーンに遷移
     /// </summary>
@@ -15,6 +16,7 @@ public class SceneButtonSelect : MonoBehaviour
         audioSE.PlayOneShot(audioSE.clip);
         SceneManager.LoadSceneAsync("Title");
     }
+
     /// <summary>
     /// 指定のシーンに遷移
     /// </summary>
@@ -23,6 +25,7 @@ public class SceneButtonSelect : MonoBehaviour
         audioSE.PlayOneShot(audioSE.clip);
         SceneManager.LoadSceneAsync(SceneName);
     }
+
     /// <summary>
     /// 指定のシーンに遷移(SEを鳴らさない)
     /// </summary>
@@ -30,6 +33,7 @@ public class SceneButtonSelect : MonoBehaviour
     {
         SceneManager.LoadScene(SceneName);
     }
+
     /// <summary>
     /// 同じシーンに再度遷移させる。
     /// </summary>
@@ -38,6 +42,7 @@ public class SceneButtonSelect : MonoBehaviour
         audioSE.PlayOneShot(audioSE.clip);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
     }
+
     /// <summary>
     /// ゲームを終了する
     /// </summary>

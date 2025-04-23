@@ -11,6 +11,7 @@ public class DirectSceneChangeTitle : MonoBehaviour
     {
         InputCheck = false;//Start‚Å‰Šú‰»
     }
+
     void Update()
     {
         //‚P‚Æ‚Q‚Ì“¯‰Ÿ‚µ‚ÅTitle‚É–ß‚é
