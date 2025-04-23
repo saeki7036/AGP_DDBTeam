@@ -89,6 +89,8 @@ public class TankMovementTest_E : EnemyBaseClass
         CataperaRotete();
         BodyRotete();
 
+        //–v
+        /*
         if (FindCheck())
         {
             Agent.speed = 0f;
@@ -114,6 +116,6 @@ public class TankMovementTest_E : EnemyBaseClass
             remainingCount = 0f;
             lockonCount = 0f;
             Agent.speed = moveSpeed;
-        }
+        }*/
     }
 }

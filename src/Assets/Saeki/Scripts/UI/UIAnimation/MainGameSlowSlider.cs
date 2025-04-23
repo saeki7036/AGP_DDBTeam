@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class MainGameSrowSlider : MonoBehaviour
 {
     [SerializeField] private Image SliderUIImage;
-    [SerializeField] private RectTransform SliderValueTransform;
-    [SerializeField] private Animator animator;
+    [SerializeField] private RectTransform SliderValueTransform;//SliderのTransform
+    [SerializeField] private Animator animator;//SliderUIのanimator
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -16,21 +15,25 @@ public class MainGameSrowSlider : MonoBehaviour
         float SlowValue = TargetManeger.GetSlowValue();
         //アニメーターにパラメータを代入
         animator.SetBool("SliderDirected", SlowValue != 0f);
-
         //ゲージを変更する
         SetSliderValue(SlowValue);
+        //ゲージの色を変更する
         SetSliderColor(SlowValue);
     }
 
     /// <summary>
     /// 現在のゲージの色を指定
     /// </summary>
-    /// <param name="Value">残りのゲージ量</param>
+    /// <param name="Value">残りのゲージ量から遷移(赤色～緑色)</param>
     private void SetSliderColor(float Value)
     {
+        //RGBを0から計算する
         Color ValueColor = Color.black;
+        //Rを計算する
         ValueColor.r = Value;
+        //Gを1fから反転させ計算する
         ValueColor.g = 1f - Value;
+        //UIImageを代入する
         SliderUIImage.color = ValueColor;
     }
 
@@ -40,16 +43,22 @@ public class MainGameSrowSlider : MonoBehaviour
     /// <param name="Value">残りのゲージ量</param>
     private void SetSliderValue(float Value)
     {
+        //スケールを1で初期化してから計算
         Vector3 TransformScale = Vector3.one;
-        //スケールを計算
-        if (1f - Value > 0f)
+        //xのみ計算する
+
+        //ゲージの残量を判定
+        if (1f > Value)
         {
+            //スケールのxを計算
             TransformScale.x = 1f - Value;
         }
-        else
+        else//上限(1f == Value)の時に以下の処理に移動
         {
-            //ゲージが無くなった時にゲージを画面外に移動する
+            //上限の時に(ゲージが無くなった時)にゲージを画面外に移動する
+            //xに0を代入
             TransformScale.x = 0f;
+            //アニメーターにパラメータを設定
             animator.SetBool("SliderDirected", false);
         }
         //スケールをを代入
